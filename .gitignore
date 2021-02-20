@@ -188,3 +188,5 @@ docsrc/tools/FSharp.Formatting.svclog
 docs/
 /temp
 
+
+.ionide

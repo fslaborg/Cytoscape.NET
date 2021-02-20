@@ -185,14 +185,6 @@ docsrc/content/release-notes.md
 docsrc/tools/FSharp.Formatting.svclog
 
 # generated docs
-/.fsdocs
-/tmp/watch
-/output
+docs/
 /temp
 
-
-/codeCov.xml
-/tests/FSharp.Stats.Tests/coverage.xml
-
-.ionide
-pkg

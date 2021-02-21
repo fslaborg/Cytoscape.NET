@@ -5,24 +5,14 @@ open DynamicObj
 type Data() =
     inherit DynamicObj ()
    
-    static member node 
-        (
-            Id : string
-        ) =    
-            Data()
-            |> Data.update
-                (
-                    Id
-                )
-
-    static member edge 
+    static member init 
         (
             Id     : string,
-            Source : string,
-            Target : string
+            ?Source : string,
+            ?Target : string
         ) =    
             Data()
-            |> Data.update
+            |> Data.style
                 (
                     Id,
                     Source,
@@ -30,7 +20,7 @@ type Data() =
                 )
 
     // Applies updates to Data()
-    static member update
+    static member style
         (    
             Id,
             ?Source,

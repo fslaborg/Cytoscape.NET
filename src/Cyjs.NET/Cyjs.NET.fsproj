@@ -3,6 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="JsonConverter.fs" />
     <Compile Include="Data.fs" />
     <Compile Include="Element.fs" />
     <Compile Include="Cytoscape.fs" />

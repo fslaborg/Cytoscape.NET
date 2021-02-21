@@ -2,8 +2,7 @@ namespace Cyjs.NET
 
 open DynamicObj
 
-type PlainJsonString(str:string) = 
-    member val Value = str with get,set
+
 
 type Cytoscape() = 
     inherit DynamicObj ()

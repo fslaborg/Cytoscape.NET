@@ -184,8 +184,7 @@ open System.Runtime.InteropServices
 /// HTML template for Cytoscape
 module HTML =
     let doc =
-        """
-<!DOCTYPE html>
+        """<!DOCTYPE html>
 <html>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>

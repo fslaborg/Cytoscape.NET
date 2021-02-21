@@ -6,6 +6,8 @@
     <Compile Include="JsonConverter.fs" />
     <Compile Include="Data.fs" />
     <Compile Include="Element.fs" />
+    <Compile Include="Style.fs" />
+    <Compile Include="Layout.fs" />
     <Compile Include="Cytoscape.fs" />
     <Compile Include="Html.fs" />
   </ItemGroup>

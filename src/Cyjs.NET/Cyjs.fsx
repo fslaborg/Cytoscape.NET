@@ -55,18 +55,52 @@ type Data() =
             )
 
 
+type CssStyle = {
+  Name        : string
+  Value       : obj
+}
 
+type CssClass = {
+  Class       : string
+}
+
+type CssRule = {
+  Selector    : string
+  Styles      : CssStyle ResizeArray
+  Rules       : CssRule ResizeArray
+}
+  with
+    member self.Add (x : obj) =
+      match x with
+      | :? CssStyle as x -> self.Styles.Add x
+      | :? CssRule as x -> self.Rules.Add x
+      | :? System.Collections.IEnumerable as x -> for y in x do self.Add y
+      | _ -> ()
 
 
 
 type Element() =
     inherit DynamicObj ()
+    //member val Classes = ResizeArray<string>() with get
+    member this.AddClass (c:CssClass) =
+        match this.TryGetValue "classes" with
+        | Some tmp ->
+            match tmp with
+            | :?  ResizeArray<string> as v -> 
+                    v.Add(c.Class)
+                    v |> DynObj.setValue this "classes"
+            | _ ->  let tmp = ResizeArray<string>([c.Class])
+                    tmp |> DynObj.setValue this "classes" 
+        | None     -> 
+            let tmp = ResizeArray<string>([c.Class])
+            tmp |> DynObj.setValue this "classes" 
+            
 
     /// Init Element()
     static member init
         (    
-            ?Group    ,
             ?Data       : Data,
+            ?Group    ,
             ?Scratch     ,
             // the model position of the node (optional on init, mandatory after)
             ?Position   ,
@@ -79,43 +113,44 @@ type Element() =
             // whether the node can be grabbed and moved by the user
             ?Grabbable  : bool,
             // whether dragging the node causes panning instead of grabbing
-            ?Pannable   : bool,
-            ?Classes    : List<string>
+            ?Pannable   : bool
+            //?Classes    : List<string>
         ) =    
             Element()
             |> Element.update
                 (
-                    ?Group       = Group     ,
                     ?Data        = Data      ,
+                    ?Group       = Group     ,
                     ?Scratch     = Scratch   ,
                     ?Position    = Position  ,
                     ?Selected    = Selected  ,
                     ?Selectable  = Selectable,
                     ?Locked      = Locked    ,
                     ?Grabbable   = Grabbable ,
-                    ?Pannable    = Pannable  ,
-                    ?Classes     = Classes 
+                    ?Pannable    = Pannable  
+                    //?Classes     = Classes 
                 )
 
 
     // Applies the styles to Element()
     static member update
         (    
-            ?Group     ,
+            
             ?Data      ,
+            ?Group     ,
             ?Scratch   ,
             ?Position  ,
             ?Selected   : bool,
             ?Selectable : bool,
             ?Locked     : bool,
             ?Grabbable  : bool,
-            ?Pannable   : bool,
-            ?Classes    : List<string>
+            ?Pannable   : bool
+            //?Classes    : List<string>
         ) =
             (fun (element:Element) -> 
 
-                Group        |> DynObj.setValueOpt element "group" 
                 Data         |> DynObj.setValueOpt element "data" 
+                Group        |> DynObj.setValueOpt element "group" 
                 Scratch      |> DynObj.setValueOpt element "scratch" 
                 Position     |> DynObj.setValueOpt element "position" 
                 Selected     |> DynObj.setValueOpt element "selected" 
@@ -123,7 +158,7 @@ type Element() =
                 Locked       |> DynObj.setValueOpt element "locked" 
                 Grabbable    |> DynObj.setValueOpt element "grabbable" 
                 Pannable     |> DynObj.setValueOpt element "pannable" 
-                Classes      |> DynObj.setValueOpt element "classes" 
+                //Classes      |> DynObj.setValueOpt element "classes" 
                         
                 // out ->
                 element
@@ -248,17 +283,53 @@ module HTML =
         path |> openOsSpecificFile
 
 
+type Style() =
+    inherit DynamicObj ()
+
+    static member init 
+        (
+            selector:string,
+            styles : CssStyle list
+            ) =
+        let s     = Style()
+        let inner = Style()
+        selector |> DynObj.setValue s "selector"
+        for item in styles do
+            item.Value |> DynObj.setValue inner item.Name
+
+        inner |> DynObj.setValue s "style"
+        s
+
+module Css =
+    let inline style name v  = {
+        Name = name
+        Value = v
+    }
+
+    let inline cssClass name = { Class = name }
+
 
 //Newtonsoft.Json.JsonConvert.SerializeObject cy //Formatting.Indented)
 let n1 = Element.init(Data = (Data.node "n1"))
 let n2 = Element.init(Data = (Data.node "n2"))
 let e  = Element.init(Data = (Data.edge ("e", "n1", "n2")))
 
+n1.AddClass (Css.cssClass "questionable")
+
+
+let ly = [
+    Css.style "shape" "hexagon"
+    Css.style "background-color" "red"
+    Css.style "label" "data(id)"
+    ]
+let sy = Style.init ("node", ly)
+
 let graph =
     let cy = Cytoscape()
     cy.AddElement(n1)
     cy.AddElement(n2)
     cy.AddElement(e)
+    //cy.AddStyle sy
     cy
 
 HTML.show graph

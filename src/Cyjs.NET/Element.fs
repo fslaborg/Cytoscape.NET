@@ -5,7 +5,20 @@ open DynamicObj
 
 type Element() =
     inherit DynamicObj ()
-    
+    //member val Classes = ResizeArray<string>() with get
+    member this.AddClass (c:CssClass) =
+        match this.TryGetValue "classes" with
+        | Some tmp ->
+            match tmp with
+            | :?  ResizeArray<string> as v -> 
+                    v.Add(c.Class)
+                    v |> DynObj.setValue this "classes"
+            | _ ->  let tmp = ResizeArray<string>([c.Class])
+                    tmp |> DynObj.setValue this "classes" 
+        | None     -> 
+            let tmp = ResizeArray<string>([c.Class])
+            tmp |> DynObj.setValue this "classes" 
+            
 
     /// Init Element()
     static member init
@@ -24,8 +37,8 @@ type Element() =
             // whether the node can be grabbed and moved by the user
             ?Grabbable  : bool,
             // whether dragging the node causes panning instead of grabbing
-            ?Pannable   : bool,
-            ?Classes    : List<string>
+            ?Pannable   : bool
+            //?Classes    : List<string>
         ) =    
             Element()
             |> Element.update
@@ -38,8 +51,8 @@ type Element() =
                     ?Selectable  = Selectable,
                     ?Locked      = Locked    ,
                     ?Grabbable   = Grabbable ,
-                    ?Pannable    = Pannable  ,
-                    ?Classes     = Classes 
+                    ?Pannable    = Pannable  
+                    //?Classes     = Classes 
                 )
 
 
@@ -55,8 +68,8 @@ type Element() =
             ?Selectable : bool,
             ?Locked     : bool,
             ?Grabbable  : bool,
-            ?Pannable   : bool,
-            ?Classes    : List<string>
+            ?Pannable   : bool
+            //?Classes    : List<string>
         ) =
             (fun (element:Element) -> 
 
@@ -69,7 +82,7 @@ type Element() =
                 Locked       |> DynObj.setValueOpt element "locked" 
                 Grabbable    |> DynObj.setValueOpt element "grabbable" 
                 Pannable     |> DynObj.setValueOpt element "pannable" 
-                Classes      |> DynObj.setValueOpt element "classes" 
+                //Classes      |> DynObj.setValueOpt element "classes" 
                         
                 // out ->
                 element

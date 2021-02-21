@@ -130,19 +130,33 @@ type Element() =
             )
 
 
+type PlainJsonString(str:string) = 
+    member val Value = str with get,set
 
+type PlainJsonStringConverter() =
+    inherit JsonConverter()
 
+    override __.CanConvert(objectType) =
+        typeof<PlainJsonString> = objectType
+    
+    override __.ReadJson(reader, objectType, existingValue, serializer) =
+        reader.Value
+
+    override __.WriteJson(writer, value, serializer) =
+        let v = value :?> PlainJsonString
+        writer.WriteRawValue(string v.Value)
+        
 
 type Cytoscape() = 
     inherit DynamicObj ()
 
-    let tmpContainer = new System.Collections.Generic.List<DynamicObj>()
+    let tmpContainer  = "document.getElementById('cy')" |> PlainJsonString
     let tmpElements  = new System.Collections.Generic.List<DynamicObj>()
     let tmpStyle     = new System.Collections.Generic.List<DynamicObj>()
     let tmpLayout    = new System.Collections.Generic.List<DynamicObj>()
 
-    member this.Add (item:#DynamicObj) = 
-        tmpContainer.Add(item) 
+    // member this.Add (item:#DynamicObj) = 
+    //     tmpContainer.Add(item) 
 
     member this.AddElement (element:#Element) = 
         tmpElements.Add(element) 
@@ -153,17 +167,103 @@ type Cytoscape() =
     member this.AddLayout (item:#DynamicObj) = 
         tmpLayout.Add(item) 
 
-
-    member val ``container`` = tmpContainer with get,set 
+    //[<JsonConverter(typeof<PlainJsonStringConverter>)>]
+    member val ``container`` = tmpContainer //with get,set 
     member val ``elements``  = tmpElements  with get,set 
     member val ``style``     = tmpStyle     with get,set 
     member val ``layout``    = tmpLayout    with get,set 
 
 
 
+open System
+open System.IO
+open Newtonsoft.Json
+open System.Runtime.CompilerServices
+open System.Runtime.InteropServices
 
+/// HTML template for Cytoscape
+module HTML =
+    let doc =
+        """
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
+</head>
+
+<style>
+    #cy {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+
+<body>
+    <div id="cy"></div>
+    <script>
+      var cy = cytoscape(
+        [GRAPH]
+        );
+    </script>
+</body>
+</html>
+"""
+
+    let toCytoHTML (cy:Cytoscape) =
+        
+        let json = JsonConvert.SerializeObject(cy,PlainJsonStringConverter())
+            //cy
+            //|> JsonConvert.SerializeObject
+
+        
+        let html =
+            doc
+                //.Replace("style=\"width: [WIDTH]px; height: [HEIGHT]px;\"","style=\"width: 600px; height: 600px;\"")
+                .Replace("[GRAPH]", json)
+               
+        html
+
+    ///Choose process to open plots with depending on OS. Thanks to @zyzhu for hinting at a solution (https://github.com/plotly/Plotly.NET/issues/31)
+    let internal openOsSpecificFile path =
+        if RuntimeInformation.IsOSPlatform(OSPlatform.Windows) then
+            let psi = System.Diagnostics.ProcessStartInfo(FileName = path, UseShellExecute = true)
+            System.Diagnostics.Process.Start(psi) |> ignore
+        elif RuntimeInformation.IsOSPlatform(OSPlatform.Linux) then
+            System.Diagnostics.Process.Start("xdg-open", path) |> ignore
+        elif RuntimeInformation.IsOSPlatform(OSPlatform.OSX) then
+            System.Diagnostics.Process.Start("open", path) |> ignore
+        else
+            invalidOp "Not supported OS platform"
+
+
+    let show (cy:Cytoscape) = 
+        let guid = Guid.NewGuid().ToString()
+        let html = toCytoHTML cy
+        let tempPath = Path.GetTempPath()
+        let file = sprintf "%s.html" guid
+        let path = Path.Combine(tempPath, file)
+        File.WriteAllText(path, html)
+        path |> openOsSpecificFile
 
 
 
 //Newtonsoft.Json.JsonConvert.SerializeObject cy //Formatting.Indented)
+let n1 = Element.init(Data = (Data.node "n1"))
+let n2 = Element.init(Data = (Data.node "n2"))
+let e  = Element.init(Data = (Data.edge ("e", "n1", "n2")))
+
+let graph =
+    let cy = Cytoscape()
+    cy.AddElement(n1)
+    cy.AddElement(n2)
+    cy.AddElement(e)
+    cy
+
+HTML.show graph
+
+
+
 

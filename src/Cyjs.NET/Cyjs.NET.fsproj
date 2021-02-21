@@ -6,8 +6,10 @@
     <Compile Include="Data.fs" />
     <Compile Include="Element.fs" />
     <Compile Include="Cytoscape.fs" />
+    <Compile Include="Html.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DynamicObj" Version="0.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 </Project>

@@ -5,12 +5,13 @@ open DynamicObj
 
 type Element() =
     inherit DynamicObj ()
+    
 
     /// Init Element()
     static member init
         (    
-            ?Group    ,
             ?Data       : Data,
+            ?Group    ,
             ?Scratch     ,
             // the model position of the node (optional on init, mandatory after)
             ?Position   ,
@@ -29,8 +30,8 @@ type Element() =
             Element()
             |> Element.update
                 (
-                    ?Group       = Group     ,
                     ?Data        = Data      ,
+                    ?Group       = Group     ,
                     ?Scratch     = Scratch   ,
                     ?Position    = Position  ,
                     ?Selected    = Selected  ,
@@ -45,8 +46,9 @@ type Element() =
     // Applies the styles to Element()
     static member update
         (    
-            ?Group     ,
+            
             ?Data      ,
+            ?Group     ,
             ?Scratch   ,
             ?Position  ,
             ?Selected   : bool,
@@ -58,8 +60,8 @@ type Element() =
         ) =
             (fun (element:Element) -> 
 
-                Group        |> DynObj.setValueOpt element "group" 
                 Data         |> DynObj.setValueOpt element "data" 
+                Group        |> DynObj.setValueOpt element "group" 
                 Scratch      |> DynObj.setValueOpt element "scratch" 
                 Position     |> DynObj.setValueOpt element "position" 
                 Selected     |> DynObj.setValueOpt element "selected" 

@@ -2,6 +2,10 @@ namespace Cyjs.NET
 
 open DynamicObj
 
+// https://js.cytoscape.org/#style
+
+// http://jsfiddle.net/todaylg/f6oj27am/
+
 type Style() =
     inherit DynamicObj ()
    

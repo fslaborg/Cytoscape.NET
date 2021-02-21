@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="JsonConverter.fs" />
+    <Compile Include="CssStyle.fs" />
     <Compile Include="Data.fs" />
     <Compile Include="Element.fs" />
     <Compile Include="Style.fs" />

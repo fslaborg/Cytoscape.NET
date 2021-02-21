@@ -8,35 +8,17 @@ open DynamicObj
 
 type Style() =
     inherit DynamicObj ()
-   
+
     static member init 
         (
-            Id     : string,
-            ?Source : string,
-            ?Target : string
-        ) =    
-            Data()
-            |> Data.style
-                (
-                    Id,
-                    Source,
-                    Target
-                )
+            selector:string,
+            styles : CssStyle list
+            ) =
+        let s     = Style()
+        let inner = Style()
+        selector |> DynObj.setValue s "selector"
+        for item in styles do
+            item.Value |> DynObj.setValue inner item.Name
 
-    // Applies updates to Style()
-    static member style
-        (    
-            Id,
-            ?Source,
-            ?Target
-
-        ) =
-            (fun (data:Data) -> 
-
-                Id        |> DynObj.setValue data "id"
-                Source    |> DynObj.setValueOpt data "source"
-                Target    |> DynObj.setValueOpt data "target"
-                
-                // out ->
-                data
-            )
+        inner |> DynObj.setValue s "style"
+        s

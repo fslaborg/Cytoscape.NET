@@ -76,9 +76,6 @@ CyGraph.initEmpty ()
 
 
 
-
-
-
 // let n1 = Element.init(Data = (Data.init "n1"))
 // let n2 = Element.init(Data = (Data.init "n2"))
 // let e  = Element.init(Data = (Data.init ("e", "n1", "n2")))

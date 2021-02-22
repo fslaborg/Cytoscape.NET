@@ -41,13 +41,14 @@ module Css =
     let opacity v = style "opacity" v
     
     let shape v   = style "shape" v
+    let weight v  = style "weight" v
     let width v   = style "width" v
     
     module background =
         let color v   = style "background-color" v
 
     module border =
-        let color v   = style "border-color" v
+        let color v   = style "border-color" v                
         let width v   = style "border-width" v
 
     module curve =

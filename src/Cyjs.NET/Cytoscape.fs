@@ -10,7 +10,7 @@ type Cytoscape() =
     let tmpContainer  = "document.getElementById('cy')" |> PlainJsonString
     let tmpElements  = new System.Collections.Generic.List<DynamicObj>()
     let tmpStyle     = new System.Collections.Generic.List<DynamicObj>()
-    let tmpLayout    = new System.Collections.Generic.List<DynamicObj>() 
+    let tmpLayout    = Layout.init("random")//new System.Collections.Generic.List<DynamicObj>() 
 
     member this.AddElement (element:#Element) = 
         tmpElements.Add(element) 
@@ -18,8 +18,8 @@ type Cytoscape() =
     member this.AddStyle (style:#DynamicObj) = 
         tmpStyle.Add(style) 
 
-    member this.AddLayout (item:#DynamicObj) = 
-        tmpLayout.Add(item) 
+    // member this.AddLayout (item:#DynamicObj) = 
+    //     tmpLayout.Add(item) 
 
 
     member val ``container`` = tmpContainer  

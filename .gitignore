@@ -188,6 +188,6 @@ docsrc/tools/FSharp.Formatting.svclog
 docs/
 /temp
 
+pkg/
 
-.ionide
-.ionide/symbolCache.db
+.ionide/

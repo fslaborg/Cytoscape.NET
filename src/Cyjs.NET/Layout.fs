@@ -12,7 +12,7 @@ type Layout() =
             Layout()
             |> Layout.style
                 (
-                    Name
+                    Name=Name
                 )
 
     // Applies updates to Style()

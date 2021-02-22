@@ -30,10 +30,9 @@ module HTML =
 <body>
     <div id="cy"></div>
     <script>
-      var cy = cytoscape({
-        container: document.getElementById('cy'),
+      var cy = cytoscape(
         [GRAPH]
-        });
+        );
     </script>
 </body>
 </html>

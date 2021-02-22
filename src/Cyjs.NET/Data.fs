@@ -14,9 +14,9 @@ type Data() =
             Data()
             |> Data.style
                 (
-                    Id,
-                    Source,
-                    Target
+                    Id = Id,
+                    ?Source = Source,
+                    ?Target = Target
                 )
 
     // Applies updates to Data()

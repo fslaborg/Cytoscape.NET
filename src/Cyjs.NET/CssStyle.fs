@@ -12,7 +12,22 @@ type CssClass = {
   Class       : string
 }
 
+
 module Css =
+
+    let applyCssStyle (dyObj:#DynamicObj) (style:CssStyle) =
+        style.Value |> DynObj.setValue dyObj style.Name
+        dyObj
+
+    let applyCssStyles (dyObj:#DynamicObj) (styles:seq<CssStyle>) =
+        styles
+        |> Seq.iter (fun style -> 
+            style.Value |> DynObj.setValue dyObj style.Name
+            )
+        dyObj
+        
+
+
     let inline style name v  = {
         Name = name
         Value = v

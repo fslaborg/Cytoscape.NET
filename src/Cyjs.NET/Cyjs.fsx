@@ -12,7 +12,7 @@ let e  = Element.init(Data = (Data.init ("e", "n1", "n2")))
 
 
 let ly = [
-    Css.style "shape" "hexagon"
+    Css.shape "hexagon"    
     Css.style "background-color" "red"
     Css.style "label" "data(id)"
     ]
@@ -29,9 +29,21 @@ let graph =
 HTML.show graph
 
 
+type Node = Element
+type Edge = Element
 
 
 
+let node id (dataAttributes:list<CssStyle>) : Node =
+    let data = 
+        Css.applyCssStyles (Data.init id) dataAttributes 
+    Element.init(Data = data)    
+
+let edge id sourceId targetId (dataAttributes:list<CssStyle>) : Edge =
+    let data = 
+        let tmp = (Data.init (id,sourceId,targetId))
+        Css.applyCssStyles tmp dataAttributes  
+    Element.init(Data = data)   
 
 // #r "nuget: DynamicObj, 0.0.1"
 // #r "nuget: Newtonsoft.Json, 13.0.1-beta1"

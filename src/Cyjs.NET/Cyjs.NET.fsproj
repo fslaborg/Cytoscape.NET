@@ -10,10 +10,10 @@
     <PackageProjectUrl>https://fslab.org/Cyjs.NET/</PackageProjectUrl>
     <PackageIconUrl>https://fslab.org/docs-template/img/logo.png</PackageIconUrl>
     <PackageTags>cytoscape graph visualisation fsharp csharp dotnet</PackageTags>
-    <RepositoryUrl>https://github.com/fslaborg/docs-template</RepositoryUrl>
+    <RepositoryUrl>https://github.com/fslaborg/Cyjs.NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <FsDocsLicenseLink>https://github.com/fslaborg/docs-template/blob/master/LICENSE</FsDocsLicenseLink>
-    <FsDocsReleaseNotesLink>https://github.com/fslaborg/docs-template/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+    <FsDocsLicenseLink>https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE</FsDocsLicenseLink>
+    <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cyjs.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
 </PropertyGroup>
   <ItemGroup>
     <Compile Include="JsonConverter.fs" />

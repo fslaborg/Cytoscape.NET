@@ -7,68 +7,68 @@ open Elements
 
 CyGraph.initEmpty ()
 |> CyGraph.withElements [
-        node "j" [ Css.label "Jerry"  ; Css.weight 65; Css.color "#6FB1FC"; Css.shape "triangle"  ]
-        node "e" [ Css.label "Elaine" ; Css.weight 45; Css.color "#EDA1ED"; Css.shape "ellipse"  ]
-        node "k" [ Css.label "Kramer" ; Css.weight 75; Css.color "#86B342"; Css.shape "octagon"  ]
-        node "g" [ Css.label "George" ; Css.weight 70; Css.color "#F5A45D"; Css.shape "rectangle"  ]
+        node "j" [ CyParam.label "Jerry"  ; CyParam.weight 65; CyParam.color "#6FB1FC"; CyParam.shape "triangle"  ]
+        node "e" [ CyParam.label "Elaine" ; CyParam.weight 45; CyParam.color "#EDA1ED"; CyParam.shape "ellipse"  ]
+        node "k" [ CyParam.label "Kramer" ; CyParam.weight 75; CyParam.color "#86B342"; CyParam.shape "octagon"  ]
+        node "g" [ CyParam.label "George" ; CyParam.weight 70; CyParam.color "#F5A45D"; CyParam.shape "rectangle"  ]
 
-        edge  "1" "j" "e" [Css.color "#6FB1FC"; Css.weight 90]
-        edge  "2" "j" "e" [Css.color "#6FB1FC"; Css.weight 120]
-        edge  "3" "j" "k" [Css.color "#6FB1FC"; Css.weight 70]
-        edge  "4" "j" "g" [Css.color "#6FB1FC"; Css.weight 80]
+        edge  "1" "j" "e" [CyParam.color "#6FB1FC"; CyParam.weight 90]
+        edge  "2" "j" "e" [CyParam.color "#6FB1FC"; CyParam.weight 120]
+        edge  "3" "j" "k" [CyParam.color "#6FB1FC"; CyParam.weight 70]
+        edge  "4" "j" "g" [CyParam.color "#6FB1FC"; CyParam.weight 80]
  
-        edge  "5" "e" "j" [Css.color "#EDA1ED"; Css.weight 95]
-        edge  "6" "e" "k" [Css.color "#EDA1ED"; Css.weight 60] 
-            |> withClass (Css.cssClass "questionable") // lasses: 'questionable'
+        edge  "5" "e" "j" [CyParam.color "#EDA1ED"; CyParam.weight 95]
+        edge  "6" "e" "k" [CyParam.color "#EDA1ED"; CyParam.weight 60] 
+            |> withClass (CyParam.cyClass "questionable") // lasses: 'questionable'
          
-        edge  "7" "k" "j" [Css.color "#86B342"; Css.weight 100]
-        edge  "8" "k" "e" [Css.color "#86B342"; Css.weight 100]
-        edge  "9" "k" "g" [Css.color "#86B342"; Css.weight 100]
+        edge  "7" "k" "j" [CyParam.color "#86B342"; CyParam.weight 100]
+        edge  "8" "k" "e" [CyParam.color "#86B342"; CyParam.weight 100]
+        edge  "9" "k" "g" [CyParam.color "#86B342"; CyParam.weight 100]
  
-        edge "10" "g" "j" [Css.color "#F5A45D"; Css.weight 90]
-        edge "11" "g" "g" [Css.color "#F5A45D"; Css.weight 90]
-        edge "12" "g" "g" [Css.color "#F5A45D"; Css.weight 90]
-        edge "13" "g" "g" [Css.color "#F5A45D"; Css.weight 90]
+        edge "10" "g" "j" [CyParam.color "#F5A45D"; CyParam.weight 90]
+        edge "11" "g" "g" [CyParam.color "#F5A45D"; CyParam.weight 90]
+        edge "12" "g" "g" [CyParam.color "#F5A45D"; CyParam.weight 90]
+        edge "13" "g" "g" [CyParam.color "#F5A45D"; CyParam.weight 90]
 
     ]
 |> CyGraph.withStyle "node"     
         [
-            Css.shape "data(shape)"
-            Css.width "mapData(weight, 40, 80, 20, 60)"
-            Css.content "data(label)"
-            Css.text.align.center
-            Css.text.outline.width 2
-            Css.text.outline.color "data(color)"
-            Css.background.color "data(color)"
-            Css.color "#fff"
+            CyParam.shape "data(shape)"
+            CyParam.width "mapData(weight, 40, 80, 20, 60)"
+            CyParam.content "data(label)"
+            CyParam.Text.Align.center
+            CyParam.Text.Outline.width 2
+            CyParam.Text.Outline.color "data(color)"
+            CyParam.Background.color "data(color)"
+            CyParam.color "#fff"
         ]
 |> CyGraph.withStyle ":selected"     
         [
-            Css.border.width 3
-            Css.border.color "#333"
+            CyParam.Border.width 3
+            CyParam.Border.color "#333"
         ]
 |> CyGraph.withStyle "edge"     
         [
-            Css.curve.style "bezier"
-            Css.opacity 0.666
-            Css.width "mapData(weight, 70, 100, 2, 6)"
-            Css.target.arrow.shape "triangle"
-            Css.source.arrow.shape "circle"
-            Css.line.color "data(color)"
-            Css.target.arrow.color "data(color)"
-            Css.source.arrow.color "data(color)"
+            CyParam.Curve.style "bezier"
+            CyParam.opacity 0.666
+            CyParam.width "mapData(weight, 70, 100, 2, 6)"
+            CyParam.Target.Arrow.shape "triangle"
+            CyParam.Source.arrow.shape "circle"
+            CyParam.Line.color "data(color)"
+            CyParam.Target.Arrow.color "data(color)"
+            CyParam.Source.arrow.color "data(color)"
         ]
 |> CyGraph.withStyle "edge.questionable"     
         [
-            Css.line.style "dotted"
-            Css.target.arrow.shape "diamond"
+            CyParam.Line.style "dotted"
+            CyParam.Target.Arrow.shape "diamond"
         ]
 |> CyGraph.withStyle ".faded"     
         [
-            Css.opacity 0.666
-            Css.text.opacity 0
+            CyParam.opacity 0.666
+            CyParam.Text.opacity 0
         ]
-|> CyGraph.withLayout (Layout.init("cose"))        
+|> CyGraph.withLayout (CytoscapeModel.Layout.init("cose"))        
 |> CyGraph.show
 
 

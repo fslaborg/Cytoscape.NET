@@ -2,9 +2,22 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
+  <PropertyGroup>
+    <Authors>Timo Muehlhaus, fslaborg</Authors>
+    <Description>.NET interface for Cytoscape.js written in F#</Description>
+    <Summary>.NET interface for Cytoscape.js written in F#</Summary>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://fslab.org/Cyjs.NET/</PackageProjectUrl>
+    <PackageIconUrl>https://fslab.org/docs-template/img/logo.png</PackageIconUrl>
+    <PackageTags>cytoscape graph visualisation fsharp csharp dotnet</PackageTags>
+    <RepositoryUrl>https://github.com/fslaborg/docs-template</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <FsDocsLicenseLink>https://github.com/fslaborg/docs-template/blob/master/LICENSE</FsDocsLicenseLink>
+    <FsDocsReleaseNotesLink>https://github.com/fslaborg/docs-template/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+</PropertyGroup>
   <ItemGroup>
     <Compile Include="JsonConverter.fs" />
-    <Compile Include="CssStyle.fs" />
+    <Compile Include="CyParam.fs" />
     <Compile Include="Data.fs" />
     <Compile Include="Element.fs" />
     <Compile Include="Style.fs" />

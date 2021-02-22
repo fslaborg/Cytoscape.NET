@@ -1,6 +1,7 @@
-namespace Cyjs.NET
+namespace Cyjs.NET.CytoscapeModel
 
 open DynamicObj
+open Cyjs.NET
 
 // https://js.cytoscape.org/#style
 
@@ -12,7 +13,7 @@ type Style() =
     static member init 
         (
             selector:string,
-            styles : CssStyle list
+            styles : CyParam.CyStyleParam list
             ) =
         let s     = Style()
         let inner = Style()

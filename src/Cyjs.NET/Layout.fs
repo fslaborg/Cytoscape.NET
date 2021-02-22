@@ -1,6 +1,7 @@
-namespace Cyjs.NET
+namespace Cyjs.NET.CytoscapeModel
 
 open DynamicObj
+open Cyjs.NET
 
 type Layout() =
     inherit DynamicObj ()
@@ -29,3 +30,4 @@ type Layout() =
                 // out ->
                 layout
             )
+

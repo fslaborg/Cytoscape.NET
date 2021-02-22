@@ -1,30 +1,32 @@
 namespace Cyjs.NET
 
-
+open Cyjs.NET.CytoscapeModel
+open CyParam
 
 module Elements =
-
+    
     type Node = Element
     type Edge = Element
 
 
-    let node id (dataAttributes:list<CssStyle>) : Node =
+    let node id (dataAttributes:list<CyStyleParam>) : Node =
         let data = 
-            Css.applyCssStyles (Data.init id) dataAttributes 
+            CyParam.applyCyStyles (Data.init id) dataAttributes 
         Element.init(Data = data)    
 
-    let edge id sourceId targetId (dataAttributes:list<CssStyle>) : Edge =
+    let edge id sourceId targetId (dataAttributes:list<CyStyleParam>) : Edge =
         let data = 
             let tmp = (Data.init (id,sourceId,targetId))
-            Css.applyCssStyles tmp dataAttributes  
+            CyParam.applyCyStyles tmp dataAttributes  
         Element.init(Data = data)
     
-    let withClass (cssClass:CssClass) (elem:#Element) =
-        elem.AddClass cssClass
+    let withClass (cyClass:CyStyleClass) (elem:#Element) =
+        elem.AddClass cyClass
         elem
 
 
 module CyGraph =
+    open CyParam
 
     type CyGraph = Cytoscape
 
@@ -36,8 +38,8 @@ module CyGraph =
         cy 
     
     //(selector:string)
-    let withStyle (selector:string) (cssStyles:seq<CssStyle>) (cy:CyGraph) : CyGraph =
-            let style = Style.init(selector,cssStyles |> Seq.toList)
+    let withStyle (selector:string) (cyStyles:seq<CyStyleParam>) (cy:CyGraph) : CyGraph =
+            let style = Style.init(selector,cyStyles |> Seq.toList)
             cy.AddStyle style
             cy 
 

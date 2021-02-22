@@ -1,12 +1,12 @@
-namespace Cyjs.NET
+namespace Cyjs.NET.CytoscapeModel
 
+open Cyjs.NET
 open DynamicObj
-
 
 type Element() =
     inherit DynamicObj ()
     //member val Classes = ResizeArray<string>() with get
-    member this.AddClass (c:CssClass) =
+    member this.AddClass (c:CyParam.CyStyleClass) =
         match this.TryGetValue "classes" with
         | Some tmp ->
             match tmp with

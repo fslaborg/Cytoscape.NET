@@ -6,6 +6,8 @@ open Newtonsoft.Json
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
 
+open Cyjs.NET.CytoscapeModel
+
 /// HTML template for Cytoscape
 module HTML =
     

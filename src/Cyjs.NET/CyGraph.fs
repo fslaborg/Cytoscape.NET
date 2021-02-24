@@ -52,8 +52,11 @@ module CyGraph =
         cy.layout <- ly
         cy
 
+    let withSize (width:int,height:int) (cy:CyGraph) : CyGraph =
+        cy?Dims <- (width,height)
+        cy
 
-    let show (cy:CyGraph) =
+    let show (cy:CyGraph)  =
         HTML.show cy
 
 

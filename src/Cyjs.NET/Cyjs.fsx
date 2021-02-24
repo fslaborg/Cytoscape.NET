@@ -69,6 +69,7 @@ CyGraph.initEmpty ()
             CyParam.Text.opacity 0
         ]
 |> CyGraph.withLayout (CytoscapeModel.Layout.init("cose"))        
+|> CyGraph.withSize(800, 800)
 |> CyGraph.show
 
 

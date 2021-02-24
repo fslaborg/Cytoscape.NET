@@ -12,22 +12,21 @@ open Cyjs.NET.CytoscapeModel
 module HTML =
     
     let doc =
-        """
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
-</head>
-
-<body>
-    [GRAPH]
-</body>
-</html>
-"""
+        let newScript = System.Text.StringBuilder()
+        newScript.AppendLine("""<!DOCTYPE html>""") |> ignore
+        newScript.AppendLine("<html>") |> ignore
+        newScript.AppendLine("<head>") |> ignore
+        newScript.AppendLine("""<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>""") |> ignore
+        newScript.AppendLine("</head>") |> ignore
+        newScript.AppendLine("<body> [GRAPH] </body>") |> ignore
+        newScript.AppendLine("""</html>""") |> ignore
+        newScript.ToString() 
 
     let graphDoc =
         let newScript = System.Text.StringBuilder()
-        newScript.AppendLine("""<style>#[ID] { width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; }</style>""") |> ignore
+        newScript.AppendLine("""<style>#[ID] { width: [WIDTH]px; height: [HEIGHT]px; display: block }</style>""") |> ignore
+        //newScript.AppendLine("""<style>#[ID] { width: 100%; height: 100%; position: relative; top: 0px; left: 0px; }</style>""") |> ignore
+        //newScript.AppendLine("""<style>#[ID] { width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; }</style>""") |> ignore
         newScript.AppendLine("""<div id="[ID]"></div>""") |> ignore
         newScript.AppendLine("<script type=\"text/javascript\">") |> ignore
         newScript.AppendLine(@"
@@ -59,9 +58,19 @@ module HTML =
         let id   = sprintf "e%s" <| Guid.NewGuid().ToString().Replace("-","").Substring(0,10)
         cy.container <- PlainJsonString id
         let json = JsonConvert.SerializeObject(cy,PlainJsonStringConverter())
+
+        let dims = cy.TryGetTypedValue<int*int> "Dims" // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart
+        let width,height =
+            match dims with
+            |Some (w,h) -> w,h
+            |None -> 600, 600
+        
         let html =
             graphDoc
                 //.Replace("style=\"width: [WIDTH]px; height: [HEIGHT]px;\"","style=\"width: 600px; height: 600px;\"")
+                                
+                .Replace("[WIDTH]", string width)
+                .Replace("[HEIGHT]", string height)
                 .Replace("[ID]", id)
                 .Replace("[GRAPHDATA]", json)
                 .Replace("[SCRIPTID]", guid.Replace("-",""))

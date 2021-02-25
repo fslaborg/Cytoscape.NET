@@ -192,3 +192,4 @@ pkg/
 .ionide/
 tmp/watch/
 .fsdocs/cache
+output/

@@ -67,14 +67,14 @@ module ProjectInfo =
 
     // Git configuration (used for publishing documentation in gh-pages branch)
     // The profile where the project is posted
-    let gitOwner = "muehlhaus"
-    let gitName = "muehlhaus"
+    let gitOwner = "fslaborg"
+    let gitName = "Cyjs.NET"
 
     let gitHome = sprintf "%s/%s" "https://github.com" gitOwner
 
     let projectRepo = sprintf "%s/%s/%s" "https://github.com" gitOwner gitName
 
-    let website = "/YourNameHere"
+    let website = "/Cyjs.NET"
 
     let pkgDir = "pkg"
 

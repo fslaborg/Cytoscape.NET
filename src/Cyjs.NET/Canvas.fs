@@ -9,7 +9,7 @@ type Canvas() =
     inherit DynamicObj ()
     
     /// Init a default canvas for responsive rendering ( width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; )
-    static member initDefault() =
+    static member InitDefault() =
           let c = Canvas()
           c?width <- "100%"
           c?height <- "100%"

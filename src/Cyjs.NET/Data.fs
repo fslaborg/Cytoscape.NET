@@ -6,14 +6,14 @@ open DynamicObj
 type Data() =
     inherit DynamicObj ()
    
-    static member init 
+    static member Init 
         (
             Id     : string,
             ?Source : string,
             ?Target : string
         ) =    
             Data()
-            |> Data.style
+            |> Data.Style
                 (
                     Id = Id,
                     ?Source = Source,
@@ -21,7 +21,7 @@ type Data() =
                 )
 
     // Applies updates to Data()
-    static member style
+    static member Style
         (    
             Id,
             ?Source,

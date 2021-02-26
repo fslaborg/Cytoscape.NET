@@ -11,7 +11,7 @@ type Cytoscape() =
     let mutable tmpId = "cy" |> PlainJsonString
     let tmpElements   = new System.Collections.Generic.List<DynamicObj>()
     let tmpStyle      = new System.Collections.Generic.List<DynamicObj>()
-    let tmpLayout     = Layout.init("random")//new System.Collections.Generic.List<DynamicObj>() 
+    let tmpLayout     = Layout.Init("random")//new System.Collections.Generic.List<DynamicObj>() 
 
     member this.AddElement (element:#Element) = 
         tmpElements.Add(element) 

@@ -10,7 +10,7 @@ open Cyjs.NET
 type Style() =
     inherit DynamicObj ()
 
-    static member init 
+    static member Init 
         (
             selector:string,
             styles : CyParam.CyStyleParam list

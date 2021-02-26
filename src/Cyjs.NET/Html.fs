@@ -61,7 +61,7 @@ module HTML =
         let strCANVAS = // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart
             match cy.TryGetTypedValue<Canvas> "Canvas"  with
             |Some c -> c
-            |None -> Canvas.initDefault()
+            |None -> Canvas.InitDefault()
             //|> fun c -> c?display <-  "block" ; c
             |> fun c -> 
                 c.GetProperties(true)

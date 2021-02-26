@@ -21,7 +21,7 @@ type Element() =
             
 
     /// Init Element()
-    static member init
+    static member Init
         (    
             ?Data       : Data,
             ?Group    ,
@@ -41,7 +41,7 @@ type Element() =
             //?Classes    : List<string>
         ) =    
             Element()
-            |> Element.update
+            |> Element.Update
                 (
                     ?Data        = Data      ,
                     ?Group       = Group     ,
@@ -57,7 +57,7 @@ type Element() =
 
 
     // Applies the styles to Element()
-    static member update
+    static member Update
         (    
             
             ?Data      ,

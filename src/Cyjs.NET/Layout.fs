@@ -6,18 +6,18 @@ open Cyjs.NET
 type Layout() =
     inherit DynamicObj ()
    
-    static member init 
+    static member Init 
         (
             Name
         ) =    
             Layout()
-            |> Layout.style
+            |> Layout.Style
                 (
                     Name=Name
                 )
 
     // Applies updates to Style()
-    static member style
+    static member Style
         (    
             Name : string
 

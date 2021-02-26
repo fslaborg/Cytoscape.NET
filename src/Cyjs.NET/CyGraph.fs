@@ -13,14 +13,14 @@ module Elements =
 
     let node id (dataAttributes:list<CyStyleParam>) : Node =
         let data = 
-            CyParam.applyCyStyles (Data.init id) dataAttributes 
-        Element.init(Data = data)    
+            CyParam.applyCyStyles (Data.Init id) dataAttributes 
+        Element.Init(Data = data)    
 
     let edge id sourceId targetId (dataAttributes:list<CyStyleParam>) : Edge =
         let data = 
-            let tmp = (Data.init (id,sourceId,targetId))
+            let tmp = (Data.Init (id,sourceId,targetId))
             CyParam.applyCyStyles tmp dataAttributes  
-        Element.init(Data = data)
+        Element.Init(Data = data)
     
     let withClass (cyClass:CyStyleClass) (elem:#Element) =
         elem.AddClass cyClass
@@ -42,7 +42,7 @@ module CyGraph =
     
     //(selector:string)
     let withStyle (selector:string) (cyStyles:seq<CyStyleParam>) (cy:CyGraph) : CyGraph =
-            let style = Style.init(selector,cyStyles |> Seq.toList)
+            let style = Style.Init(selector,cyStyles |> Seq.toList)
             cy.AddStyle style
             cy 
 

@@ -8,23 +8,23 @@ type Layout() =
    
     static member Init 
         (
-            Name
+            name
         ) =    
             Layout()
             |> Layout.Style
                 (
-                    Name=Name
+                    name=name
                 )
 
     // Applies updates to Style()
     static member Style
         (    
-            Name : string
+            name : string
 
         ) =
             (fun (layout:Layout) -> 
 
-                Name        |> DynObj.setValue layout "name"
+                name        |> DynObj.setValue layout "name"
                 //Target    |> DynObj.setValueOpt data "target"
                 
                 // out ->

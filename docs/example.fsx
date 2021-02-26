@@ -28,7 +28,7 @@ let myGraph =
      
             edge  "5" "e" "j" [CyParam.color "#EDA1ED"; CyParam.weight 95]
             edge  "6" "e" "k" [CyParam.color "#EDA1ED"; CyParam.weight 60] 
-                |> withClass (CyParam.cyClass "questionable") // lasses: 'questionable'
+                |> withClass (CyParam.cyClass "questionable") // classes: 'questionable'
              
             edge  "7" "k" "j" [CyParam.color "#86B342"; CyParam.weight 100]
             edge  "8" "k" "e" [CyParam.color "#86B342"; CyParam.weight 100]

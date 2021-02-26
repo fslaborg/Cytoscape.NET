@@ -80,6 +80,9 @@ module CyGraph =
         cy?Canvas <- canvas
         cy
 
+    let withZoom (zoom:Zoom) (cy:CyGraph) : CyGraph = 
+        cy?zoom <- zoom
+        cy 
 
     let show (cy:CyGraph)  =
         HTML.show cy

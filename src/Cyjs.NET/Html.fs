@@ -35,7 +35,9 @@ module HTML =
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {")  |> ignore
         newScript.AppendLine(@"
             var graphdata = [GRAPHDATA]
-            var cy = cytoscape( graphdata );")  |> ignore
+            var cy = cytoscape( graphdata );
+            cy.userZoomingEnabled( [ZOOMING] );
+            ")  |> ignore
         newScript.AppendLine("""});
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
@@ -58,6 +60,16 @@ module HTML =
         let id   = sprintf "e%s" <| Guid.NewGuid().ToString().Replace("-","").Substring(0,10)
         cy.container <- PlainJsonString id
 
+        let userZoomingEnabled =
+            match cy.TryGetTypedValue<Zoom> "Zoom"  with
+            | Some z -> 
+                match z.TryGetTypedValue<bool> "zoomingEnabled" with
+                | Some t -> t
+                | None -> false
+            | None -> false
+            |> string 
+            |> fun s -> s.ToLower()
+
         let strCANVAS = // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart
             match cy.TryGetTypedValue<Canvas> "Canvas"  with
             |Some c -> c
@@ -77,6 +89,7 @@ module HTML =
                 .Replace("[CANVAS]", strCANVAS)
                 .Replace("[ID]", id)
                 .Replace("[GRAPHDATA]", jsonGraph)
+                .Replace("[ZOOMING]", userZoomingEnabled)
                 .Replace("[SCRIPTID]", guid.Replace("-",""))                
         html
 

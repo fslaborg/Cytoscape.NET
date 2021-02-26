@@ -25,6 +25,7 @@
     <Compile Include="Layout.fs" />
     <Compile Include="Cytoscape.fs" />
     <Compile Include="Canvas.fs" />
+    <Compile Include="Zoom.fs" />
     <Compile Include="Html.fs" />
     <Compile Include="CyGraph.fs" />
   </ItemGroup>

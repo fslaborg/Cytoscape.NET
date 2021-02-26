@@ -62,10 +62,10 @@ let myGraph =
                 CyParam.opacity 0.666
                 CyParam.width "mapData(weight, 70, 100, 2, 6)"
                 CyParam.Target.Arrow.shape "triangle"
-                CyParam.Source.arrow.shape "circle"
+                CyParam.Source.Arrow.shape "circle"
                 CyParam.Line.color "data(color)"
                 CyParam.Target.Arrow.color "data(color)"
-                CyParam.Source.arrow.color "data(color)"
+                CyParam.Source.Arrow.color "data(color)"
             ]
     |> CyGraph.withStyle "edge.questionable"     
             [
@@ -77,7 +77,7 @@ let myGraph =
                 CyParam.opacity 0.666
                 CyParam.Text.opacity 0
             ]
-    |> CyGraph.withLayout (CytoscapeModel.Layout.init("cose")) 
+    |> CyGraph.withLayout (CytoscapeModel.Layout.Init("cose")) 
     |> CyGraph.withSize(800, 800)       
     
 

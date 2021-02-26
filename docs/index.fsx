@@ -26,13 +26,9 @@ Cyjs.NET is an interface for Cytoscape.js written in F# to visualiz complex netw
 - [Overview](#Overview)
     - [Basics](#Basics)
         - [Initializing a graph](#Initializing-a-graph)
+        - [Attaching nodes and edges](#Attaching-nodes-and-edges)
         - [Styling a graph](#Styling-a-graph)
         - [Displaying a graph](#Displaying-a-graph)
-    - [Comparison: Usage in F# and C#](#Comparison-Usage-in-F-and-C)
-        - [Functional pipeline style in F#](#Functional-pipeline-style-in-F)
-        - [Fluent interface style in C#](#Fluent-interface-style-in-C)
-        - [Declarative style in F# using the underlying `DynamicObj`](#Declarative-style-in-F-using-the-underlying)
-        - [Declarative style in C# using the underlying `DynamicObj`](#Declarative-style-in-C-using-the-underlying)
 - [Contributing and copyright](#Contributing-and-copyright)
 
 # Installation
@@ -119,11 +115,21 @@ Styling functions are generally the `Chart.with*` naming convention. The followi
 
 *)
 
-let myFirstStyledGraph = CyGraph.initEmpty ()
-    // Chart.Point(xData,yData)
-    // |> Chart.withTitle "Hello world!"
-    // |> Chart.withX_AxisStyle ("xAxis", Showgrid=false)
-    // |> Chart.withY_AxisStyle ("yAxis", Showgrid=false)
+let myFirstStyledGraph =     
+    CyGraph.initEmpty ()
+    |> CyGraph.withElements [
+            node "n1" [ CyParam.label "FsLab"  ]
+            node "n2" [ CyParam.label "ML" ]
+ 
+            edge  "e1" "n1" "n2" []
+ 
+        ]
+    |> CyGraph.withStyle "node"     
+            [
+                CyParam.content "data(label)"
+                CyParam.color "#A00975"
+            ]
+    |> CyGraph.withSize(800, 400)  
 
 (**
 **Attention:** Styling functions mutate 😈 the input chart, therefore possibly affecting bindings to intermediary results. 
@@ -137,13 +143,13 @@ The `Chart.Show` function will open a browser window and render the input chart 
 *)
 
 (***do-not-eval***)
-myFirstStyledGraph
+myGraph
 |> CyGraph.show
 
 (**Should render this chart in your brower:*)
 
 (***hide***)
-myFirstStyledGraph |> HTML.toEmbeddedHTML
+myGraph |> CyGraph.withSize(800, 400) |> HTML.toEmbeddedHTML
 (*** include-it-raw ***)
 
 (***do-not-eval***)
@@ -169,31 +175,9 @@ The library is available under Public Domain license, which allows modification 
 redistribution for both commercial and non-commercial purposes. For more information see the 
 [License file][license] in the GitHub repository. 
 
-  [content]: https://github.com/plotly/Plotly.NET/tree/master/docs/content
-  [gh]: https://github.com/plotly/Plotly.NET
-  [issues]: https://github.com/plotly/Plotly.NET/issues
-  [readme]: https://github.com/plotly/Plotly.NET/blob/master/README.md
-  [license]: https://github.com/plotly/Plotly.NET/blob/master/LICENSE.txt
+  [content]: https://github.com/fslaborg/Cyjs.NET/tree/master/docs/content
+  [gh]: https://github.com/fslaborg/Cyjs.NET
+  [issues]: https://github.com/fslaborg/Cyjs.NET/issues
+  [readme]: https://github.com/fslaborg/Cyjs.NET/blob/master/README.md
+  [license]: https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE.txt
 *)
-
-// open Cyjs.NET
-// open Elements
-
-// let myGraph = 
-//     CyGraph.initEmpty ()
-//     |> CyGraph.withElements [
-//             node "n1" [ CyParam.label "FsLab"  ]
-//             node "n2" [ CyParam.label "ML" ]
- 
-//             edge  "e1" "n1" "n2" []
- 
-//         ]
-//     |> CyGraph.withStyle "node"     
-//             [
-//                 CyParam.content "data(label)"
-//                 CyParam.color "#A00975"
-//             ]
-//     |> CyGraph.withSize(800, 800)  
-         
-    
-

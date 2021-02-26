@@ -10,18 +10,7 @@ module CyParam =
       Name        : string
       Value       : obj
     }
-        // with
-        
-        // static member apply (dyObj:#DynamicObj) (style:CyStyleParam) =
-        //     style.Value |> DynObj.setValue dyObj style.Name
-        //     dyObj 
-        
-        // static member applyAll (dyObj:#DynamicObj) (styles:seq<CyStyleParam>) =
-        //     styles
-        //     |> Seq.iter (fun style -> 
-        //         style.Value |> DynObj.setValue dyObj style.Name
-        //         )
-        //     dyObj        
+    
 
     type CyStyleClass = {
       Class       : string
@@ -50,6 +39,7 @@ module CyParam =
 
     let color v   = style "color" v
     let content v = style "content" v
+    let height v  = style "height" v
     let label v   = style "label" v
     let opacity v = style "opacity" v 
     
@@ -78,7 +68,7 @@ module CyParam =
         let style v   = style "border-style" v
 
     module Source =
-        module arrow =
+        module Arrow =
             let shape v = style "source-arrow-shape" v
             let color v = style "source-arrow-color" v
 

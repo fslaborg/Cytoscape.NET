@@ -15,7 +15,7 @@
     <RepositoryType>git</RepositoryType>
     <FsDocsLicenseLink>https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE</FsDocsLicenseLink>
     <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cyjs.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
-</PropertyGroup>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="JsonConverter.fs" />
     <Compile Include="CyParam.fs" />
@@ -24,6 +24,7 @@
     <Compile Include="Style.fs" />
     <Compile Include="Layout.fs" />
     <Compile Include="Cytoscape.fs" />
+    <Compile Include="Canvas.fs" />
     <Compile Include="Html.fs" />
     <Compile Include="CyGraph.fs" />
   </ItemGroup>

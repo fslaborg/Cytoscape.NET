@@ -53,10 +53,10 @@ CyGraph.initEmpty ()
             CyParam.opacity 0.666
             CyParam.width "mapData(weight, 70, 100, 2, 6)"
             CyParam.Target.Arrow.shape "triangle"
-            CyParam.Source.arrow.shape "circle"
+            CyParam.Source.Arrow.shape "circle"
             CyParam.Line.color "data(color)"
             CyParam.Target.Arrow.color "data(color)"
-            CyParam.Source.arrow.color "data(color)"
+            CyParam.Source.Arrow.color "data(color)"
         ]
 |> CyGraph.withStyle "edge.questionable"     
         [

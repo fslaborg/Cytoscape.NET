@@ -1,149 +1,199 @@
+(*** hide ***)
+
+(*** condition: prepare ***)
+#r "nuget: DynamicObj, 0.0.1"
+#r "nuget: Newtonsoft.Json, 12.0.3"
+#r "../bin/Cyjs.NET/netstandard2.1/Cyjs.NET.dll"
+
+(*** condition: ipynb ***)
+#if IPYNB
+#r "nuget: Cyjs.NET, {{fsdocs-package-version}}"
+#endif // IPYNB
+
+
 (**
-# The fslab documentation template
+# Cyjs.NET
 
-This template scaffolds the necessary folder structure for FSharp.Formatting 
-and adds custom styles in the **fslab** theme. 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fslaborg/Cyjs.NET/gh-pages?filepath=index.ipynb)
 
-The provided stylesheet was compiled from sass (before uploading the nuget package) and
-uses the [Bulma](https://bulma.io/) CSS framework instead of bootstrap which is used by FSharp.Formatting per default.
+Cyjs.NET is an interface for Cytoscape.js written in F# to visualiz complex networks and integrate these with any type of attribute data.
 
-#### Table of contents 
+### Table of contents 
 
 - [Installation](#Installation)
-- [Usage](#Usage)
-- [Quick content rundown](#Quick-content-rundown)
-- [Creating new content](#Creating-new-content)
-- [Customization options](#Customization-options)
-    - [Style sheet options](#Style-sheet-options)
-    - [Inclusion of sample content](#Inclusion-of-sample-content)
-    - [Create notebooks](#Create-notebooks)
+    - [For applications and libraries](#For-applications-and-libraries)
+    - [For scripting](#For-scripting)
+- [Overview](#Overview)
+    - [Basics](#Basics)
+        - [Initializing a graph](#Initializing-a-graph)
+        - [Styling a graph](#Styling-a-graph)
+        - [Displaying a graph](#Displaying-a-graph)
+    - [Comparison: Usage in F# and C#](#Comparison-Usage-in-F-and-C)
+        - [Functional pipeline style in F#](#Functional-pipeline-style-in-F)
+        - [Fluent interface style in C#](#Fluent-interface-style-in-C)
+        - [Declarative style in F# using the underlying `DynamicObj`](#Declarative-style-in-F-using-the-underlying)
+        - [Declarative style in C# using the underlying `DynamicObj`](#Declarative-style-in-C-using-the-underlying)
+- [Contributing and copyright](#Contributing-and-copyright)
+
+# Installation
 
 
 ## Installation
 
-This template is available as a _dotnet new_ template (from [nuget](https://www.nuget.org/packages/FsLab.DocumentationTemplate/)):
+The following examples show how easy it is to start working with Cyjs.NET.
 
-```no-highlight
-dotnet new -i FsLab.DocumentationTemplate
+### For applications and libraries
+
+You can get all Cyjs.NET packages from nuget at [nuget page](https://www.nuget.org/packages/Cyjs.NET/).
+
+
+ - dotnet CLI
+
+```shell
+dotnet add package Cyjs.NET --version <desired-version-here>
 ```
 
-## Usage
+Or add the package reference directly to your `.*proj` file:
 
-If not already present, create a _local tool manifest_ in the root of your project that you want to write documentation for:
-
-```no-highlight
-dotnet new tool-manifest
+```
+<PackageReference Include="Cyjs.NET" Version="<desired-version-here>" />
 ```
 
-Then, still in the root of your project, run:
+### For scripting
 
-```no-highlight
-dotnet new fslab-docs
+You can include the package via an inline package reference:
+
+```
+#r "nuget: Cyjs.NET, <desired-version-here>"
 ```
 
-## Quick content rundown:
+# Overview
 
-The default template initializes the following folder structure when you initialize it in the root of your project.
+## Basics
 
-See [further below](#Customization-options) for command line customization options of the template.
+The general design philosophy of Cyjs.NET implements the following visualization flow:
 
-<pre>
-docs
-│   index.fsx
-│   _template.html
-|   _template.ipynb
-|   
-│   0_Markdown-Cheatsheet.md
-│   1_fsharp-code-example.fsx
-│   2_inline-references.fsx
-│   3_notebooks.fsx
-|
-├───content
-│   fsdocs-custom.css
-│
-├───img
-│       favicon.ico
-│       logo.png
-│
-└───reference
-        _template.html
-</pre>
+- **initialize** a `Cytoscape` object by using the respective `CyGraph.*` function .
+- **attach** the elements e.g. notes and edges you want to visulize and
+- further **style** the graph with fine-grained control, e.g. by setting labels, color, etc.
+- **display** (in the browser or as cell result in a notebook) or save the graph (comming soon)
 
-- `index.fsx` is the file you are reading just now. It contains the very content you are reading at the moment 
-in a markdown block indicated by `(** *)` guards. It will be rendered as the root `index.html` file of your documentation.
+### Initializing a graph
 
-- `_template.html` is the root html scaffold (sidebar to the left, script and style loading) where all of the individual docs will be injected into
-
-- `0_Markdown-Cheatsheet.md` is a adaption of [this markdown cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) that shows how to write markdown and showcases the rendered equivalents. It can also be viewed in all its glory [here](https://fslab.org/docs-template/0_Markdown-Cheatsheet.html).
-
-- `1_fsharp-code-example.fsx` is a script file that showcases the syntax highlighting style for F# snippets. It can also be viewed in all its glory [here](https://fslab.org/docs-template/1_fsharp-code-example.html).
-
-- `2_inline-references.fsx` is a script file that explains how to use inline references and use Plotly.NET for charting. It can also be viewed in all its glory [here](https://fslab.org/docs-template/2_inline-references.html).
-
-- `3_notebooks.fsx` is a script file that showcases conditional content in documentation and how to use that to create dotnet interactive notebooks besides your html documentation. It can also be viewed in all its glory [here](https://fslab.org/docs-template/3_notebooks.html).
-
-- `fsdocs-custom.css` contains the custom styling that applies the fslab styles.
-
- - the `img` folder contains the fslab logo and favicon. replace these files (with the same names) to youse sours
-
- - `reference/_template.html` is a slightly adapted version of the template above for the API documentation
-
-## Creating new content
-
-- run `dotnet fsdocs watch --eval` to spawn a watcher and dev server that hosts your docs on http://localhost:8901/ (You currently will still have to refresh the page when you make changes to files)
-
-- add a new .md or .fsx file to the `content` directory (or into a new subdirectory there)
-
-- the sidebar title for the document will be either the file name or, if existent, the first level 1 header in the file
-
-- when writing a .fsx file, code will automatically become syntax-highlighted code snippets. 
-
-- use `(** <markdown here> *)` to guard markdown sections in .fsx files
-
-- use `(*** include-value:<val name> ***)` to include the value of a binding
-
-- use `(*** include-it ***)` to include the evaluation of the previous snippet block 
-
-For more info please refer to the [FSharp.Formatting documentation](http://fsprojects.github.io/FSharp.Formatting/).
-
-
-## Customization options
-
-### Style sheet options
-
-```no-highlight
--s|--styles             Set the type of style content the template will initialize. For the sass file to work, you will have to download bulma
-
-        all             - sass file, compiled csss, and minified css
-
-        sass            - only include the sass file
-
-        minified        - only include the minified css file
-
-        css             - only include the compiled css file
-
-        Default:        css
-```
-
-### Inclusion of sample content
-
-```no-highlight
--is|--include-samples   wether to include sample files in the generated content
-
-        bool            - Optional
-
-        Default:        true
-```
-
-### Create notebooks
-
-```no-highlight
--in|--include-notebooks  wether to include the notebook template file
-        
-        bool            - Optional
-
-        Default:        true
-```
+The `CyGraph` module contains the `CyGraph.initEmpty` function to create an empty graph.
+You can therefore initialize a cytoscape graph like this:
 
 *)
+open Cyjs.NET
+let myFirstGraph = 
+    CyGraph.initEmpty ()
+
+(**
+
+### Attach nodes and edges
+
+The `CyGraph` module contains the `CyGraph.initEmpty` function to create an empty graph.
+You can therefore initialize a cytoscape graph like this:
+
+*)
+open Elements
+
+let myGraph = 
+    CyGraph.initEmpty ()
+    |> CyGraph.withElements [
+            node "n1" [ CyParam.label "FsLab"  ]
+            node "n2" [ CyParam.label "ML" ]
+ 
+            edge  "e1" "n1" "n2" []
+ 
+        ]
+(**
+
+### Styling a graph
+
+Styling functions are generally the `Chart.with*` naming convention. The following styling example does:
+
+ - set the chart title via `Chart.withTitle`
+ - set the x axis title and removes the gridline from the axis via `Chart.withX_AxisStyle`
+ - set the y axis title and removes the gridline from the axis via `Chart.withY_AxisStyle`
+
+*)
+
+let myFirstStyledGraph = CyGraph.initEmpty ()
+    // Chart.Point(xData,yData)
+    // |> Chart.withTitle "Hello world!"
+    // |> Chart.withX_AxisStyle ("xAxis", Showgrid=false)
+    // |> Chart.withY_AxisStyle ("yAxis", Showgrid=false)
+
+(**
+**Attention:** Styling functions mutate 😈 the input chart, therefore possibly affecting bindings to intermediary results. 
+We recommend creating a single chart for each workflow to prevent unexpected results
+
+### Displaying a graph in the browser
+
+The `Chart.Show` function will open a browser window and render the input chart there. When working in a notebook context, after
+[referencing Plotly.NET.Interactive](#For-dotnet-interactive-notebooks), the function is not necessary, just end the cell with the value of the chart.
+
+*)
+
+(***do-not-eval***)
+myFirstStyledGraph
+|> CyGraph.show
+
+(**Should render this chart in your brower:*)
+
+(***hide***)
+myFirstStyledGraph |> HTML.toEmbeddedHTML
+(*** include-it-raw ***)
+
+(***do-not-eval***)
+myFirstStyledGraph
+|> CyGraph.show
+
+(**And here is what happened after applying the styles from above:*)
+
+(***hide***)
+myFirstStyledGraph |> HTML.toEmbeddedHTML
+(*** include-it-raw ***)
+
+
+(**
+# Contributing and copyright
+
+The project is hosted on [GitHub][gh] where you can [report issues][issues], fork 
+the project and submit pull requests. If you're adding a new public API, please also 
+consider adding [samples][content] that can be turned into a documentation. You might
+also want to read the [library design notes][readme] to understand how it works.
+
+The library is available under Public Domain license, which allows modification and 
+redistribution for both commercial and non-commercial purposes. For more information see the 
+[License file][license] in the GitHub repository. 
+
+  [content]: https://github.com/plotly/Plotly.NET/tree/master/docs/content
+  [gh]: https://github.com/plotly/Plotly.NET
+  [issues]: https://github.com/plotly/Plotly.NET/issues
+  [readme]: https://github.com/plotly/Plotly.NET/blob/master/README.md
+  [license]: https://github.com/plotly/Plotly.NET/blob/master/LICENSE.txt
+*)
+
+// open Cyjs.NET
+// open Elements
+
+// let myGraph = 
+//     CyGraph.initEmpty ()
+//     |> CyGraph.withElements [
+//             node "n1" [ CyParam.label "FsLab"  ]
+//             node "n2" [ CyParam.label "ML" ]
+ 
+//             edge  "e1" "n1" "n2" []
+ 
+//         ]
+//     |> CyGraph.withStyle "node"     
+//             [
+//                 CyParam.content "data(label)"
+//                 CyParam.color "#A00975"
+//             ]
+//     |> CyGraph.withSize(800, 800)  
+         
+    
 

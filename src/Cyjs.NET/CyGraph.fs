@@ -2,7 +2,9 @@ namespace Cyjs.NET
 
 open Cyjs.NET.CytoscapeModel
 open CyParam
+open DynamicObj
 
+// Module to manipulate graph elements like node and edges
 module Elements =
     
     type Node = Element
@@ -25,6 +27,7 @@ module Elements =
         elem
 
 
+// Module to manipulate and sytely a graph
 module CyGraph =
     open CyParam
 
@@ -53,8 +56,30 @@ module CyGraph =
         cy
 
     let withSize (width:int,height:int) (cy:CyGraph) : CyGraph =
-        cy?Dims <- (width,height)
+        let width  = CyParam.width (sprintf "%ipx" width )
+        let height = CyParam.height (sprintf "%ipx" height )        
+        let canvas = 
+            let tmp = cy.TryGetTypedValue<Canvas> "canvas" // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart       
+            match tmp with
+            |Some c -> c
+            |None -> Canvas()
+        width.Value  |> DynObj.setValue canvas width.Name
+        height.Value |> DynObj.setValue canvas height.Name
+        canvas?display <- "block"
+        cy?Canvas <- canvas
         cy
+
+
+    let withCanvas (styles:seq<CyStyleParam>) (cy:CyGraph) : CyGraph = 
+        let canvas = 
+            let tmp = cy.TryGetTypedValue<Canvas> "canvas" // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart       
+            match tmp with
+            |Some c -> c
+            |None -> Canvas()
+        canvas.WithStyle styles
+        cy?Canvas <- canvas
+        cy
+
 
     let show (cy:CyGraph)  =
         HTML.show cy

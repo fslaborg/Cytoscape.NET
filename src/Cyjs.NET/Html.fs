@@ -24,8 +24,8 @@ module HTML =
 
     let graphDoc =
         let newScript = System.Text.StringBuilder()
-        newScript.AppendLine("""<style>#[ID] { width: [WIDTH]px; height: [HEIGHT]px; display: block }</style>""") |> ignore
-        //newScript.AppendLine("""<style>#[ID] { width: 100%; height: 100%; position: relative; top: 0px; left: 0px; }</style>""") |> ignore
+        newScript.AppendLine("""<style>#[ID] [CANVAS] </style>""") |> ignore
+        //newScript.AppendLine("""<style>#[ID] { width: [WIDTH]px; height: [HEIGHT]px; display: block }</style>""") |> ignore
         //newScript.AppendLine("""<style>#[ID] { width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; }</style>""") |> ignore
         newScript.AppendLine("""<div id="[ID]"></div>""") |> ignore
         newScript.AppendLine("<script type=\"text/javascript\">") |> ignore
@@ -57,24 +57,27 @@ module HTML =
         let guid = Guid.NewGuid().ToString()
         let id   = sprintf "e%s" <| Guid.NewGuid().ToString().Replace("-","").Substring(0,10)
         cy.container <- PlainJsonString id
-        let json = JsonConvert.SerializeObject(cy,PlainJsonStringConverter())
 
-        let dims = cy.TryGetTypedValue<int*int> "Dims" // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart
-        let width,height =
-            match dims with
-            |Some (w,h) -> w,h
-            |None -> 600, 600
-        
+        let strCANVAS = // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart
+            match cy.TryGetTypedValue<Canvas> "Canvas"  with
+            |Some c -> c
+            |None -> Canvas.initDefault()
+            //|> fun c -> c?display <-  "block" ; c
+            |> fun c -> 
+                c.GetProperties(true)
+                |> Seq.map (fun k -> sprintf "%s: %O" k.Key k.Value)
+                |> String.concat "; "
+                |> sprintf "{ %s }" 
+                    
+        DynamicObj.DynObj.remove cy "Canvas"
+        let jsonGraph = JsonConvert.SerializeObject (cy,PlainJsonStringConverter())
+
         let html =
             graphDoc
-                //.Replace("style=\"width: [WIDTH]px; height: [HEIGHT]px;\"","style=\"width: 600px; height: 600px;\"")
-                                
-                .Replace("[WIDTH]", string width)
-                .Replace("[HEIGHT]", string height)
+                .Replace("[CANVAS]", strCANVAS)
                 .Replace("[ID]", id)
-                .Replace("[GRAPHDATA]", json)
-                .Replace("[SCRIPTID]", guid.Replace("-",""))
-                
+                .Replace("[GRAPHDATA]", jsonGraph)
+                .Replace("[SCRIPTID]", guid.Replace("-",""))                
         html
 
     /// Converts a CyGraph to it HTML representation and embeds it into a html page.

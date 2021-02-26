@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>The fslab documentation template
+    <title>Cyjs.NET
 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Timo Muehlhaus, fslaborg">
@@ -80,123 +80,215 @@
         <div class="column is-10 is-paddingless">
             <div class="section pt-4">
                 <div class="container" id="fsdocs-content">
-                    <h1><a name="The-fslab-documentation-template" class="anchor" href="#The-fslab-documentation-template">The fslab documentation template</a></h1>
-<p>This template scaffolds the necessary folder structure for FSharp.Formatting
-and adds custom styles in the <strong>fslab</strong> theme.</p>
-<p>The provided stylesheet was compiled from sass (before uploading the nuget package) and
-uses the <a href="https://bulma.io/">Bulma</a> CSS framework instead of bootstrap which is used by FSharp.Formatting per default.</p>
-<h4><a name="Table-of-contents" class="anchor" href="#Table-of-contents">Table of contents</a></h4>
+                    <h1><a name="Cyjs-NET" class="anchor" href="#Cyjs-NET">Cyjs.NET</a></h1>
+<p><a href="https://mybinder.org/v2/gh/fslaborg/Cyjs.NET/gh-pages?filepath=index.ipynb"><img src="https://mybinder.org/badge_logo.svg" alt="Binder" /></a></p>
+<p>Cyjs.NET is an interface for Cytoscape.js written in F# to visualiz complex networks and integrate these with any type of attribute data.</p>
+<h3><a name="Table-of-contents" class="anchor" href="#Table-of-contents">Table of contents</a></h3>
 <ul>
-<li><a href="#Installation">Installation</a></li>
-<li><a href="#Usage">Usage</a></li>
-<li><a href="#Quick-content-rundown">Quick content rundown</a></li>
-<li><a href="#Creating-new-content">Creating new content</a></li>
 <li>
-<a href="#Customization-options">Customization options</a>
+<a href="#Installation">Installation</a>
 <ul>
-<li><a href="#Style-sheet-options">Style sheet options</a></li>
-<li><a href="#Inclusion-of-sample-content">Inclusion of sample content</a></li>
-<li><a href="#Create-notebooks">Create notebooks</a></li>
+<li><a href="#For-applications-and-libraries">For applications and libraries</a></li>
+<li><a href="#For-scripting">For scripting</a></li>
+</ul>
+</li>
+<li>
+<a href="#Overview">Overview</a>
+<ul>
+<li>
+<a href="#Basics">Basics</a>
+<ul>
+<li><a href="#Initializing-a-graph">Initializing a graph</a></li>
+<li><a href="#Attaching-nodes-and-edges">Attaching nodes and edges</a></li>
+<li><a href="#Styling-a-graph">Styling a graph</a></li>
+<li><a href="#Displaying-a-graph">Displaying a graph</a></li>
 </ul>
 </li>
 </ul>
-<h2><a name="Installation" class="anchor" href="#Installation">Installation</a></h2>
-<p>This template is available as a <em>dotnet new</em> template (from <a href="https://www.nuget.org/packages/FsLab.DocumentationTemplate/">nuget</a>):</p>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="no-highlight">dotnet new -i FsLab.DocumentationTemplate
-</code></pre></td></tr></table>
-<h2><a name="Usage" class="anchor" href="#Usage">Usage</a></h2>
-<p>If not already present, create a <em>local tool manifest</em> in the root of your project that you want to write documentation for:</p>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="no-highlight">dotnet new tool-manifest
-</code></pre></td></tr></table>
-<p>Then, still in the root of your project, run:</p>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="no-highlight">dotnet new fslab-docs
-</code></pre></td></tr></table>
-<h2><a name="Quick-content-rundown" class="anchor" href="#Quick-content-rundown">Quick content rundown:</a></h2>
-<p>The default template initializes the following folder structure when you initialize it in the root of your project.</p>
-<p>See <a href="#Customization-options">further below</a> for command line customization options of the template.</p>
-<pre>
-docs
-│   index.fsx
-│   _template.html
-|   _template.ipynb
-|   
-│   0_Markdown-Cheatsheet.md
-│   1_fsharp-code-example.fsx
-│   2_inline-references.fsx
-│   3_notebooks.fsx
-|
-├───content
-│   fsdocs-custom.css
-│
-├───img
-│       favicon.ico
-│       logo.png
-│
-└───reference
-        _template.html
-</pre>
-<ul>
-<li>
-<p><code>index.fsx</code> is the file you are reading just now. It contains the very content you are reading at the moment
-in a markdown block indicated by <code>(** *)</code> guards. It will be rendered as the root <code>index.html</code> file of your documentation.</p>
 </li>
-<li><p><code>_template.html</code> is the root html scaffold (sidebar to the left, script and style loading) where all of the individual docs will be injected into</p></li>
-<li><p><code>0_Markdown-Cheatsheet.md</code> is a adaption of <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">this markdown cheat sheet</a> that shows how to write markdown and showcases the rendered equivalents. It can also be viewed in all its glory <a href="https://fslab.org/docs-template/0_Markdown-Cheatsheet.html">here</a>.</p></li>
-<li><p><code>1_fsharp-code-example.fsx</code> is a script file that showcases the syntax highlighting style for F# snippets. It can also be viewed in all its glory <a href="https://fslab.org/docs-template/1_fsharp-code-example.html">here</a>.</p></li>
-<li><p><code>2_inline-references.fsx</code> is a script file that explains how to use inline references and use Plotly.NET for charting. It can also be viewed in all its glory <a href="https://fslab.org/docs-template/2_inline-references.html">here</a>.</p></li>
-<li><p><code>3_notebooks.fsx</code> is a script file that showcases conditional content in documentation and how to use that to create dotnet interactive notebooks besides your html documentation. It can also be viewed in all its glory <a href="https://fslab.org/docs-template/3_notebooks.html">here</a>.</p></li>
-<li>
-<p><code>fsdocs-custom.css</code> contains the custom styling that applies the fslab styles.</p>
+<li><a href="#Contributing-and-copyright">Contributing and copyright</a></li>
+</ul>
+<h1><a name="Installation" class="anchor" href="#Installation">Installation</a></h1>
+<h2><a name="Installation-1" class="anchor" href="#Installation-1">Installation</a></h2>
+<p>The following examples show how easy it is to start working with Cyjs.NET.</p>
+<h3><a name="For-applications-and-libraries" class="anchor" href="#For-applications-and-libraries">For applications and libraries</a></h3>
+<p>You can get all Cyjs.NET packages from nuget at <a href="https://www.nuget.org/packages/Cyjs.NET/">nuget page</a>.</p>
 <ul>
-<li><p>the <code>img</code> folder contains the fslab logo and favicon. replace these files (with the same names) to youse sours</p></li>
-<li><p><code>reference/_template.html</code> is a slightly adapted version of the template above for the API documentation</p></li>
+<li>dotnet CLI</li>
 </ul>
-</li>
-</ul>
-<h2><a name="Creating-new-content" class="anchor" href="#Creating-new-content">Creating new content</a></h2>
+<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="shell">dotnet add package Cyjs.NET --version &lt;desired-version-here&gt;
+</code></pre></td></tr></table>
+<p>Or add the package reference directly to your <code>.*proj</code> file:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="pn">&lt;</span><span class="id">PackageReference</span> <span class="id">Include</span><span class="o">=</span><span class="s">&quot;Cyjs.NET&quot;</span> <span class="id">Version</span><span class="o">=</span><span class="s">&quot;&lt;desired-version-here&gt;&quot;</span> <span class="o">/&gt;</span>
+</code></pre>
+<h3><a name="For-scripting" class="anchor" href="#For-scripting">For scripting</a></h3>
+<p>You can include the package via an inline package reference:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#r</span> <span class="s">&quot;nuget: Cyjs.NET, &lt;desired-version-here&gt;&quot;</span>
+</code></pre>
+<h1><a name="Overview" class="anchor" href="#Overview">Overview</a></h1>
+<h2><a name="Basics" class="anchor" href="#Basics">Basics</a></h2>
+<p>The general design philosophy of Cyjs.NET implements the following visualization flow:</p>
 <ul>
-<li><p>run <code>dotnet fsdocs watch --eval</code> to spawn a watcher and dev server that hosts your docs on <a href="http://localhost:8901/">http://localhost:8901/</a> (You currently will still have to refresh the page when you make changes to files)</p></li>
-<li><p>add a new .md or .fsx file to the <code>content</code> directory (or into a new subdirectory there)</p></li>
-<li>the sidebar title for the document will be either the file name or, if existent, the first level 1 header in the file</li>
-<li>when writing a .fsx file, code will automatically become syntax-highlighted code snippets.</li>
-<li><p>use <code>(** &lt;markdown here&gt; *)</code> to guard markdown sections in .fsx files</p></li>
-<li><p>use <code>(*** include-value:&lt;val name&gt; ***)</code> to include the value of a binding</p></li>
-<li><p>use <code>(*** include-it ***)</code> to include the evaluation of the previous snippet block</p></li>
+<li><strong>initialize</strong> a <code>Cytoscape</code> object by using the respective <code>CyGraph.*</code> function .</li>
+<li><strong>attach</strong> the elements e.g. notes and edges you want to visulize and</li>
+<li>further <strong>style</strong> the graph with fine-grained control, e.g. by setting labels, color, etc.</li>
+<li><strong>display</strong> (in the browser or as cell result in a notebook) or save the graph (comming soon)</li>
 </ul>
-<p>For more info please refer to the <a href="http://fsprojects.github.io/FSharp.Formatting/">FSharp.Formatting documentation</a>.</p>
-<h2><a name="Customization-options" class="anchor" href="#Customization-options">Customization options</a></h2>
-<h3><a name="Style-sheet-options" class="anchor" href="#Style-sheet-options">Style sheet options</a></h3>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="no-highlight">-s|--styles             Set the type of style content the template will initialize. For the sass file to work, you will have to download bulma
+<h3><a name="Initializing-a-graph" class="anchor" href="#Initializing-a-graph">Initializing a graph</a></h3>
+<p>The <code>CyGraph</code> module contains the <code>CyGraph.initEmpty</code> function to create an empty graph.
+You can therefore initialize a cytoscape graph like this:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="id">Cyjs</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="id">NET</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="id">myFirstGraph</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+</code></pre>
+<h3><a name="Attach-nodes-and-edges" class="anchor" href="#Attach-nodes-and-edges">Attach nodes and edges</a></h3>
+<p>The <code>CyGraph</code> module contains the <code>CyGraph.initEmpty</code> function to create an empty graph.
+You can therefore initialize a cytoscape graph like this:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="m">Elements</span>
 
-        all             - sass file, compiled csss, and minified css
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="id">myGraph</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 10)" onmouseover="showTip(event, 'fs4', 10)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 11)" onmouseover="showTip(event, 'fs8', 11)" class="id">withElements</span> <span class="pn">[</span>
+            <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="fn">node</span> <span class="s">&quot;n1&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 14)" onmouseover="showTip(event, 'fs11', 14)" class="id">label</span> <span class="s">&quot;FsLab&quot;</span>  <span class="pn">]</span>
+            <span onmouseout="hideTip(event, 'fs9', 15)" onmouseover="showTip(event, 'fs9', 15)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 16)" onmouseover="showTip(event, 'fs10', 16)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 17)" onmouseover="showTip(event, 'fs11', 17)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
+ 
+            <span onmouseout="hideTip(event, 'fs12', 18)" onmouseover="showTip(event, 'fs12', 18)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
+ 
+        <span class="pn">]</span>
+</code></pre>
+<h3><a name="Styling-a-graph" class="anchor" href="#Styling-a-graph">Styling a graph</a></h3>
+<p>Styling functions are generally the <code>Chart.with*</code> naming convention. The following styling example does:</p>
+<ul>
+<li>set the chart title via <code>Chart.withTitle</code></li>
+<li>set the x axis title and removes the gridline from the axis via <code>Chart.withX_AxisStyle</code></li>
+<li>set the y axis title and removes the gridline from the axis via <code>Chart.withY_AxisStyle</code></li>
+</ul>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="id">myFirstStyledGraph</span> <span class="o">=</span>     
+    <span onmouseout="hideTip(event, 'fs4', 20)" onmouseover="showTip(event, 'fs4', 20)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 21)" onmouseover="showTip(event, 'fs5', 21)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 22)" onmouseover="showTip(event, 'fs4', 22)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 23)" onmouseover="showTip(event, 'fs8', 23)" class="id">withElements</span> <span class="pn">[</span>
+            <span onmouseout="hideTip(event, 'fs9', 24)" onmouseover="showTip(event, 'fs9', 24)" class="fn">node</span> <span class="s">&quot;n1&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 25)" onmouseover="showTip(event, 'fs10', 25)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 26)" onmouseover="showTip(event, 'fs11', 26)" class="id">label</span> <span class="s">&quot;FsLab&quot;</span>  <span class="pn">]</span>
+            <span onmouseout="hideTip(event, 'fs9', 27)" onmouseover="showTip(event, 'fs9', 27)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 28)" onmouseover="showTip(event, 'fs10', 28)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 29)" onmouseover="showTip(event, 'fs11', 29)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
+ 
+            <span onmouseout="hideTip(event, 'fs12', 30)" onmouseover="showTip(event, 'fs12', 30)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
+ 
+        <span class="pn">]</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 31)" onmouseover="showTip(event, 'fs4', 31)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 32)" onmouseover="showTip(event, 'fs14', 32)" class="id">withStyle</span> <span class="s">&quot;node&quot;</span>     
+            <span class="pn">[</span>
+                <span onmouseout="hideTip(event, 'fs10', 33)" onmouseover="showTip(event, 'fs10', 33)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs15', 34)" onmouseover="showTip(event, 'fs15', 34)" class="id">content</span> <span class="s">&quot;data(label)&quot;</span>
+                <span onmouseout="hideTip(event, 'fs10', 35)" onmouseover="showTip(event, 'fs10', 35)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 36)" onmouseover="showTip(event, 'fs16', 36)" class="id">color</span> <span class="s">&quot;#A00975&quot;</span>
+            <span class="pn">]</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 37)" onmouseover="showTip(event, 'fs4', 37)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 38)" onmouseover="showTip(event, 'fs17', 38)" class="id">withSize</span><span class="pn">(</span><span class="n">800</span><span class="pn">,</span> <span class="n">400</span><span class="pn">)</span>  
+</code></pre>
+<p><strong>Attention:</strong> Styling functions mutate 😈 the input chart, therefore possibly affecting bindings to intermediary results.
+We recommend creating a single chart for each workflow to prevent unexpected results</p>
+<h3><a name="Displaying-a-graph-in-the-browser" class="anchor" href="#Displaying-a-graph-in-the-browser">Displaying a graph in the browser</a></h3>
+<p>The <code>Chart.Show</code> function will open a browser window and render the input chart there. When working in a notebook context, after
+<a href="#For-dotnet-interactive-notebooks">referencing Plotly.NET.Interactive</a>, the function is not necessary, just end the cell with the value of the chart.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs7', 39)" onmouseover="showTip(event, 'fs7', 39)" class="id">myGraph</span>
+<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 40)" onmouseover="showTip(event, 'fs4', 40)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 41)" onmouseover="showTip(event, 'fs18', 41)" class="id">show</span>
+</code></pre>
+<p>Should render this chart in your brower:</p>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
+</head>
+<body> <style>#e2a751ed74f { width: 800px; height: 400px; display: block } </style>
+<div id="e2a751ed74f"></div>
+<script type="text/javascript">
 
-        sass            - only include the sass file
+            var renderCyjs_f404effae3ac40408a83ab364d3c1073 = function() {
+            var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
+            fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-        minified        - only include the minified css file
+            var graphdata = {"container":document.getElementById('e2a751ed74f'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"}}
+            var cy = cytoscape( graphdata );
+});
+            };
+            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
+                var script = document.createElement("script");
+                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
+                script.onload = function(){
+                    renderCyjs_f404effae3ac40408a83ab364d3c1073();
+                };
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            else {
+                renderCyjs_f404effae3ac40408a83ab364d3c1073();
+            }
+</script>
+ </body>
+</html>
 
-        css             - only include the compiled css file
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs13', 47)" onmouseover="showTip(event, 'fs13', 47)" class="id">myFirstStyledGraph</span>
+<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 48)" onmouseover="showTip(event, 'fs4', 48)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 49)" onmouseover="showTip(event, 'fs18', 49)" class="id">show</span>
+</code></pre>
+<p>And here is what happened after applying the styles from above:</p>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
+</head>
+<body> <style>#e15dcd80b83 { width: 800px; height: 400px; display: block } </style>
+<div id="e15dcd80b83"></div>
+<script type="text/javascript">
 
-        Default:        css
-</code></pre></td></tr></table>
-<h3><a name="Inclusion-of-sample-content" class="anchor" href="#Inclusion-of-sample-content">Inclusion of sample content</a></h3>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="no-highlight">-is|--include-samples   wether to include sample files in the generated content
+            var renderCyjs_02201a616c96486aaf8fca30fe9dc427 = function() {
+            var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
+            fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-        bool            - Optional
+            var graphdata = {"container":document.getElementById('e15dcd80b83'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"}}
+            var cy = cytoscape( graphdata );
+});
+            };
+            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
+                var script = document.createElement("script");
+                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
+                script.onload = function(){
+                    renderCyjs_02201a616c96486aaf8fca30fe9dc427();
+                };
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+            else {
+                renderCyjs_02201a616c96486aaf8fca30fe9dc427();
+            }
+</script>
+ </body>
+</html>
 
-        Default:        true
-</code></pre></td></tr></table>
-<h3><a name="Create-notebooks" class="anchor" href="#Create-notebooks">Create notebooks</a></h3>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="no-highlight">-in|--include-notebooks  wether to include the notebook template file
-        
-        bool            - Optional
-
-        Default:        true
-</code></pre></td></tr></table>
+<h1><a name="Contributing-and-copyright" class="anchor" href="#Contributing-and-copyright">Contributing and copyright</a></h1>
+<p>The project is hosted on <a href="https://github.com/fslaborg/Cyjs.NET">GitHub</a> where you can <a href="https://github.com/fslaborg/Cyjs.NET/issues">report issues</a>, fork
+the project and submit pull requests. If you're adding a new public API, please also
+consider adding <a href="https://github.com/fslaborg/Cyjs.NET/tree/master/docs/content">samples</a> that can be turned into a documentation. You might
+also want to read the <a href="https://github.com/fslaborg/Cyjs.NET/blob/master/README.md">library design notes</a> to understand how it works.</p>
+<p>The library is available under Public Domain license, which allows modification and
+redistribution for both commercial and non-commercial purposes. For more information see the
+<a href="https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE.txt">License file</a> in the GitHub repository.</p>
 
                 </div>
             </div>
         </div>
-        
+        <div class="fsdocs-tip" id="fs1">namespace Cyjs</div>
+<div class="fsdocs-tip" id="fs2">namespace Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs3">val myFirstGraph : CytoscapeModel.Cytoscape</div>
+<div class="fsdocs-tip" id="fs4">module CyGraph<br /><br />from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs5">val initEmpty : unit -&gt; CytoscapeModel.Cytoscape</div>
+<div class="fsdocs-tip" id="fs6">module Elements<br /><br />from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs7">val myGraph : CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs8">val withElements : elems:seq&lt;CytoscapeModel.Element&gt; -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs9">val node : id:string -&gt; dataAttributes:CyParam.CyStyleParam list -&gt; Node</div>
+<div class="fsdocs-tip" id="fs10">module CyParam<br /><br />from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs11">val label : v:&#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs12">val edge : id:string -&gt; sourceId:string -&gt; targetId:string -&gt; dataAttributes:CyParam.CyStyleParam list -&gt; Edge</div>
+<div class="fsdocs-tip" id="fs13">val myFirstStyledGraph : CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs14">val withStyle : selector:string -&gt; cyStyles:seq&lt;CyParam.CyStyleParam&gt; -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs15">val content : v:&#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs16">val color : v:&#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs17">val withSize : width:int * height:int -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs18">val show : cy:CyGraph.CyGraph -&gt; unit</div>
+<div class="fsdocs-tip" id="fs19">module HTML<br /><br />from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs20">val toEmbeddedHTML : cy:CytoscapeModel.Cytoscape -&gt; string</div>
+
     </div>
 
     <!-- BEGIN SEARCH BOX: this adds support for the search box -->

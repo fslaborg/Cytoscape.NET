@@ -61,7 +61,7 @@
 </li>             
 <li class="nav-item">
   <a class="nav-link" href="https://fslab.org/Cyjs.NET/example.html">
-    First Example Graph
+    More Complex Example Graph
 
   </a>
 </li>
@@ -129,8 +129,8 @@
 <h2><a name="Basics" class="anchor" href="#Basics">Basics</a></h2>
 <p>The general design philosophy of Cyjs.NET implements the following visualization flow:</p>
 <ul>
-<li><strong>initialize</strong> a <code>Cytoscape</code> object by using the respective <code>CyGraph.*</code> function .</li>
-<li><strong>attach</strong> the elements e.g. notes and edges you want to visulize and</li>
+<li><strong>initialize</strong> a <code>Cytoscape</code> object by using the <code>CyGraph.initEmpty</code> function.</li>
+<li><strong>attach</strong> elements e.g. notes, edges and data to visulize</li>
 <li>further <strong>style</strong> the graph with fine-grained control, e.g. by setting labels, color, etc.</li>
 <li><strong>display</strong> (in the browser or as cell result in a notebook) or save the graph (comming soon)</li>
 </ul>
@@ -142,8 +142,9 @@ You can therefore initialize a cytoscape graph like this:</p>
     <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
 </code></pre>
 <h3><a name="Attach-nodes-and-edges" class="anchor" href="#Attach-nodes-and-edges">Attach nodes and edges</a></h3>
-<p>The <code>CyGraph</code> module contains the <code>CyGraph.initEmpty</code> function to create an empty graph.
-You can therefore initialize a cytoscape graph like this:</p>
+<p>The <code>Elements</code> module contains the <code>node</code> and <code>edge</code> functions to create the respective element.
+Node and edges can be decorated with data as <code>CyStyleParam list</code>
+You can therefore create a cytoscape graph with two nodes and an edge like this:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="m">Elements</span>
 
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="id">myGraph</span> <span class="o">=</span> 
@@ -153,15 +154,15 @@ You can therefore initialize a cytoscape graph like this:</p>
             <span onmouseout="hideTip(event, 'fs9', 15)" onmouseover="showTip(event, 'fs9', 15)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 16)" onmouseover="showTip(event, 'fs10', 16)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 17)" onmouseover="showTip(event, 'fs11', 17)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
  
             <span onmouseout="hideTip(event, 'fs12', 18)" onmouseover="showTip(event, 'fs12', 18)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
- 
         <span class="pn">]</span>
 </code></pre>
 <h3><a name="Styling-a-graph" class="anchor" href="#Styling-a-graph">Styling a graph</a></h3>
-<p>Styling functions are generally the <code>Chart.with*</code> naming convention. The following styling example does:</p>
+<p>Styling functions are generally the <code>CyGraph.with*</code> naming convention. The following styling example does:</p>
 <ul>
-<li>set the chart title via <code>Chart.withTitle</code></li>
-<li>set the x axis title and removes the gridline from the axis via <code>Chart.withX_AxisStyle</code></li>
-<li>set the y axis title and removes the gridline from the axis via <code>Chart.withY_AxisStyle</code></li>
+<li>add two nodes including a text label</li>
+<li>add an edge without any additional data</li>
+<li>styles the nodes with color and content via <code>CyGraph.withStyle</code></li>
+<li>sets the graph size to 800 x 400 pixels via <code>CyGraph.withSize</code></li>
 </ul>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="id">myFirstStyledGraph</span> <span class="o">=</span>     
     <span onmouseout="hideTip(event, 'fs4', 20)" onmouseover="showTip(event, 'fs4', 20)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 21)" onmouseover="showTip(event, 'fs5', 21)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
@@ -174,18 +175,18 @@ You can therefore initialize a cytoscape graph like this:</p>
         <span class="pn">]</span>
     <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 31)" onmouseover="showTip(event, 'fs4', 31)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 32)" onmouseover="showTip(event, 'fs14', 32)" class="id">withStyle</span> <span class="s">&quot;node&quot;</span>     
             <span class="pn">[</span>
-                <span onmouseout="hideTip(event, 'fs10', 33)" onmouseover="showTip(event, 'fs10', 33)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs15', 34)" onmouseover="showTip(event, 'fs15', 34)" class="id">content</span> <span class="s">&quot;data(label)&quot;</span>
-                <span onmouseout="hideTip(event, 'fs10', 35)" onmouseover="showTip(event, 'fs10', 35)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 36)" onmouseover="showTip(event, 'fs16', 36)" class="id">color</span> <span class="s">&quot;#A00975&quot;</span>
+                <span onmouseout="hideTip(event, 'fs10', 33)" onmouseover="showTip(event, 'fs10', 33)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs15', 34)" onmouseover="showTip(event, 'fs15', 34)" class="id">content</span> <span class="o">=.</span> <span onmouseout="hideTip(event, 'fs10', 35)" onmouseover="showTip(event, 'fs10', 35)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 36)" onmouseover="showTip(event, 'fs11', 36)" class="id">label</span>
+                <span onmouseout="hideTip(event, 'fs10', 37)" onmouseover="showTip(event, 'fs10', 37)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 38)" onmouseover="showTip(event, 'fs16', 38)" class="id">color</span> <span class="s">&quot;#A00975&quot;</span>
             <span class="pn">]</span>
-    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 37)" onmouseover="showTip(event, 'fs4', 37)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 38)" onmouseover="showTip(event, 'fs17', 38)" class="id">withSize</span><span class="pn">(</span><span class="n">800</span><span class="pn">,</span> <span class="n">400</span><span class="pn">)</span>  
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 39)" onmouseover="showTip(event, 'fs4', 39)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 40)" onmouseover="showTip(event, 'fs17', 40)" class="id">withSize</span><span class="pn">(</span><span class="n">800</span><span class="pn">,</span> <span class="n">400</span><span class="pn">)</span>  
 </code></pre>
-<p><strong>Attention:</strong> Styling functions mutate 😈 the input chart, therefore possibly affecting bindings to intermediary results.
-We recommend creating a single chart for each workflow to prevent unexpected results</p>
+<p><strong>Attention:</strong> <code>=.</code> is a styling mapper and allows to pass data from different sources into the layout.
+Here the label attached to each node is rendered as content.</p>
 <h3><a name="Displaying-a-graph-in-the-browser" class="anchor" href="#Displaying-a-graph-in-the-browser">Displaying a graph in the browser</a></h3>
-<p>The <code>Chart.Show</code> function will open a browser window and render the input chart there. When working in a notebook context, after
-<a href="#For-dotnet-interactive-notebooks">referencing Plotly.NET.Interactive</a>, the function is not necessary, just end the cell with the value of the chart.</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs7', 39)" onmouseover="showTip(event, 'fs7', 39)" class="id">myGraph</span>
-<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 40)" onmouseover="showTip(event, 'fs4', 40)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 41)" onmouseover="showTip(event, 'fs18', 41)" class="id">show</span>
+<p>The <code>CyGraph.show</code> function will open a browser window and render the input graph there. When working in a notebook context
+you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs7', 41)" onmouseover="showTip(event, 'fs7', 41)" class="id">myGraph</span>
+<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 42)" onmouseover="showTip(event, 'fs4', 42)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 43)" onmouseover="showTip(event, 'fs18', 43)" class="id">show</span>
 </code></pre>
 <p>Should render this chart in your brower:</p>
 <!DOCTYPE html>
@@ -193,35 +194,37 @@ We recommend creating a single chart for each workflow to prevent unexpected res
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#e2a751ed74f { width: 800px; height: 400px; display: block } </style>
-<div id="e2a751ed74f"></div>
+<body> <style>#ef0b35fbfaa { width: 800px; height: 400px; display: block } </style>
+<div id="ef0b35fbfaa"></div>
 <script type="text/javascript">
 
-            var renderCyjs_f404effae3ac40408a83ab364d3c1073 = function() {
+            var renderCyjs_52bcda5d3686437087c41599fa587971 = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('e2a751ed74f'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"}}
+            var graphdata = {"container":document.getElementById('ef0b35fbfaa'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"}}
             var cy = cytoscape( graphdata );
+            cy.userZoomingEnabled( false );
+            
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_f404effae3ac40408a83ab364d3c1073();
+                    renderCyjs_52bcda5d3686437087c41599fa587971();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_f404effae3ac40408a83ab364d3c1073();
+                renderCyjs_52bcda5d3686437087c41599fa587971();
             }
 </script>
  </body>
 </html>
 
-<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs13', 47)" onmouseover="showTip(event, 'fs13', 47)" class="id">myFirstStyledGraph</span>
-<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 48)" onmouseover="showTip(event, 'fs4', 48)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 49)" onmouseover="showTip(event, 'fs18', 49)" class="id">show</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs13', 49)" onmouseover="showTip(event, 'fs13', 49)" class="id">myFirstStyledGraph</span>
+<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 50)" onmouseover="showTip(event, 'fs4', 50)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 51)" onmouseover="showTip(event, 'fs18', 51)" class="id">show</span>
 </code></pre>
 <p>And here is what happened after applying the styles from above:</p>
 <!DOCTYPE html>
@@ -229,28 +232,30 @@ We recommend creating a single chart for each workflow to prevent unexpected res
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#e15dcd80b83 { width: 800px; height: 400px; display: block } </style>
-<div id="e15dcd80b83"></div>
+<body> <style>#e7bb1d48cae { width: 800px; height: 400px; display: block } </style>
+<div id="e7bb1d48cae"></div>
 <script type="text/javascript">
 
-            var renderCyjs_02201a616c96486aaf8fca30fe9dc427 = function() {
+            var renderCyjs_e4121c54677542cc8cb65a331d7a9def = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('e15dcd80b83'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"}}
+            var graphdata = {"container":document.getElementById('e7bb1d48cae'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"label":"data(label)","color":"#A00975"}}],"layout":{"name":"random"}}
             var cy = cytoscape( graphdata );
+            cy.userZoomingEnabled( false );
+            
 });
             };
             if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_02201a616c96486aaf8fca30fe9dc427();
+                    renderCyjs_e4121c54677542cc8cb65a331d7a9def();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_02201a616c96486aaf8fca30fe9dc427();
+                renderCyjs_e4121c54677542cc8cb65a331d7a9def();
             }
 </script>
  </body>

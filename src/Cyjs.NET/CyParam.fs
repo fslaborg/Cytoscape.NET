@@ -96,7 +96,7 @@ module CyParamMapper =
     /// data(descr) would map a property to the value in an element’s descr field in its data (i.e. ele.data("descr")).
     let (=.) (target: string -> CyParam.CyStyleParam) (source: 'a -> CyParam.CyStyleParam)  = 
         let cyp = source (Unchecked.defaultof<'a>) 
-        source (sprintf "data(%s)" cyp.Name)
+        target (sprintf "data(%s)" cyp.Name)
     // let (.=) (f: string -> CyParam.CyStyleParam) sourceField  = 
     //     f (sprintf "data(%s)" sourceField)
 

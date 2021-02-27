@@ -7,8 +7,7 @@ to cover different styling capabilities.
 
 #r "nuget: DynamicObj, 0.0.1"
 #r "nuget: Newtonsoft.Json, 12.0.3"
-#r "../bin/Cyjs.NET/netstandard2.1/Cyjs.NET.dll"
-
+#r "nuget: Cyjs.NET, 0.0.2"
 
 (**
 ### Adding nodes and edges with data
@@ -21,7 +20,7 @@ This can be used for individual styling, that you will see later...
 open Cyjs.NET
 open Elements
 
-let myGraph = 
+let complexGraph = 
     CyGraph.initEmpty ()
     |> CyGraph.withElements [
             node "j" [ CyParam.label "Jerry"  ; CyParam.weight 65; CyParam.color "#6FB1FC"; CyParam.shape "triangle"  ]
@@ -60,13 +59,13 @@ Second, we provide a list of style paramerts `CyStyleParam` to set the design.
             [
                 CyParam.shape =. CyParam.shape
                 // Style mapper can also be used untyped in string form: CyParam.shape "data(shape)"
-                CyParam.width <=.(CyParam.weight, 40, 80, 20, 60)
+                CyParam.width <=. (CyParam.weight, 40, 80, 20, 60)
                 // A linear style mapper like this: CyParam.width "mapData(weight, 40, 80, 20, 60)"
                 CyParam.content =. CyParam.label
                 CyParam.Text.Align.center
                 CyParam.Text.Outline.width 2
-                CyParam.Text.Outline.color =. CyParam.color
-                CyParam.Background.color =. CyParam.color
+                CyParam.Text.Outline.color "data(color)" //=. CyParam.color
+                CyParam.Background.color "data(color)" //=. CyParam.color
                 CyParam.color "#fff"
             ]
 (**
@@ -91,7 +90,7 @@ Styling the edges is analogous to adapting the node style.
             [
                 CyParam.Curve.style "bezier"
                 CyParam.opacity 0.666
-                CyParam.width "mapData(weight, 70, 100, 2, 6)"
+                CyParam.width <=. (CyParam.weight, 70, 100, 2, 6)
                 CyParam.Target.Arrow.shape "triangle"
                 CyParam.Source.Arrow.shape "circle"
                 CyParam.Line.color =. CyParam.color
@@ -123,10 +122,7 @@ of arbitrary nesting level, varying node sizes, and other possible application-s
 
     |> CyGraph.withLayout (CytoscapeModel.Layout.Init("cose")) 
     |> CyGraph.withSize(800, 800)       
-    
-
- 
 
 (***hide***)
-myGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toEmbeddedHTML
+complexGraph |> HTML.toEmbeddedHTML
 (***include-it-raw***)

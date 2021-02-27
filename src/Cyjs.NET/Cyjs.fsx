@@ -36,11 +36,11 @@ CyGraph.initEmpty ()
         [
             CyParam.shape  =. CyParam.shape
             CyParam.width <=. (CyParam.weight, 40, 80, 20, 60)
-            CyParam.content "data(label)"
+            CyParam.content =. CyParam.label // "data(label)"
             CyParam.Text.Align.center
             CyParam.Text.Outline.width 2
-            CyParam.Text.Outline.color "data(color)"
-            CyParam.Background.color "data(color)"
+            CyParam.Text.Outline.color =. CyParam.color // "data(color)"
+            CyParam.Background.color =. CyParam.color // "data(color)"
             CyParam.color "#fff"
         ]
 |> CyGraph.withStyle ":selected"     

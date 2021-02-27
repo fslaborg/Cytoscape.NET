@@ -94,11 +94,17 @@ module CyParamMapper =
 
     /// Specifies a direct mapping to an element’s data field. For example,
     /// data(descr) would map a property to the value in an element’s descr field in its data (i.e. ele.data("descr")).
-    let (.=) (f: string -> CyParam.CyStyleParam) sourceField  = 
-        f (sprintf "data(%s)" sourceField)
+    let (=.) (target: string -> CyParam.CyStyleParam) (source: 'a -> CyParam.CyStyleParam)  = 
+        let cyp = source (Unchecked.defaultof<'a>) 
+        source (sprintf "data(%s)" cyp.Name)
+    // let (.=) (f: string -> CyParam.CyStyleParam) sourceField  = 
+    //     f (sprintf "data(%s)" sourceField)
 
     /// Specifies a linear mapping to an element’s data field. For example, 
     /// mapData(weight, 0, 100, blue, red) maps an element’s weight to colours between blue and red for weights between 0 and 100.
-    let inline (.>) (f: string -> CyParam.CyStyleParam) (sourceField,sourceLower,sourceUpper,targetLower,targetUpper)  = 
-        f <| sprintf "mapData(%s,%A,%A,%A,%A)" sourceField sourceLower sourceUpper targetLower targetUpper
+    let inline (<=.) (target: string -> CyParam.CyStyleParam) ((source: 'a -> CyParam.CyStyleParam),sourceLower,sourceUpper,targetLower,targetUpper)  = 
+        let cyp = source (Unchecked.defaultof<'a>)
+        target <| sprintf "mapData(%s,%A,%A,%A,%A)" cyp.Name sourceLower sourceUpper targetLower targetUpper
+    // let inline (.>) (f: string -> CyParam.CyStyleParam) (sourceField,sourceLower,sourceUpper,targetLower,targetUpper)  = 
+    //     f <| sprintf "mapData(%s,%A,%A,%A,%A)" sourceField sourceLower sourceUpper targetLower targetUpper
 

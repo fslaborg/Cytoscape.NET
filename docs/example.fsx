@@ -1,7 +1,8 @@
 (**
-# First Example Graph
+# More Complex Example Graph
 
-With fsdocs 8.0, the tool can roll forward to .net 5, meaning you can use inline package references in the docs scripts:
+Here, we can look at a more colorful example to understand the functionality of Cyjs.NET. The example is translated from [here](www.w.de)
+to cover different styling capabilities. 
 *)
 
 #r "nuget: DynamicObj, 0.0.1"
@@ -9,6 +10,13 @@ With fsdocs 8.0, the tool can roll forward to .net 5, meaning you can use inline
 #r "../bin/Cyjs.NET/netstandard2.1/Cyjs.NET.dll"
 
 
+(**
+## Adding nodes and edges with data
+
+After including the necessary dependancies, we add the elements with data to our graph.
+Interestingly, we are using the `withClass` to add a class identifier `(CyParam.cyClass "questionable")` to the respective edge.
+This can be used for individual styling, that you will see later...  
+*)
 
 open Cyjs.NET
 open Elements
@@ -40,6 +48,12 @@ let myGraph =
             edge "13" "g" "g" [CyParam.color "#F5A45D"; CyParam.weight 90]
 
         ]
+(**
+## Styling the nodes
+Using the `withStyle` function we use a selector string (here: node) to specify the target that we want to style.
+Second, we provide a list of style paramerts `CyStyleParam` to set the design.   
+*)
+
     |> CyGraph.withStyle "node"     
             [
                 CyParam.shape "data(shape)"
@@ -51,11 +65,24 @@ let myGraph =
                 CyParam.Background.color "data(color)"
                 CyParam.color "#fff"
             ]
+(**
+## Interactivity 
+
+Here a 
+*)
+
     |> CyGraph.withStyle ":selected"     
             [
                 CyParam.Border.width 3
                 CyParam.Border.color "#333"
             ]
+(**
+## Styling the edges
+
+Styling the edges is 
+
+*)
+
     |> CyGraph.withStyle "edge"     
             [
                 CyParam.Curve.style "bezier"
@@ -67,6 +94,12 @@ let myGraph =
                 CyParam.Target.Arrow.color "data(color)"
                 CyParam.Source.Arrow.color "data(color)"
             ]
+(**
+# More Complex Example Graph
+
+Here a 
+*)
+
     |> CyGraph.withStyle "edge.questionable"     
             [
                 CyParam.Line.style "dotted"
@@ -77,6 +110,12 @@ let myGraph =
                 CyParam.opacity 0.666
                 CyParam.Text.opacity 0
             ]
+(**
+# More Complex Example Graph
+
+Here a 
+*)
+
     |> CyGraph.withLayout (CytoscapeModel.Layout.Init("cose")) 
     |> CyGraph.withSize(800, 800)       
     

@@ -6,7 +6,6 @@ open Cyjs.NET
 open Elements
 
 
-
 CyGraph.initEmpty ()
 |> CyGraph.withElements [
         node "j" [ CyParam.label "Jerry"  ; CyParam.weight 65; CyParam.color "#6FB1FC"; CyParam.shape "triangle"  ]
@@ -35,8 +34,8 @@ CyGraph.initEmpty ()
     ]
 |> CyGraph.withStyle "node"     
         [
-            CyParam.shape .= "shape"
-            //CyParam.width .> ("weight", 40, 80, 20, 60)
+            CyParam.shape  =. CyParam.shape
+            CyParam.width <=. (CyParam.weight, 40, 80, 20, 60)
             CyParam.content "data(label)"
             CyParam.Text.Align.center
             CyParam.Text.Outline.width 2

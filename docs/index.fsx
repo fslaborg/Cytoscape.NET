@@ -69,7 +69,7 @@ You can include the package via an inline package reference:
 
 The general design philosophy of Cyjs.NET implements the following visualization flow:
 
-- **initialize** a `Cytoscape` object by using the  `CyGraph.initEmpty` function.
+- **initialize** a `Cytoscape` object by using the `CyGraph.initEmpty` function.
 - **attach** elements e.g. notes, edges and data to visulize
 - further **style** the graph with fine-grained control, e.g. by setting labels, color, etc.
 - **display** (in the browser or as cell result in a notebook) or save the graph (comming soon)
@@ -88,8 +88,9 @@ let myFirstGraph =
 
 ### Attach nodes and edges
 
-The `CyGraph` module contains the `CyGraph.initEmpty` function to create an empty graph.
-You can therefore initialize a cytoscape graph like this:
+The `Elements` module contains the `node` and `edge` functions to create the respective element.
+Node and edges can be decorated with data as `CyStyleParam list`
+You can therefore create a cytoscape graph with two nodes and an edge like this:
 
 *)
 open Elements
@@ -101,17 +102,17 @@ let myGraph =
             node "n2" [ CyParam.label "ML" ]
  
             edge  "e1" "n1" "n2" []
- 
         ]
 (**
 
 ### Styling a graph
 
-Styling functions are generally the `Chart.with*` naming convention. The following styling example does:
+Styling functions are generally the `CyGraph.with*` naming convention. The following styling example does:
 
- - set the chart title via `Chart.withTitle`
- - set the x axis title and removes the gridline from the axis via `Chart.withX_AxisStyle`
- - set the y axis title and removes the gridline from the axis via `Chart.withY_AxisStyle`
+ - add two nodes including a text label
+ - add an edge without any additional data 
+ - styles the nodes with color and content via `CyGraph.withStyle`
+ - sets the graph size to 800 x 400 pixels via `CyGraph.withSize`
 
 *)
 
@@ -126,19 +127,19 @@ let myFirstStyledGraph =
         ]
     |> CyGraph.withStyle "node"     
             [
-                CyParam.content "data(label)"
+                CyParam.content =. CyParam.label
                 CyParam.color "#A00975"
             ]
     |> CyGraph.withSize(800, 400)  
 
 (**
-**Attention:** Styling functions mutate 😈 the input chart, therefore possibly affecting bindings to intermediary results. 
-We recommend creating a single chart for each workflow to prevent unexpected results
+**Attention:** `=.` is a styling mapper and allows to pass data from different sources into the layout. 
+Here the label attached to each node is rendered as content.  
 
 ### Displaying a graph in the browser
 
-The `Chart.Show` function will open a browser window and render the input chart there. When working in a notebook context, after
-[referencing Plotly.NET.Interactive](#For-dotnet-interactive-notebooks), the function is not necessary, just end the cell with the value of the chart.
+The `CyGraph.show` function will open a browser window and render the input graph there. When working in a notebook context
+you want to use `HTML.toEmbeddedHTML` for the moment,
 
 *)
 

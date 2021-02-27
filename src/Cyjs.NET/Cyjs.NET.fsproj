@@ -9,7 +9,7 @@
     <Summary>.NET interface for Cytoscape.js written in F#</Summary>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://fslab.org/Cyjs.NET/</PackageProjectUrl>
-    <PackageIconUrl>https://fslab.org/docs-template/img/logo.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageTags>cytoscape graph visualisation fsharp csharp dotnet</PackageTags>
     <RepositoryUrl>https://github.com/fslaborg/Cyjs.NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -28,6 +28,7 @@
     <Compile Include="Zoom.fs" />
     <Compile Include="Html.fs" />
     <Compile Include="CyGraph.fs" />
+    <None Include="img\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DynamicObj" Version="0.0.1" />

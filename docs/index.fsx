@@ -150,7 +150,7 @@ myGraph
 (**Should render this chart in your brower:*)
 
 (***hide***)
-myGraph |> CyGraph.withSize(800, 400) |> HTML.toEmbeddedHTML
+myGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> CyGraph.withSize(800, 400) |> HTML.toEmbeddedHTML
 (*** include-it-raw ***)
 
 (***do-not-eval***)
@@ -160,7 +160,7 @@ myFirstStyledGraph
 (**And here is what happened after applying the styles from above:*)
 
 (***hide***)
-myFirstStyledGraph |> HTML.toEmbeddedHTML
+myFirstStyledGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toEmbeddedHTML
 (*** include-it-raw ***)
 
 

@@ -11,7 +11,7 @@ to cover different styling capabilities.
 
 
 (**
-## Adding nodes and edges with data
+### Adding nodes and edges with data
 
 After including the necessary dependancies, we can add the elements with data to our graph.
 Additionaly, the `withClass` function adds a class identifier `(CyParam.cyClass "questionable")` to the respective edge.
@@ -49,7 +49,7 @@ let myGraph =
 
         ]
 (**
-## Styling the nodes
+### Styling nodes
 
 Using the `withStyle` function we use a selector string (here: node) to specify the target that we want to style.
 Second, we provide a list of style paramerts `CyStyleParam` to set the design.
@@ -70,7 +70,7 @@ Second, we provide a list of style paramerts `CyStyleParam` to set the design.
                 CyParam.color "#fff"
             ]
 (**
-## Interactivity
+### Interactivity
 
 Here, the active selector `:selected` is used to select and style the activly selected node.  
 *)
@@ -81,7 +81,7 @@ Here, the active selector `:selected` is used to select and style the activly se
                 CyParam.Border.color "#333"
             ]
 (**
-## Styling the edges
+### Styling edges
 
 Styling the edges is analogous to adapting the node style. 
 
@@ -99,7 +99,7 @@ Styling the edges is analogous to adapting the node style.
                 CyParam.Source.Arrow.color =. CyParam.color
             ]
 (**
-# Edge stylinng eith class identifier
+### Edge styling with class identifier
 The class identifier `questionable` can be used to select and style the respective edge(s).  
 *)
 
@@ -114,7 +114,7 @@ The class identifier `questionable` can be used to select and style the respecti
                 CyParam.Text.opacity 0
             ]
 (**
-# Using a graph layout
+### Using a graph layout
 
 To draw the graph nicly, `withLayout` applies CoSE (Compound graph Spring Embedder) layout, an algorithm based 
 on the traditional force-directed layout scheme with extensions to handle multi-level nesting, edges between nodes 
@@ -128,5 +128,5 @@ of arbitrary nesting level, varying node sizes, and other possible application-s
  
 
 (***hide***)
-myGraph |> HTML.toEmbeddedHTML
+myGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toEmbeddedHTML
 (***include-it-raw***)

@@ -69,8 +69,8 @@ You can include the package via an inline package reference:
 
 The general design philosophy of Cyjs.NET implements the following visualization flow:
 
-- **initialize** a `Cytoscape` object by using the respective `CyGraph.*` function .
-- **attach** the elements e.g. notes and edges you want to visulize and
+- **initialize** a `Cytoscape` object by using the  `CyGraph.initEmpty` function.
+- **attach** elements e.g. notes, edges and data to visulize
 - further **style** the graph with fine-grained control, e.g. by setting labels, color, etc.
 - **display** (in the browser or as cell result in a notebook) or save the graph (comming soon)
 

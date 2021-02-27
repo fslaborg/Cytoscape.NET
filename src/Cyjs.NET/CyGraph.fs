@@ -4,6 +4,8 @@ open Cyjs.NET.CytoscapeModel
 open CyParam
 open DynamicObj
 
+
+
 // Module to manipulate graph elements like node and edges
 module Elements =
     
@@ -86,6 +88,3 @@ module CyGraph =
 
     let show (cy:CyGraph)  =
         HTML.show cy
-
-
-

@@ -5,6 +5,8 @@
 open Cyjs.NET
 open Elements
 
+
+
 CyGraph.initEmpty ()
 |> CyGraph.withElements [
         node "j" [ CyParam.label "Jerry"  ; CyParam.weight 65; CyParam.color "#6FB1FC"; CyParam.shape "triangle"  ]
@@ -33,8 +35,8 @@ CyGraph.initEmpty ()
     ]
 |> CyGraph.withStyle "node"     
         [
-            CyParam.shape "data(shape)"
-            CyParam.width "mapData(weight, 40, 80, 20, 60)"
+            CyParam.shape .= "shape"
+            //CyParam.width .> ("weight", 40, 80, 20, 60)
             CyParam.content "data(label)"
             CyParam.Text.Align.center
             CyParam.Text.Outline.width 2
@@ -72,7 +74,6 @@ CyGraph.initEmpty ()
 |> CyGraph.withSize(800, 800)
 |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) 
 |> CyGraph.show
-
 
 
 

@@ -13,8 +13,8 @@ to cover different styling capabilities.
 (**
 ## Adding nodes and edges with data
 
-After including the necessary dependancies, we add the elements with data to our graph.
-Interestingly, we are using the `withClass` to add a class identifier `(CyParam.cyClass "questionable")` to the respective edge.
+After including the necessary dependancies, we can add the elements with data to our graph.
+Additionaly, the `withClass` function adds a class identifier `(CyParam.cyClass "questionable")` to the respective edge.
 This can be used for individual styling, that you will see later...  
 *)
 
@@ -50,25 +50,29 @@ let myGraph =
         ]
 (**
 ## Styling the nodes
+
 Using the `withStyle` function we use a selector string (here: node) to specify the target that we want to style.
-Second, we provide a list of style paramerts `CyStyleParam` to set the design.   
+Second, we provide a list of style paramerts `CyStyleParam` to set the design.
+**attention** Style mapper `=.` specifies a direct mapping or a linear mapping `<=.` to an element’s data field. 
 *)
 
     |> CyGraph.withStyle "node"     
             [
-                CyParam.shape "data(shape)"
-                CyParam.width "mapData(weight, 40, 80, 20, 60)"
-                CyParam.content "data(label)"
+                CyParam.shape =. CyParam.shape
+                // Style mapper can also be used untyped in string form: CyParam.shape "data(shape)"
+                CyParam.width <=.(CyParam.weight, 40, 80, 20, 60)
+                // A linear style mapper like this: CyParam.width "mapData(weight, 40, 80, 20, 60)"
+                CyParam.content =. CyParam.label
                 CyParam.Text.Align.center
                 CyParam.Text.Outline.width 2
-                CyParam.Text.Outline.color "data(color)"
-                CyParam.Background.color "data(color)"
+                CyParam.Text.Outline.color =. CyParam.color
+                CyParam.Background.color =. CyParam.color
                 CyParam.color "#fff"
             ]
 (**
-## Interactivity 
+## Interactivity
 
-Here a 
+Here, the active selector `:selected` is used to select and style the activly selected node.  
 *)
 
     |> CyGraph.withStyle ":selected"     
@@ -79,7 +83,7 @@ Here a
 (**
 ## Styling the edges
 
-Styling the edges is 
+Styling the edges is analogous to adapting the node style. 
 
 *)
 
@@ -90,14 +94,13 @@ Styling the edges is
                 CyParam.width "mapData(weight, 70, 100, 2, 6)"
                 CyParam.Target.Arrow.shape "triangle"
                 CyParam.Source.Arrow.shape "circle"
-                CyParam.Line.color "data(color)"
-                CyParam.Target.Arrow.color "data(color)"
-                CyParam.Source.Arrow.color "data(color)"
+                CyParam.Line.color =. CyParam.color
+                CyParam.Target.Arrow.color =. CyParam.color
+                CyParam.Source.Arrow.color =. CyParam.color
             ]
 (**
-# More Complex Example Graph
-
-Here a 
+# Edge stylinng eith class identifier
+The class identifier `questionable` can be used to select and style the respective edge(s).  
 *)
 
     |> CyGraph.withStyle "edge.questionable"     
@@ -111,9 +114,11 @@ Here a
                 CyParam.Text.opacity 0
             ]
 (**
-# More Complex Example Graph
+# Using a graph layout
 
-Here a 
+To draw the graph nicly, `withLayout` applies CoSE (Compound graph Spring Embedder) layout, an algorithm based 
+on the traditional force-directed layout scheme with extensions to handle multi-level nesting, edges between nodes 
+of arbitrary nesting level, varying node sizes, and other possible application-specific constraints.
 *)
 
     |> CyGraph.withLayout (CytoscapeModel.Layout.Init("cose")) 

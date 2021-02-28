@@ -1,6 +1,6 @@
 #r "nuget: DynamicObj, 0.0.1"
 #r "nuget: Newtonsoft.Json, 12.0.3"
-#r "../..//bin/Cyjs.NET/netstandard2.1/Cyjs.NET.dll"
+#r "../../bin/Cyjs.NET/netstandard2.1/Cyjs.NET.dll"
 
 open Cyjs.NET
 open Elements

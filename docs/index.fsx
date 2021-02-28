@@ -3,7 +3,8 @@
 (*** condition: prepare ***)
 #r "nuget: DynamicObj, 0.0.1"
 #r "nuget: Newtonsoft.Json, 12.0.3"
-#r "../bin/Cyjs.NET/netstandard2.1/Cyjs.NET.dll"
+#r "nuget: Cyjs.NET, 0.0.3"
+
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -70,8 +71,8 @@ You can include the package via an inline package reference:
 The general design philosophy of Cyjs.NET implements the following visualization flow:
 
 - **initialize** a `Cytoscape` object by using the `CyGraph.initEmpty` function.
-- **attach** elements e.g. notes, edges and data to visulize
-- further **style** the graph with fine-grained control, e.g. by setting labels, color, etc.
+- **attach** elements e.g. notes, edges and data to visulize and further
+- **style** the graph with fine-grained control, e.g. by setting labels, color, etc.
 - **display** (in the browser or as cell result in a notebook) or save the graph (comming soon)
 
 ### Initializing a graph

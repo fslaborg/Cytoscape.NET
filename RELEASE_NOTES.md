@@ -1,3 +1,7 @@
+#### 0.0.3 - 2/28/2021
+ * Add predefined layouts and some Layout options
+ * Bug fixes 
+
 #### 0.0.2 - 2/27/2021
 The functionality and documentation have been extended.
 

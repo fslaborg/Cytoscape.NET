@@ -1,15 +1,18 @@
+(*** hide ***)
+
+(*** condition: prepare ***)
+#r "nuget: DynamicObj, 0.0.1"
+#r "nuget: Newtonsoft.Json, 12.0.3"
+#r "nuget: Cyjs.NET, 0.0.3"
+
+
+
 (**
 # More Complex Example Graph
 
 Here, we can look at a more colorful example to understand the functionality of Cyjs.NET. The example is translated from [here](www.w.de)
 to cover different styling capabilities. 
-*)
 
-#r "nuget: DynamicObj, 0.0.1"
-#r "nuget: Newtonsoft.Json, 12.0.3"
-#r "nuget: Cyjs.NET, 0.0.2"
-
-(**
 ### Adding nodes and edges with data
 
 After including the necessary dependancies, we can add the elements with data to our graph.
@@ -47,6 +50,7 @@ let complexGraph =
             edge "13" "g" "g" [CyParam.color "#F5A45D"; CyParam.weight 90]
 
         ]
+
 (**
 ### Styling nodes
 
@@ -54,7 +58,8 @@ Using the `withStyle` function we use a selector string (here: node) to specify 
 Second, we provide a list of style paramerts `CyStyleParam` to set the design.
 **attention** Style mapper `=.` specifies a direct mapping or a linear mapping `<=.` to an element’s data field. 
 *)
-
+let cgStylingNodes = 
+    complexGraph
     |> CyGraph.withStyle "node"     
             [
                 CyParam.shape =. CyParam.shape
@@ -64,16 +69,17 @@ Second, we provide a list of style paramerts `CyStyleParam` to set the design.
                 CyParam.content =. CyParam.label
                 CyParam.Text.Align.center
                 CyParam.Text.Outline.width 2
-                CyParam.Text.Outline.color "data(color)" //=. CyParam.color
-                CyParam.Background.color "data(color)" //=. CyParam.color
+                CyParam.Text.Outline.color =. CyParam.color  //=. CyParam.color
+                CyParam.Background.color   =. CyParam.color  //=. CyParam.color
                 CyParam.color "#fff"
-            ]
+            ]  
 (**
 ### Interactivity
 
 Here, the active selector `:selected` is used to select and style the activly selected node.  
 *)
-
+let cgInteractivity =
+    cgStylingNodes
     |> CyGraph.withStyle ":selected"     
             [
                 CyParam.Border.width 3
@@ -85,7 +91,8 @@ Here, the active selector `:selected` is used to select and style the activly se
 Styling the edges is analogous to adapting the node style. 
 
 *)
-
+let cgStylingEdges = 
+    cgInteractivity
     |> CyGraph.withStyle "edge"     
             [
                 CyParam.Curve.style "bezier"
@@ -101,7 +108,8 @@ Styling the edges is analogous to adapting the node style.
 ### Edge styling with class identifier
 The class identifier `questionable` can be used to select and style the respective edge(s).  
 *)
-
+let cgStylingEdgesWci = 
+    cgStylingEdges
     |> CyGraph.withStyle "edge.questionable"     
             [
                 CyParam.Line.style "dotted"
@@ -118,11 +126,23 @@ The class identifier `questionable` can be used to select and style the respecti
 To draw the graph nicly, `withLayout` applies CoSE (Compound graph Spring Embedder) layout, an algorithm based 
 on the traditional force-directed layout scheme with extensions to handle multi-level nesting, edges between nodes 
 of arbitrary nesting level, varying node sizes, and other possible application-specific constraints.
-*)
 
-    |> CyGraph.withLayout (CytoscapeModel.Layout.Init("cose")) 
-    |> CyGraph.withSize(800, 800)       
+Layouts can be specified with `LayoutOptions` applied. Here, we use `ComponentSpacing`, which adds
+extra spacing between components in non-compound graphs.
+*)
+let cgLayout = 
+    cgStylingEdgesWci
+    |> CyGraph.withLayout (
+        Layout.initCose (Layout.LayoutOptions.Cose(ComponentSpacing=40)) 
+        )  
+    |> CyGraph.withSize(800, 800) 
+
+(***do-not-eval***)
+cgLayout
+|> CyGraph.show
+
+(**And here is what happened after applying the styles from above:*)
 
 (***hide***)
-complexGraph |> HTML.toEmbeddedHTML
-(***include-it-raw***)
+cgLayout |> HTML.toEmbeddedHTML
+(*** include-it-raw ***)    

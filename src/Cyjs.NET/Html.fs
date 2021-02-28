@@ -88,9 +88,9 @@ module HTML =
             graphDoc
                 .Replace("[CANVAS]", strCANVAS)
                 .Replace("[ID]", id)
-                .Replace("[GRAPHDATA]", jsonGraph)
                 .Replace("[ZOOMING]", userZoomingEnabled)
-                .Replace("[SCRIPTID]", guid.Replace("-",""))                
+                .Replace("[SCRIPTID]", guid.Replace("-",""))
+                .Replace("[GRAPHDATA]", jsonGraph)                
         html
 
     /// Converts a CyGraph to it HTML representation and embeds it into a html page.

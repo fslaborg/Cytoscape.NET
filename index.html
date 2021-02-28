@@ -130,8 +130,8 @@
 <p>The general design philosophy of Cyjs.NET implements the following visualization flow:</p>
 <ul>
 <li><strong>initialize</strong> a <code>Cytoscape</code> object by using the <code>CyGraph.initEmpty</code> function.</li>
-<li><strong>attach</strong> elements e.g. notes, edges and data to visulize</li>
-<li>further <strong>style</strong> the graph with fine-grained control, e.g. by setting labels, color, etc.</li>
+<li><strong>attach</strong> elements e.g. notes, edges and data to visulize and further</li>
+<li><strong>style</strong> the graph with fine-grained control, e.g. by setting labels, color, etc.</li>
 <li><strong>display</strong> (in the browser or as cell result in a notebook) or save the graph (comming soon)</li>
 </ul>
 <h3><a name="Initializing-a-graph" class="anchor" href="#Initializing-a-graph">Initializing a graph</a></h3>
@@ -194,15 +194,15 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#e63eeb83528 { width: 800px; height: 400px; display: block } </style>
-<div id="e63eeb83528"></div>
+<body> <style>#e91d7109394 { width: 800px; height: 400px; display: block } </style>
+<div id="e91d7109394"></div>
 <script type="text/javascript">
 
-            var renderCyjs_d7a04f58d07d4d759267072f87b0ee07 = function() {
+            var renderCyjs_785d2e86b5e74d7a8cbfd72d9c3bf9ce = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('e63eeb83528'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
+            var graphdata = {"container":document.getElementById('e91d7109394'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
             var cy = cytoscape( graphdata );
             cy.userZoomingEnabled( false );
             
@@ -212,12 +212,12 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_d7a04f58d07d4d759267072f87b0ee07();
+                    renderCyjs_785d2e86b5e74d7a8cbfd72d9c3bf9ce();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_d7a04f58d07d4d759267072f87b0ee07();
+                renderCyjs_785d2e86b5e74d7a8cbfd72d9c3bf9ce();
             }
 </script>
  </body>
@@ -232,15 +232,15 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#eeb696c4cf3 { width: 800px; height: 400px; display: block } </style>
-<div id="eeb696c4cf3"></div>
+<body> <style>#ebe599d6af5 { width: 800px; height: 400px; display: block } </style>
+<div id="ebe599d6af5"></div>
 <script type="text/javascript">
 
-            var renderCyjs_ac7c7f0abc3543d7851f0a187af1470d = function() {
+            var renderCyjs_2b79ad58a63b4f42b9973f7c5e22aabd = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('eeb696c4cf3'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"label":"data(label)","color":"#A00975"}}],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
+            var graphdata = {"container":document.getElementById('ebe599d6af5'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
             var cy = cytoscape( graphdata );
             cy.userZoomingEnabled( false );
             
@@ -250,12 +250,12 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_ac7c7f0abc3543d7851f0a187af1470d();
+                    renderCyjs_2b79ad58a63b4f42b9973f7c5e22aabd();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_ac7c7f0abc3543d7851f0a187af1470d();
+                renderCyjs_2b79ad58a63b4f42b9973f7c5e22aabd();
             }
 </script>
  </body>

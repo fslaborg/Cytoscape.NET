@@ -61,7 +61,7 @@ module HTML =
         cy.container <- PlainJsonString id
 
         let userZoomingEnabled =
-            match cy.TryGetTypedValue<Zoom> "Zoom"  with
+            match cy.TryGetTypedValue<Zoom> "zoom"  with
             | Some z -> 
                 match z.TryGetTypedValue<bool> "zoomingEnabled" with
                 | Some t -> t

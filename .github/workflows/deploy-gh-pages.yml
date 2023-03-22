@@ -3,7 +3,9 @@ name: build and deploy docs
 on:
   push:
     branches: [ main ]
-
+    paths:
+      - docs/**
+      - src/Cyjs.NET/**
 jobs:
   build-and-deploy-docs:
     

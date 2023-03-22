@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D793766C-70DF-4717-A2C4-B71B83840A22}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cyjs.NET", "src\Cyjs.NET\Cyjs.NET.fsproj", "{6B267A9C-2A95-4DF8-97E5-40182C555771}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3085BF93-014A-408B-8316-7E7C3E5D8B57}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cyjs.NET.Tests", "tests\Cyjs.NET.Tests\Cyjs.NET.Tests.fsproj", "{4D01A71C-462D-4DB1-A4B4-15010ED93280}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "build", "build\build.fsproj", "{A566EAAC-9DAA-4983-BCDE-A633F55B5760}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B267A9C-2A95-4DF8-97E5-40182C555771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B267A9C-2A95-4DF8-97E5-40182C555771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B267A9C-2A95-4DF8-97E5-40182C555771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B267A9C-2A95-4DF8-97E5-40182C555771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D01A71C-462D-4DB1-A4B4-15010ED93280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D01A71C-462D-4DB1-A4B4-15010ED93280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D01A71C-462D-4DB1-A4B4-15010ED93280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D01A71C-462D-4DB1-A4B4-15010ED93280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A566EAAC-9DAA-4983-BCDE-A633F55B5760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A566EAAC-9DAA-4983-BCDE-A633F55B5760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A566EAAC-9DAA-4983-BCDE-A633F55B5760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A566EAAC-9DAA-4983-BCDE-A633F55B5760}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B267A9C-2A95-4DF8-97E5-40182C555771} = {D793766C-70DF-4717-A2C4-B71B83840A22}
+		{4D01A71C-462D-4DB1-A4B4-15010ED93280} = {3085BF93-014A-408B-8316-7E7C3E5D8B57}
+	EndGlobalSection
+EndGlobal

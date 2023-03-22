@@ -194,15 +194,15 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#e91d7109394 { width: 800px; height: 400px; display: block } </style>
-<div id="e91d7109394"></div>
+<body> <style>#e1c6f4ca875 { width: 800px; height: 400px; display: block } </style>
+<div id="e1c6f4ca875"></div>
 <script type="text/javascript">
 
-            var renderCyjs_785d2e86b5e74d7a8cbfd72d9c3bf9ce = function() {
+            var renderCyjs_ca51a3a1396146788db9c957e79bbdba = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('e91d7109394'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
+            var graphdata = {"container":document.getElementById('e1c6f4ca875'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
             var cy = cytoscape( graphdata );
             cy.userZoomingEnabled( false );
             
@@ -212,12 +212,12 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_785d2e86b5e74d7a8cbfd72d9c3bf9ce();
+                    renderCyjs_ca51a3a1396146788db9c957e79bbdba();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_785d2e86b5e74d7a8cbfd72d9c3bf9ce();
+                renderCyjs_ca51a3a1396146788db9c957e79bbdba();
             }
 </script>
  </body>
@@ -232,15 +232,15 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
 </head>
-<body> <style>#ebe599d6af5 { width: 800px; height: 400px; display: block } </style>
-<div id="ebe599d6af5"></div>
+<body> <style>#e1b9a083ed7 { width: 800px; height: 400px; display: block } </style>
+<div id="e1b9a083ed7"></div>
 <script type="text/javascript">
 
-            var renderCyjs_2b79ad58a63b4f42b9973f7c5e22aabd = function() {
+            var renderCyjs_4487e634991a433883b3a922acc4d810 = function() {
             var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
             fsharpCyjsRequire(['cyjs'], function(Cyjs) {
 
-            var graphdata = {"container":document.getElementById('ebe599d6af5'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
+            var graphdata = {"container":document.getElementById('e1b9a083ed7'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
             var cy = cytoscape( graphdata );
             cy.userZoomingEnabled( false );
             
@@ -250,12 +250,12 @@ you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
                 var script = document.createElement("script");
                 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
                 script.onload = function(){
-                    renderCyjs_2b79ad58a63b4f42b9973f7c5e22aabd();
+                    renderCyjs_4487e634991a433883b3a922acc4d810();
                 };
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
             else {
-                renderCyjs_2b79ad58a63b4f42b9973f7c5e22aabd();
+                renderCyjs_4487e634991a433883b3a922acc4d810();
             }
 </script>
  </body>
@@ -275,28 +275,44 @@ redistribution for both commercial and non-commercial purposes. For more informa
         </div>
         <div class="fsdocs-tip" id="fs1">namespace Cyjs</div>
 <div class="fsdocs-tip" id="fs2">namespace Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs3">val myFirstGraph : CytoscapeModel.Cytoscape</div>
-<div class="fsdocs-tip" id="fs4">module CyGraph<br /><br />from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs5">val initEmpty : unit -&gt; CytoscapeModel.Cytoscape</div>
-<div class="fsdocs-tip" id="fs6">module Elements<br /><br />from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs7">val myGraph : CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs8">val withElements : elems:seq&lt;CytoscapeModel.Element&gt; -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs9">val node : id:string -&gt; dataAttributes:CyParam.CyStyleParam list -&gt; Node</div>
-<div class="fsdocs-tip" id="fs10">module CyParam<br /><br />from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs11">val label : v:&#39;a -&gt; CyParam.CyStyleParam</div>
-<div class="fsdocs-tip" id="fs12">val edge : id:string -&gt; sourceId:string -&gt; targetId:string -&gt; dataAttributes:CyParam.CyStyleParam list -&gt; Edge</div>
-<div class="fsdocs-tip" id="fs13">val myFirstStyledGraph : CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs14">val withStyle : selector:string -&gt; cyStyles:seq&lt;CyParam.CyStyleParam&gt; -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs15">val content : v:&#39;a -&gt; CyParam.CyStyleParam</div>
-<div class="fsdocs-tip" id="fs16">val color : v:&#39;a -&gt; CyParam.CyStyleParam</div>
-<div class="fsdocs-tip" id="fs17">val withSize : width:int * height:int -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs18">val show : cy:CyGraph.CyGraph -&gt; unit</div>
-<div class="fsdocs-tip" id="fs19">val withZoom : zoom:CytoscapeModel.Zoom -&gt; cy:CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs3">val myFirstGraph: CytoscapeModel.Cytoscape</div>
+<div class="fsdocs-tip" id="fs4">module CyGraph
+
+from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs5">val initEmpty: unit -&gt; CytoscapeModel.Cytoscape</div>
+<div class="fsdocs-tip" id="fs6">module Elements
+
+from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs7">val myGraph: CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs8">val withElements: elems: seq&lt;CytoscapeModel.Element&gt; -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs9">val node: id: string -&gt; dataAttributes: CyParam.CyStyleParam list -&gt; Node</div>
+<div class="fsdocs-tip" id="fs10">module CyParam
+
+from Cyjs.NET</div>
+<div class="fsdocs-tip" id="fs11">val label: v: &#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs12">val edge: id: string -&gt; sourceId: string -&gt; targetId: string -&gt; dataAttributes: CyParam.CyStyleParam list -&gt; Edge</div>
+<div class="fsdocs-tip" id="fs13">val myFirstStyledGraph: CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs14">val withStyle: selector: string -&gt; cyStyles: seq&lt;CyParam.CyStyleParam&gt; -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs15">val content: v: &#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs16">val color: v: &#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs17">val withSize: width: int * height: int -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs18">val show: cy: CyGraph.CyGraph -&gt; unit</div>
+<div class="fsdocs-tip" id="fs19">val withZoom: zoom: CytoscapeModel.Zoom -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
 <div class="fsdocs-tip" id="fs20">namespace Cyjs.NET.CytoscapeModel</div>
-<div class="fsdocs-tip" id="fs21">Multiple items<br />type Zoom =<br />&#160;&#160;inherit DynamicObj<br />&#160;&#160;new : unit -&gt; Zoom<br />&#160;&#160;static member Init : ?Level:float * ?Position:(int * int) * ?RenderedPosition:(int * int) * ?ZoomingEnabled:bool -&gt; Zoom<br />&#160;&#160;static member Update : ?Level:float * ?Position:(int * int) * ?RenderedPosition:(int * int) * ?ZoomingEnabled:bool -&gt; (Zoom -&gt; Zoom)<br /><br />--------------------<br />new : unit -&gt; CytoscapeModel.Zoom</div>
-<div class="fsdocs-tip" id="fs22">static member CytoscapeModel.Zoom.Init : ?Level:float * ?Position:(int * int) * ?RenderedPosition:(int * int) * ?ZoomingEnabled:bool -&gt; CytoscapeModel.Zoom</div>
-<div class="fsdocs-tip" id="fs23">module HTML<br /><br />from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs24">val toEmbeddedHTML : cy:CytoscapeModel.Cytoscape -&gt; string</div>
+<div class="fsdocs-tip" id="fs21">Multiple items<br />type Zoom =
+  inherit DynamicObj
+  new: unit -&gt; Zoom
+  static member Init: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; Zoom
+  static member Update: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; (Zoom -&gt; Zoom)<br /><br />--------------------<br />new: unit -&gt; CytoscapeModel.Zoom</div>
+<div class="fsdocs-tip" id="fs22">static member CytoscapeModel.Zoom.Init: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; CytoscapeModel.Zoom</div>
+<div class="fsdocs-tip" id="fs23">module HTML
+
+from Cyjs.NET<br /><em>&lt;summary&gt;
+ HTML template for Cytoscape
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs24">val toEmbeddedHTML: cy: CytoscapeModel.Cytoscape -&gt; string<br /><em>&lt;summary&gt;
+ Converts a CyGraph to it HTML representation and embeds it into a html page.
+&lt;/summary&gt;</em></div>
 
     </div>
 

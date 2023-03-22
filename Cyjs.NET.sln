@@ -5,21 +5,35 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D793766C-70DF-4717-A2C4-B71B83840A22}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cyjs.NET", "src\Cyjs.NET\Cyjs.NET.fsproj", "{6B267A9C-2A95-4DF8-97E5-40182C555771}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Cyjs.NET", "src\Cyjs.NET\Cyjs.NET.fsproj", "{6B267A9C-2A95-4DF8-97E5-40182C555771}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3085BF93-014A-408B-8316-7E7C3E5D8B57}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cyjs.NET.Tests", "tests\Cyjs.NET.Tests\Cyjs.NET.Tests.fsproj", "{4D01A71C-462D-4DB1-A4B4-15010ED93280}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Cyjs.NET.Tests", "tests\Cyjs.NET.Tests\Cyjs.NET.Tests.fsproj", "{4D01A71C-462D-4DB1-A4B4-15010ED93280}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "build", "build\build.fsproj", "{A566EAAC-9DAA-4983-BCDE-A633F55B5760}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "build", "build\build.fsproj", "{A566EAAC-9DAA-4983-BCDE-A633F55B5760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{B622C4CF-8419-49BC-929F-F5797A05C3B2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		build.cmd = build.cmd
+		build.sh = build.sh
+		global.json = global.json
+		LICENSE = LICENSE
+		README.md = README.md
+		RELEASE_NOTES.md = RELEASE_NOTES.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{0C36C2D0-59AB-400F-9A70-29B93A371C4F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
+		.github\workflows\deploy-gh-pages.yml = .github\workflows\deploy-gh-pages.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6B267A9C-2A95-4DF8-97E5-40182C555771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -35,8 +49,14 @@ Global
 		{A566EAAC-9DAA-4983-BCDE-A633F55B5760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A566EAAC-9DAA-4983-BCDE-A633F55B5760}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B267A9C-2A95-4DF8-97E5-40182C555771} = {D793766C-70DF-4717-A2C4-B71B83840A22}
 		{4D01A71C-462D-4DB1-A4B4-15010ED93280} = {3085BF93-014A-408B-8316-7E7C3E5D8B57}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8016B87A-4537-4729-B176-53A90690A6A5}
 	EndGlobalSection
 EndGlobal

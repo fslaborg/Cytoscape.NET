@@ -15,5 +15,6 @@ type PlainJsonStringConverter() =
         reader.Value
 
     override __.WriteJson(writer, value, serializer) =
+        serializer.ReferenceLoopHandling <- ReferenceLoopHandling.Serialize
         let v = value :?> PlainJsonString
         writer.WriteRawValue(string v.Value)

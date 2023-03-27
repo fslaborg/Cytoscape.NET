@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Layout (Cyjs.NET)</title>
+    <title>Formatters (Cyjs.NET)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Timo Muehlhaus, fslaborg">
+    <meta name="author" content="Cyjs.NET.Interactive">
     <link rel="shortcut icon" type="image/x-icon" href="https://fslab.org/Cyjs.NET//img/favicon.ico">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -52,9 +52,9 @@
                     <!-- END SEARCH BOX: this adds support for the search box -->
                     <ul class="navbar-nav">
                         <li class="nav-header">Links</li>
-                        <li class="nav-item" id="fsdocs-license-link"><a class="nav-link" href="https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE">License (MIT)</a></li>
-                        <li class="nav-item" id="fsdocs-release-notes-link"><a class="nav-link" href="https://github.com/fslaborg/Cyjs.NET/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
-                        <li class="nav-item" id="fsdocs-repository-link"><a class="nav-link" href="https://github.com/fslaborg/Cyjs.NET/">Source Repository</a></li>
+                        <li class="nav-item" id="fsdocs-license-link"><a class="nav-link" href="{{fsdocs-license-link}}">License (MIT)</a></li>
+                        <li class="nav-item" id="fsdocs-release-notes-link"><a class="nav-link" href="{{fsdocs-release-notes-link}}">Release Notes</a></li>
+                        <li class="nav-item" id="fsdocs-repository-link"><a class="nav-link" href="{{fsdocs-repository-link}}">Source Repository</a></li>
                         <li class="nav-header">
   API Reference
 </li>             
@@ -72,51 +72,35 @@
                 <div class="container" id="fsdocs-content">
                     <div>
   <h2>
-    Layout Type
+    Formatters Module
   </h2>
   <dl class="fsdocs-metadata">
     <dt>
       Namespace: 
-      <a href="https://fslab.org/Cyjs.NET/reference/cyjs-net.html">
-        Cyjs.NET
+      <a href="https://fslab.org/Cyjs.NET/reference/cyjs-net-interactive.html">
+        Cyjs.NET.Interactive
       </a>
     </dt>
     <dt>
-      Assembly: Cyjs.NET.dll
-    </dt>
-    <dt>
-      Base Type: 
-      <code><a href="https://docs.microsoft.com/dotnet/api/dynamicobj.dynamicobj">DynamicObj</a></code>
-    </dt>
-    <dt>
-      All Interfaces: 
-      <code><a href="https://docs.microsoft.com/dotnet/api/system.dynamic.idynamicmetaobjectprovider">IDynamicMetaObjectProvider</a></code>
+      Assembly: Cyjs.NET.Interactive.dll
     </dt>
   </dl>
   <div class="fsdocs-xmldoc">
     <div>
       <p class="fsdocs-summary">
         
- Layout type inherits from dynamic object
-
       </p>
     </div>
   </div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
   <div>
     <h3>
-      Constructors
+      Functions and values
     </h3>
     <table class="table outer-list fsdocs-member-list">
       <thead>
         <tr>
           <td class="fsdocs-member-list-header">
-            Constructor
+            Function or value
           </td>
           <td class="fsdocs-member-list-header">
             Description
@@ -127,36 +111,36 @@
         <tr>
           <td class="fsdocs-member-usage">
             <div>
-              <code onmouseout="hideTip(event, '71', 71)" onmouseover="showTip(event, '71', 71)">
+              <code onmouseout="hideTip(event, '60', 60)" onmouseover="showTip(event, '60', 60)">
                 <p>
-                  <a id="``.ctor``">
-                    <a href="#``.ctor``">
-                      <code><span>Layout<span><span>(<span>name</span>)</span></span></span></code>
+                  <a id="toInteractiveHTML">
+                    <a href="#toInteractiveHTML">
+                      <code><span>toInteractiveHTML&#32;<span>graph</span></span></code>
                     </a>
                   </a>
                 </p>
               </code>
-              <div class="fsdocs-tip" id="71">
+              <div class="fsdocs-tip" id="60">
                 <div class="member-tooltip">
                   Full Usage: 
-                  <code><span>Layout<span><span>(<span>name</span>)</span></span></span></code>
+                  <code><span>toInteractiveHTML&#32;<span>graph</span></span></code>
                   <br/>
                   <br/>
                   Parameters: 
                   <ul>
                     <span>
                       <b>
-                        name
+                        graph
                       </b>
                       :
-                      <code>string</code>
+                      <code><a href="https://fslab.org/Cyjs.NET/reference/cyjs-net-cytoscapemodel-cytoscape.html">Cytoscape</a></code>
                     </span>
                     <br/>
                   </ul>
                   <br/>
                   <span>
                     Returns: 
-                    <code><a href="https://fslab.org/Cyjs.NET/reference/cyjs-net-layout.html">Layout</a></code>
+                    <code>string</code>
                   </span>
                   <br/>
                 </div>
@@ -165,29 +149,27 @@
           </td>
           <td class="fsdocs-member-xmldoc">
             <div class="fsdocs-summary">
-              <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('`cref:M:Cyjs.NET.Layout.#ctor`')">
+              <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('`cref:M:Cyjs.NET.Interactive.Formatters.toInteractiveHTML`')">
                 <img src="https://fslab.org/Cyjs.NET/content/img/copy-md.png" class="normal"/>
                 <img src="https://fslab.org/Cyjs.NET/content/img/copy-md-hover.png" class="hover"/>
               </div>
-              <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:Cyjs.NET.Layout.#ctor\'/>')">
+              <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:Cyjs.NET.Interactive.Formatters.toInteractiveHTML\'/>')">
                 <img src="https://fslab.org/Cyjs.NET/content/img/copy-xml.png" class="normal"/>
                 <img src="https://fslab.org/Cyjs.NET/content/img/copy-xml-hover.png" class="hover"/>
               </div>
-              <a href="https://github.com/fslaborg/Cyjs.NET/tree/master/src/Cyjs.NET/Layout.fs#L7-7" class="fsdocs-source-link" title="Source on GitHub">
-                <img src="https://fslab.org/Cyjs.NET/content/img/github.png" class="normal"/>
-                <img src="https://fslab.org/Cyjs.NET/content/img/github-hover.png" class="hover"/>
-              </a>
               <p class="fsdocs-summary">
                 
+ Converts a Cytoscape type to it's HTML representation to show in a notebook environment.
+
               </p>
             </div>
             <dl class="fsdocs-params">
               <dt class="fsdocs-param">
                 <span class="fsdocs-param-name">
-                  name
+                  graph
                 </span>
                 :
-                <code>string</code>
+                <code><a href="https://fslab.org/Cyjs.NET/reference/cyjs-net-cytoscapemodel-cytoscape.html">Cytoscape</a></code>
               </dt>
               <dd class="fsdocs-param-docs"></dd>
             </dl>
@@ -196,7 +178,7 @@
                 <span class="fsdocs-return-name">
                   Returns: 
                 </span>
-                <code><a href="https://fslab.org/Cyjs.NET/reference/cyjs-net-layout.html">Layout</a></code>
+                <code>string</code>
               </dt>
               <dd class="fsdocs-return-docs"></dd>
             </dl>
@@ -205,67 +187,13 @@
       </tbody>
     </table>
   </div>
-  <div>
-    <h3>
-      Instance members
-    </h3>
-    <table class="table outer-list fsdocs-member-list">
-      <thead>
-        <tr>
-          <td class="fsdocs-member-list-header">
-            Instance member
-          </td>
-          <td class="fsdocs-member-list-header">
-            Description
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="fsdocs-member-usage">
-            <div>
-              <code onmouseout="hideTip(event, '72', 72)" onmouseover="showTip(event, '72', 72)">
-                <p>
-                  <a id="name">
-                    <a href="#name">
-                      <code><span>this.name&#32;</span></code>
-                    </a>
-                  </a>
-                </p>
-              </code>
-              <div class="fsdocs-tip" id="72">
-                <div class="member-tooltip">
-                  Full Usage: 
-                  <code><span>this.name&#32;</span></code>
-                  <br/>
-                  <br/>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="fsdocs-member-xmldoc">
-            <div class="fsdocs-summary">
-              <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('`cref:P:Cyjs.NET.Layout.name`')">
-                <img src="https://fslab.org/Cyjs.NET/content/img/copy-md.png" class="normal"/>
-                <img src="https://fslab.org/Cyjs.NET/content/img/copy-md-hover.png" class="hover"/>
-              </div>
-              <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'P:Cyjs.NET.Layout.name\'/>')">
-                <img src="https://fslab.org/Cyjs.NET/content/img/copy-xml.png" class="normal"/>
-                <img src="https://fslab.org/Cyjs.NET/content/img/copy-xml-hover.png" class="hover"/>
-              </div>
-              <a href="https://github.com/fslaborg/Cyjs.NET/tree/master/src/Cyjs.NET/Layout.fs#L10-10" class="fsdocs-source-link" title="Source on GitHub">
-                <img src="https://fslab.org/Cyjs.NET/content/img/github.png" class="normal"/>
-                <img src="https://fslab.org/Cyjs.NET/content/img/github-hover.png" class="hover"/>
-              </a>
-              <p class="fsdocs-summary">
-                
-              </p>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
   <div></div>
 </div>
                 </div>

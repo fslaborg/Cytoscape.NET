@@ -147,5 +147,5 @@ cgLayout
 (**And here is what happened after applying the styles from above:*)
 
 (***hide***)
-cgLayout |> HTML.toEmbeddedHTML()
+cgLayout |> HTML.toGraphHTML()
 (*** include-it-raw ***)    

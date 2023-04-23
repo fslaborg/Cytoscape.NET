@@ -89,6 +89,9 @@ open Cyjs.NET
 let myFirstGraph = 
     CyGraph.initEmpty ()
 
+(***include-it-raw***)
+"LOL"
+
 (**
 
 ### Attach nodes and edges
@@ -142,8 +145,7 @@ Here the label attached to each node is rendered as content.
 
 ### Displaying a graph in the browser
 
-The `CyGraph.show` function will open a browser window and render the input graph there. When working in a notebook context
-you want to use `HTML.toEmbeddedHTML` for the moment,
+The `CyGraph.show` function will open a browser window and render the input graph there.
 
 *)
 
@@ -157,7 +159,7 @@ myGraph
 myGraph 
 |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) 
 |> CyGraph.withSize(800, 400) 
-|> HTML.toEmbeddedHTML()
+|> HTML.toGraphHTML()
 (*** include-it-raw ***)
 
 (***do-not-eval***)
@@ -167,7 +169,7 @@ myFirstStyledGraph
 (**And here is what happened after applying the styles from above:*)
 
 (***hide***)
-myFirstStyledGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toEmbeddedHTML()
+myFirstStyledGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toGraphHTML()
 (*** include-it-raw ***)
 
 

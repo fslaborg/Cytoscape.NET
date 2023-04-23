@@ -99,7 +99,7 @@ type HTML =
             div
                 [ _id divId; _style $"width:{width}px; height:{height}px"]
                 [
-                    comment "Plotly chart will be drawn inside this DIV"
+                    comment "Cytoscape graph will be drawn inside this DIV"
                 ]
             graphScript
         ]

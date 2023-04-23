@@ -1,10 +1,13 @@
 (*** hide ***)
 
 (*** condition: prepare ***)
-#r "nuget: DynamicObj, 0.0.1"
-#r "nuget: Newtonsoft.Json, 12.0.3"
-#r "nuget: Cyjs.NET, 0.0.3"
+#r "nuget: Newtonsoft.Json, 13.0.1"
+#r "nuget: DynamicObj, 2.0.0"
+#r "nuget: Giraffe.ViewEngine, 1.4.0"
+#r "../src/Cyjs.NET/bin/Release/netstandard2.0/Cyjs.NET.dll"
 
+open Cyjs.NET
+Defaults.DefaultDisplayOptions <- DisplayOptions.init(CytoscapeJSReference = CytoscapeJSReference.NoReference)
 
 
 (**
@@ -144,5 +147,5 @@ cgLayout
 (**And here is what happened after applying the styles from above:*)
 
 (***hide***)
-cgLayout |> HTML.toEmbeddedHTML
+cgLayout |> HTML.toEmbeddedHTML()
 (*** include-it-raw ***)    

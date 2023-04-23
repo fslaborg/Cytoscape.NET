@@ -17,6 +17,9 @@
     <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cyjs.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="cytoscape.min.js" />
+    <Compile Include="Globals.fs" />
+    <Compile Include="InternalUtils.fs" />
     <Compile Include="JsonConverter.fs" />
     <Compile Include="CyParam.fs" />
     <Compile Include="Data.fs" />
@@ -26,9 +29,11 @@
     <Compile Include="Cytoscape.fs" />
     <Compile Include="Canvas.fs" />
     <Compile Include="Zoom.fs" />
+    <Compile Include="DisplayOptions.fs" />
+    <Compile Include="Defaults.fs" />
     <Compile Include="Html.fs" />
     <Compile Include="CyGraph.fs" />
-    <None Include="img\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="img\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

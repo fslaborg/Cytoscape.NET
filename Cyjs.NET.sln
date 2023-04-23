@@ -25,7 +25,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{0C36C2D0-59AB-400F-9A70-29B93A371C4F}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
-		.github\workflows\deploy-gh-pages.yml = .github\workflows\deploy-gh-pages.yml
 	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Cyjs.NET.Interactive", "src\Cyjs.NET.Interactive\Cyjs.NET.Interactive.fsproj", "{546DBE31-89C3-4FD8-A34D-86659AE74E9A}"

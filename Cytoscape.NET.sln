@@ -26,6 +26,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{265CFDC8-7790-496D-9A86-42E95E3C9C0D}"
 	ProjectSection(SolutionItems) = preProject
 		docs\example.fsx = docs\example.fsx
+		docs\content\fsdocs-custom.css = docs\content\fsdocs-custom.css
 		docs\index.fsx = docs\index.fsx
 		docs\_template.html = docs\_template.html
 	EndProjectSection

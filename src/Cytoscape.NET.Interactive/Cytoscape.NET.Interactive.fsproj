@@ -4,7 +4,19 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <Authors>Kevin Schneider, fslab contributors</Authors>
+    <Description>A .NET Interactive Kernel Extension for displaying Cytoscape.NET graphs.</Description>
+    <Summary>A .NET Interactive Kernel Extension for displaying Cytoscape.NET graphs.</Summary>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://fslab.org/Cytoscape.NET/</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>cytoscape graph visualisation fsharp csharp dotnet</PackageTags>
+    <RepositoryUrl>https://github.com/fslaborg/Cytoscape.NET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <FsDocsLicenseLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE</FsDocsLicenseLink>
+    <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="bin\**" />
     <EmbeddedResource Remove="bin\**" />

@@ -15,7 +15,10 @@
     <RepositoryType>git</RepositoryType>
     <FsDocsLicenseLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE</FsDocsLicenseLink>
     <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="cytoscape.min.js" />
     <Compile Include="Globals.fs" />
@@ -35,9 +38,11 @@
     <Compile Include="CyGraph.fs" />
     <None Include="img\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="DynamicObj" Version="2.0.0" />
     <PackageReference Include="Giraffe.ViewEngine" Version="1.4.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
   </ItemGroup>
 </Project>

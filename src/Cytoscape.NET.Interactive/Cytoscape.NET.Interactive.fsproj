@@ -16,7 +16,10 @@
     <RepositoryType>git</RepositoryType>
     <FsDocsLicenseLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE</FsDocsLicenseLink>
     <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+	
   <ItemGroup>
     <Compile Remove="bin\**" />
     <EmbeddedResource Remove="bin\**" />
@@ -26,6 +29,7 @@
   <ItemGroup>
     <Compile Include="Formatters.fs" />
     <Compile Include="Extension.fs" />
+    <None Include="img\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
   <ItemGroup>
@@ -37,6 +41,7 @@
     <ProjectReference Include="..\Cytoscape.NET\Cytoscape.NET.fsproj" PackageVersion="[0.0.0, 1.0.0)" />
     <PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23165.2" />
     <PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23165.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
   </ItemGroup>
 
   <Target Name="UseExplicitPackageVersions" BeforeTargets="GenerateNuspec">

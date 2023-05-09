@@ -1,10 +1,14 @@
 (*** hide ***)
 
 (*** condition: prepare ***)
-#r "nuget: DynamicObj, 0.0.1"
-#r "nuget: Newtonsoft.Json, 12.0.3"
-#r "nuget: Cyjs.NET, 0.0.3"
 
+#r "nuget: Newtonsoft.Json, 13.0.1"
+#r "nuget: DynamicObj, 2.0.0"
+#r "nuget: Giraffe.ViewEngine, 1.4.0"
+#r "../src/Cyjs.NET/bin/Release/netstandard2.0/Cyjs.NET.dll"
+
+open Cyjs.NET
+Defaults.DefaultDisplayOptions <- DisplayOptions.init(CytoscapeJSReference = CytoscapeJSReference.NoReference)
 
 (*** condition: ipynb ***)
 #if IPYNB
@@ -85,6 +89,9 @@ open Cyjs.NET
 let myFirstGraph = 
     CyGraph.initEmpty ()
 
+(***include-it-raw***)
+"LOL"
+
 (**
 
 ### Attach nodes and edges
@@ -132,15 +139,13 @@ let myFirstStyledGraph =
                 CyParam.color "#A00975"
             ]
     |> CyGraph.withSize(800, 400)  
-
 (**
 **Attention:** `=.` is a styling mapper and allows to pass data from different sources into the layout. 
 Here the label attached to each node is rendered as content.  
 
 ### Displaying a graph in the browser
 
-The `CyGraph.show` function will open a browser window and render the input graph there. When working in a notebook context
-you want to use `HTML.toEmbeddedHTML` for the moment,
+The `CyGraph.show` function will open a browser window and render the input graph there.
 
 *)
 
@@ -151,7 +156,10 @@ myGraph
 (**Should render this chart in your brower:*)
 
 (***hide***)
-myGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> CyGraph.withSize(800, 400) |> HTML.toEmbeddedHTML
+myGraph 
+|> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) 
+|> CyGraph.withSize(800, 400) 
+|> HTML.toGraphHTML()
 (*** include-it-raw ***)
 
 (***do-not-eval***)
@@ -161,7 +169,7 @@ myFirstStyledGraph
 (**And here is what happened after applying the styles from above:*)
 
 (***hide***)
-myFirstStyledGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toEmbeddedHTML
+myFirstStyledGraph |> CyGraph.withZoom(CytoscapeModel.Zoom.Init(ZoomingEnabled=false)) |> HTML.toGraphHTML()
 (*** include-it-raw ***)
 
 

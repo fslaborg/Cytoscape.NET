@@ -7,103 +7,161 @@ open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
 
 open Cyjs.NET.CytoscapeModel
+open Giraffe.ViewEngine
+
 
 /// HTML template for Cytoscape
-module HTML =
+type HTML =
     
-    let doc =
-        let newScript = System.Text.StringBuilder()
-        newScript.AppendLine("""<!DOCTYPE html>""") |> ignore
-        newScript.AppendLine("<html>") |> ignore
-        newScript.AppendLine("<head>") |> ignore
-        newScript.AppendLine("""<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>""") |> ignore
-        newScript.AppendLine("</head>") |> ignore
-        newScript.AppendLine("<body> [GRAPH] </body>") |> ignore
-        newScript.AppendLine("""</html>""") |> ignore
-        newScript.ToString() 
+    static member CreateGraphScript
+        (
+            graphData: string,
+            zooming: string,
+            cytoscapeReference: CytoscapeJSReference
+        ) =
+        match cytoscapeReference with
+        | Require r ->
+            script
+                [ _type "text/javascript" ]
+                [
+                    rawText (
+                        Globals.REQUIREJS_SCRIPT_TEMPLATE
+                            .Replace("[REQUIRE_SRC]", r)
+                            .Replace("[GRAPHDATA]", graphData)
+                            .Replace("[ZOOMING]", zooming)
+                    )
+                ]
+        | _ ->
+            script
+                [ _type "text/javascript" ]
+                [
+                    rawText (
+                        Globals.SCRIPT_TEMPLATE
+                            .Replace("[GRAPHDATA]", graphData)
+                            .Replace("[ZOOMING]", zooming)
+                    )
+                ]
 
-    let graphDoc =
-        let newScript = System.Text.StringBuilder()
-        newScript.AppendLine("""<style>#[ID] [CANVAS] </style>""") |> ignore
-        //newScript.AppendLine("""<style>#[ID] { width: [WIDTH]px; height: [HEIGHT]px; display: block }</style>""") |> ignore
-        //newScript.AppendLine("""<style>#[ID] { width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; }</style>""") |> ignore
-        newScript.AppendLine("""<div id="[ID]"></div>""") |> ignore
-        newScript.AppendLine("<script type=\"text/javascript\">") |> ignore
-        newScript.AppendLine(@"
-            var renderCyjs_[SCRIPTID] = function() {
-            var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
-            fsharpCyjsRequire(['cyjs'], function(Cyjs) {")  |> ignore
-        newScript.AppendLine(@"
-            var graphdata = [GRAPHDATA]
-            var cy = cytoscape( graphdata );
-            cy.userZoomingEnabled( [ZOOMING] );
-            ")  |> ignore
-        newScript.AppendLine("""});
-            };
-            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
-                var script = document.createElement("script");
-                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
-                script.onload = function(){
-                    renderCyjs_[SCRIPTID]();
-                };
-                document.getElementsByTagName("head")[0].appendChild(script);
-            }
-            else {
-                renderCyjs_[SCRIPTID]();
-            }""") |> ignore
-        newScript.AppendLine("</script>") |> ignore
-        newScript.ToString() 
+
+    static member Doc(
+        graphHTML: XmlNode list, 
+        cytoscapeReference: CytoscapeJSReference, 
+        ?AdditionalHeadTags
+    ) =
+        let additionalHeadTags =
+            defaultArg AdditionalHeadTags []
+
+        let cytoscapeScriptRef =
+            match cytoscapeReference with
+            | CDN cdn -> script [ _src cdn ] []
+            | Full ->
+                script
+                    [ _type "text/javascript" ]
+                    [
+                        rawText (InternalUtils.getFullCytoscapeJS ())
+                    ]
+            | NoReference
+            | Require _ -> rawText ""
+
+        html
+            []
+            [
+                head
+                    []
+                    [
+                        cytoscapeScriptRef
+                        yield! additionalHeadTags
+                    ]
+                body [] [ yield! graphHTML]
+            ]
+
+    static member CreateGraphHTML
+        (
+            graphData: string,
+            zooming: string,
+            divId: string,
+            cytoscapeReference: CytoscapeJSReference,
+            ?Width: int,
+            ?Height: int
+        ) =
+        let width, height = 
+            Width |> Option.defaultValue Defaults.DefaultWidth,
+            Height |> Option.defaultValue Defaults.DefaultHeight
+
+        let graphScript =
+            HTML.CreateGraphScript(
+                graphData = graphData,
+                zooming = zooming,
+                cytoscapeReference = cytoscapeReference
+            )
+
+        [
+            div
+                [ _id divId; _style $"width:{width}px; height:{height}px"]
+                [
+                    comment "Cytoscape graph will be drawn inside this DIV"
+                ]
+            graphScript
+        ]
 
     /// Converts a CyGraph to it HTML representation. The div layer has a default size of 600 if not specified otherwise.
-    let toCytoHTML (cy:Cytoscape) =
-        let guid = Guid.NewGuid().ToString()
-        let id   = sprintf "e%s" <| Guid.NewGuid().ToString().Replace("-","").Substring(0,10)
-        cy.container <- PlainJsonString id
+    static member toGraphHTMLNodes (
+        ?DisplayOpts: DisplayOptions
+    ) =
+        fun (cy:Cytoscape) -> 
 
-        let userZoomingEnabled =
-            match cy.TryGetTypedValue<Zoom> "zoom"  with
-            | Some z -> 
-                match z.TryGetTypedValue<bool> "zoomingEnabled" with
-                | Some t -> t
+            let displayOptions = defaultArg DisplayOpts Defaults.DefaultDisplayOptions
+            let cytoscapeReference = displayOptions |> DisplayOptions.getCytoscapeReference
+
+            let guid = Guid.NewGuid().ToString()
+            let id   = sprintf "e%s" <| Guid.NewGuid().ToString().Replace("-","").Substring(0,10)
+        
+            cy.container <- PlainJsonString id
+            DynamicObj.DynObj.remove cy "Canvas" // no need for canvas, should remove it completely in the future
+
+            let userZoomingEnabled =
+                match cy.TryGetTypedValue<Zoom> "zoom"  with
+                | Some z -> 
+                    match z.TryGetTypedValue<bool> "zoomingEnabled" with
+                    | Some t -> t
+                    | None -> false
                 | None -> false
-            | None -> false
-            |> string 
-            |> fun s -> s.ToLower()
-
-        let strCANVAS = // DynamicObj.DynObj.tryGetValue cy "Dims" //tryGetLayoutSize gChart
-            match cy.TryGetTypedValue<Canvas> "Canvas"  with
-            |Some c -> c
-            |None -> Canvas.InitDefault()
-            //|> fun c -> c?display <-  "block" ; c
-            |> fun c -> 
-                c.GetProperties(true)
-                |> Seq.map (fun k -> sprintf "%s: %O" k.Key k.Value)
-                |> String.concat "; "
-                |> sprintf "{ %s }" 
+                |> string 
+                |> fun s -> s.ToLower()
                     
-        DynamicObj.DynObj.remove cy "Canvas"
-        let jsonGraph = JsonConvert.SerializeObject (cy,PlainJsonStringConverter())
+            let jsonGraph = JsonConvert.SerializeObject (cy,PlainJsonStringConverter())
 
-        let html =
-            graphDoc
-                .Replace("[CANVAS]", strCANVAS)
-                .Replace("[ID]", id)
-                .Replace("[ZOOMING]", userZoomingEnabled)
-                .Replace("[SCRIPTID]", guid.Replace("-",""))
-                .Replace("[GRAPHDATA]", jsonGraph)                
-        html
+            HTML.CreateGraphHTML(
+                graphData = jsonGraph,
+                zooming = userZoomingEnabled,
+                divId = id,
+                cytoscapeReference = cytoscapeReference
+            )
+
+    static member toGraphHTML(
+        ?DisplayOpts: DisplayOptions
+    ) =
+        fun (cy:Cytoscape) -> 
+            cy
+            |> HTML.toGraphHTMLNodes(?DisplayOpts = DisplayOpts)
+            |> RenderView.AsString.htmlNodes
 
     /// Converts a CyGraph to it HTML representation and embeds it into a html page.
-    let toEmbeddedHTML (cy:Cytoscape) =
-        let graph =
-            toCytoHTML cy
-        doc
-            .Replace("[GRAPH]", graph)
-            //.Replace("[DESCRIPTION]", "")
+    static member toEmbeddedHTML (
+        ?DisplayOpts: DisplayOptions
+    ) =
+        fun (cy:Cytoscape) ->
+            let displayOptions = defaultArg DisplayOpts Defaults.DefaultDisplayOptions
+            let cytoscapeReference = DisplayOptions.getCytoscapeReference displayOptions
+            HTML.Doc(
+                graphHTML = (HTML.toGraphHTMLNodes(DisplayOpts = displayOptions) cy),
+                cytoscapeReference = cytoscapeReference
+            )
+            |> RenderView.AsString.htmlDocument
 
 
     ///Choose process to open plots with depending on OS. Thanks to @zyzhu for hinting at a solution (https://github.com/plotly/Plotly.NET/issues/31)
-    let internal openOsSpecificFile path =
+    static member internal openOsSpecificFile path =
         if RuntimeInformation.IsOSPlatform(OSPlatform.Windows) then
             let psi = System.Diagnostics.ProcessStartInfo(FileName = path, UseShellExecute = true)
             System.Diagnostics.Process.Start(psi) |> ignore
@@ -115,11 +173,11 @@ module HTML =
             invalidOp "Not supported OS platform"
 
 
-    let show (cy:Cytoscape) = 
+    static member show (cy:Cytoscape, ?DisplayOpts: DisplayOptions) = 
         let guid = Guid.NewGuid().ToString()
-        let html = toEmbeddedHTML cy
+        let html = HTML.toEmbeddedHTML(?DisplayOpts = DisplayOpts) cy
         let tempPath = Path.GetTempPath()
         let file = sprintf "%s.html" guid
         let path = Path.Combine(tempPath, file)
         File.WriteAllText(path, html)
-        path |> openOsSpecificFile
+        path |> HTML.openOsSpecificFile

@@ -1,8 +1,7 @@
-namespace Cyjs.NET
+namespace Cytoscape.NET
 
 open System
 open DynamicObj
-
 
 module CyParam =
 

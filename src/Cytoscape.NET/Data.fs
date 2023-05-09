@@ -1,7 +1,6 @@
-namespace Cyjs.NET.CytoscapeModel
+namespace Cytoscape.NET.CytoscapeModel
 
 open DynamicObj
-
 
 type Data() =
     inherit DynamicObj ()

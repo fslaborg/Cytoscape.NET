@@ -1,4 +1,4 @@
-namespace Cyjs.NET
+namespace Cytoscape.NET
 
 open System
 open System.IO
@@ -6,7 +6,7 @@ open Newtonsoft.Json
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
 
-open Cyjs.NET.CytoscapeModel
+open Cytoscape.NET.CytoscapeModel
 open Giraffe.ViewEngine
 
 

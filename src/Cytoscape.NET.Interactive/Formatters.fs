@@ -1,7 +1,7 @@
-﻿namespace Cyjs.NET.Interactive
+﻿namespace Cytoscape.NET.Interactive
 
-open Cyjs.NET
-open Cyjs.NET.CytoscapeModel
+open Cytoscape.NET
+open Cytoscape.NET.CytoscapeModel
 
 module Formatters = 
     

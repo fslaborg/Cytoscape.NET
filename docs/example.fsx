@@ -4,16 +4,16 @@
 #r "nuget: Newtonsoft.Json, 13.0.1"
 #r "nuget: DynamicObj, 2.0.0"
 #r "nuget: Giraffe.ViewEngine, 1.4.0"
-#r "../src/Cyjs.NET/bin/Release/netstandard2.0/Cyjs.NET.dll"
+#r "../src/Cytoscape.NET/bin/Release/netstandard2.0/Cytoscape.NET.dll"
 
-open Cyjs.NET
+open Cytoscape.NET
 Defaults.DefaultDisplayOptions <- DisplayOptions.init(CytoscapeJSReference = CytoscapeJSReference.NoReference)
 
 
 (**
 # More Complex Example Graph
 
-Here, we can look at a more colorful example to understand the functionality of Cyjs.NET. The example is translated from [here](www.w.de)
+Here, we can look at a more colorful example to understand the functionality of Cytoscape.NET. The example is translated from [here](www.w.de)
 to cover different styling capabilities. 
 
 ### Adding nodes and edges with data
@@ -23,7 +23,7 @@ Additionaly, the `withClass` function adds a class identifier `(CyParam.cyClass 
 This can be used for individual styling, that you will see later...  
 *)
 
-open Cyjs.NET
+open Cytoscape.NET
 open Elements
 
 let complexGraph = 

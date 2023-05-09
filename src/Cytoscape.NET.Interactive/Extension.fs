@@ -1,10 +1,10 @@
-namespace Cyjs.NET.Interactive
+namespace Cytoscape.NET.Interactive
 
 open System
 open System.Threading.Tasks
 open Microsoft.DotNet.Interactive
 open Microsoft.DotNet.Interactive.Formatting
-open Cyjs.NET
+open Cytoscape.NET
 
 type FormatterKernelExtension() =
 

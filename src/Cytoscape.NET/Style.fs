@@ -1,7 +1,7 @@
-namespace Cyjs.NET.CytoscapeModel
+namespace Cytoscape.NET.CytoscapeModel
 
 open DynamicObj
-open Cyjs.NET
+open Cytoscape.NET
 
 // https://js.cytoscape.org/#style
 

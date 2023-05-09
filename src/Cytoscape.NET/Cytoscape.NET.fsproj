@@ -8,13 +8,13 @@
     <Description>.NET interface for Cytoscape.js written in F#</Description>
     <Summary>.NET interface for Cytoscape.js written in F#</Summary>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://fslab.org/Cyjs.NET/</PackageProjectUrl>
+    <PackageProjectUrl>https://fslab.org/Cytoscape.NET/</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>cytoscape graph visualisation fsharp csharp dotnet</PackageTags>
-    <RepositoryUrl>https://github.com/fslaborg/Cyjs.NET</RepositoryUrl>
+    <RepositoryUrl>https://github.com/fslaborg/Cytoscape.NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <FsDocsLicenseLink>https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE</FsDocsLicenseLink>
-    <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cyjs.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+    <FsDocsLicenseLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE</FsDocsLicenseLink>
+    <FsDocsReleaseNotesLink>https://github.com/fslaborg/Cytoscape.NET/blob/master/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="cytoscape.min.js" />

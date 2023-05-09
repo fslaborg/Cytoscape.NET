@@ -1,8 +1,8 @@
-namespace Cyjs.NET.CytoscapeModel
+namespace Cytoscape.NET.CytoscapeModel
 
 open System
 open DynamicObj
-open Cyjs.NET
+open Cytoscape.NET
 
     
 type Canvas() = 

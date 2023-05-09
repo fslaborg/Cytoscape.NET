@@ -5,23 +5,23 @@
 #r "nuget: Newtonsoft.Json, 13.0.1"
 #r "nuget: DynamicObj, 2.0.0"
 #r "nuget: Giraffe.ViewEngine, 1.4.0"
-#r "../src/Cyjs.NET/bin/Release/netstandard2.0/Cyjs.NET.dll"
+#r "../src/Cytoscape.NET/bin/Release/netstandard2.0/Cytoscape.NET.dll"
 
-open Cyjs.NET
+open Cytoscape.NET
 Defaults.DefaultDisplayOptions <- DisplayOptions.init(CytoscapeJSReference = CytoscapeJSReference.NoReference)
 
 (*** condition: ipynb ***)
 #if IPYNB
-#r "nuget: Cyjs.NET, {{fsdocs-package-version}}"
+#r "nuget: Cytoscape.NET, {{fsdocs-package-version}}"
 #endif // IPYNB
 
 
 (**
-# Cyjs.NET
+# Cytoscape.NET
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fslaborg/Cyjs.NET/gh-pages?filepath=index.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fslaborg/Cytoscape.NET/gh-pages?filepath=index.ipynb)
 
-Cyjs.NET is an interface for Cytoscape.js written in F# to visualiz complex networks and integrate these with any type of attribute data.
+Cytoscape.NET is an interface for Cytoscape.js written in F# to visualiz complex networks and integrate these with any type of attribute data.
 
 ### Table of contents 
 
@@ -41,23 +41,23 @@ Cyjs.NET is an interface for Cytoscape.js written in F# to visualiz complex netw
 
 ## Installation
 
-The following examples show how easy it is to start working with Cyjs.NET.
+The following examples show how easy it is to start working with Cytoscape.NET.
 
 ### For applications and libraries
 
-You can get all Cyjs.NET packages from nuget at [nuget page](https://www.nuget.org/packages/Cyjs.NET/).
+You can get all Cytoscape.NET packages from nuget at [nuget page](https://www.nuget.org/packages/Cytoscape.NET/).
 
 
  - dotnet CLI
 
 ```shell
-dotnet add package Cyjs.NET --version <desired-version-here>
+dotnet add package Cytoscape.NET --version <desired-version-here>
 ```
 
 Or add the package reference directly to your `.*proj` file:
 
 ```
-<PackageReference Include="Cyjs.NET" Version="<desired-version-here>" />
+<PackageReference Include="Cytoscape.NET" Version="<desired-version-here>" />
 ```
 
 ### For scripting
@@ -65,14 +65,14 @@ Or add the package reference directly to your `.*proj` file:
 You can include the package via an inline package reference:
 
 ```
-#r "nuget: Cyjs.NET, <desired-version-here>"
+#r "nuget: Cytoscape.NET, <desired-version-here>"
 ```
 
 # Overview
 
 ## Basics
 
-The general design philosophy of Cyjs.NET implements the following visualization flow:
+The general design philosophy of Cytoscape.NET implements the following visualization flow:
 
 - **initialize** a `Cytoscape` object by using the `CyGraph.initEmpty` function.
 - **attach** elements e.g. notes, edges and data to visulize and further
@@ -85,12 +85,12 @@ The `CyGraph` module contains the `CyGraph.initEmpty` function to create an empt
 You can therefore initialize a cytoscape graph like this:
 
 *)
-open Cyjs.NET
+open Cytoscape.NET
 let myFirstGraph = 
     CyGraph.initEmpty ()
 
 (***include-it-raw***)
-"LOL"
+myFirstGraph
 
 (**
 
@@ -185,9 +185,9 @@ The library is available under Public Domain license, which allows modification 
 redistribution for both commercial and non-commercial purposes. For more information see the 
 [License file][license] in the GitHub repository. 
 
-  [content]: https://github.com/fslaborg/Cyjs.NET/tree/master/docs/content
-  [gh]: https://github.com/fslaborg/Cyjs.NET
-  [issues]: https://github.com/fslaborg/Cyjs.NET/issues
-  [readme]: https://github.com/fslaborg/Cyjs.NET/blob/master/README.md
-  [license]: https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE.txt
+  [content]: https://github.com/fslaborg/Cytoscape.NET/tree/master/docs/content
+  [gh]: https://github.com/fslaborg/Cytoscape.NET
+  [issues]: https://github.com/fslaborg/Cytoscape.NET/issues
+  [readme]: https://github.com/fslaborg/Cytoscape.NET/blob/master/README.md
+  [license]: https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE.txt
 *)

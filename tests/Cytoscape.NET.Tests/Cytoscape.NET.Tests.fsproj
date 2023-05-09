@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Cyjs.NET\Cyjs.NET.fsproj" />
+    <ProjectReference Include="..\..\src\Cytoscape.NET\Cytoscape.NET.fsproj" />
   </ItemGroup>
 
 </Project>

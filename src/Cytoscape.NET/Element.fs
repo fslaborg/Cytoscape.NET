@@ -1,6 +1,6 @@
-namespace Cyjs.NET.CytoscapeModel
+namespace Cytoscape.NET.CytoscapeModel
 
-open Cyjs.NET
+open Cytoscape.NET
 open DynamicObj
 
 type Element() =

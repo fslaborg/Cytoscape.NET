@@ -18,11 +18,11 @@
   
   <ItemGroup>
     <None Include="..\..\docs\img\logo.png" Pack="true" PackagePath="\" />
-    <None Include="$(OutputPath)/Cyjs.NET.Interactive.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+    <None Include="$(OutputPath)/Cytoscape.NET.Interactive.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cyjs.NET\Cyjs.NET.fsproj" PackageVersion="[0.0.0, 1.0.0)" />
+    <ProjectReference Include="..\Cytoscape.NET\Cytoscape.NET.fsproj" PackageVersion="[0.0.0, 1.0.0)" />
     <PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23165.2" />
     <PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23165.2" />
   </ItemGroup>

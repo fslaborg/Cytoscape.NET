@@ -1,4 +1,4 @@
-namespace Cyjs.NET
+namespace Cytoscape.NET
 
 open Newtonsoft.Json
 

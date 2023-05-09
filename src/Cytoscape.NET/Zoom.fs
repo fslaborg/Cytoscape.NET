@@ -1,4 +1,4 @@
-namespace Cyjs.NET.CytoscapeModel
+namespace Cytoscape.NET.CytoscapeModel
 
 open DynamicObj
 

@@ -2,11 +2,11 @@
 
 open Fake.Core
 
-let project = "Cyjs.NET"
+let project = "Cytoscape.NET"
 
 let testProjects = 
     [
-        "tests/Cyjs.NET.Tests/Cyjs.NET.Tests.fsproj"
+        "tests/Cytoscape.NET.Tests/Cytoscape.NET.Tests.fsproj"
     ]
 
 let solutionFile  = $"{project}.sln"

@@ -1,6 +1,6 @@
-namespace Cyjs.NET
+namespace Cytoscape.NET
 
-open Cyjs.NET.CytoscapeModel
+open Cytoscape.NET.CytoscapeModel
 open CyParam
 open DynamicObj
 

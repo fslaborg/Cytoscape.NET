@@ -20,9 +20,9 @@ module Globals =
 
     [<Literal>]
     let REQUIREJS_SCRIPT_TEMPLATE = """
-    var fsharpCytoscapeRequire = requirejs.config({context:'fsharp-cyjs',paths:{cytoscape:'[REQUIRE_SRC]'}}) || require;
+    var fsharpCytoscapeRequire = requirejs.config({context:'cytoscape-net',paths:{cytoscape:'[REQUIRE_SRC]'}}) || require;
         
-    fsharpCyjsRequire(['cytoscape'], function(cytoscape) {
+    fsharpCytoscapeRequire(['cytoscape'], function(cytoscape) {
         var graphdata = [GRAPHDATA]
         var cy = cytoscape( graphdata );
         cy.userZoomingEnabled( [ZOOMING] );

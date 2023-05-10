@@ -1,3 +1,5 @@
+#### 0.2.0 - 05/10/2022
+- `Cytoscape.NET.Interactive`: fix require js function name
 #### 0.1.0 - 05/09/2022
 - Rename to Cytoscape.NET
 - Add `DisplayOptions` type to control html rendering behavior

@@ -3,18 +3,20 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Cyjs.NET
+    <title>Cytoscape.NET
 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Timo Muehlhaus, fslaborg">
-    <link rel="shortcut icon" type="image/x-icon" href="https://fslab.org/Cyjs.NET//img/favicon.ico">
+    <meta name="author" content="Timo Muehlhaus, Kevin Schneider, fslab contributors">
+    <link rel="shortcut icon" type="image/x-icon" href="https://fslab.org/Cytoscape.NET//img/favicon.ico">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
 
-    <link type="text/css" rel="stylesheet" href="https://fslab.org/Cyjs.NET/content/fsdocs-default.css" />
-    <link type="text/css" rel="stylesheet" href="https://fslab.org/Cyjs.NET/content/fsdocs-custom.css" />
-    <script type="text/javascript" src="https://fslab.org/Cyjs.NET/content/fsdocs-tips.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.24.0/cytoscape.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://fslab.org/Cytoscape.NET/content/fsdocs-default.css" />
+    <link type="text/css" rel="stylesheet" href="https://fslab.org/Cytoscape.NET/content/fsdocs-custom.css" />
+    <script type="text/javascript" src="https://fslab.org/Cytoscape.NET/content/fsdocs-tips.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,12 +32,12 @@
         <div id="fsdocs-menu" class="column is-2 is-paddingless">
             <aside class="menu">
                 <div class="container is-paddingless is-marginless has-background-dark">
-                    <a href="https://fslab.org/Cyjs.NET/">
+                    <a href="https://fslab.org/Cytoscape.NET/">
                         <figure class="image is-128x128 container">
-                            <img src="https://fslab.org/Cyjs.NET/img/logo.png">
+                            <img src="https://fslab.org/Cytoscape.NET/img/logo.png">
                         </figure>
                     </a>
-                    <h2 class="title has-text-centered has-text-white pb-4">Cyjs.NET</h2>
+                    <h2 class="title has-text-centered has-text-white pb-4">Cytoscape.NET</h2>
                 </div>
                 <div class="content">
                     <!-- BEGIN SEARCH BOX: this adds support for the search box -->
@@ -53,14 +55,14 @@
                     <!-- END SEARCH BOX: this adds support for the search box -->
                     <ul class="navbar-nav">
                         <li class="nav-header">Links</li>
-                        <li class="nav-item" id="fsdocs-license-link"><a class="nav-link" href="https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE">License (MIT)</a></li>
-                        <li class="nav-item" id="fsdocs-release-notes-link"><a class="nav-link" href="https://github.com/fslaborg/Cyjs.NET/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
-                        <li class="nav-item" id="fsdocs-repository-link"><a class="nav-link" href="https://github.com/fslaborg/Cyjs.NET/">Source Repository</a></li>
+                        <li class="nav-item" id="fsdocs-license-link"><a class="nav-link" href="https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE">License (MIT)</a></li>
+                        <li class="nav-item" id="fsdocs-release-notes-link"><a class="nav-link" href="https://github.com/fslaborg/Cytoscape.NET/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+                        <li class="nav-item" id="fsdocs-repository-link"><a class="nav-link" href="https://github.com/fslaborg/Cytoscape.NET/">Source Repository</a></li>
                         <li class="nav-header">
   Documentation
 </li>             
 <li class="nav-item">
-  <a class="nav-link" href="https://fslab.org/Cyjs.NET/example.html">
+  <a class="nav-link" href="https://fslab.org/Cytoscape.NET/example.html">
     More Complex Example Graph
 
   </a>
@@ -69,7 +71,7 @@
   API Reference
 </li>             
 <li class="nav-item">
-  <a class="nav-link" href="https://fslab.org/Cyjs.NET/reference/index.html">
+  <a class="nav-link" href="https://fslab.org/Cytoscape.NET/reference/index.html">
     All Namespaces
   </a>
 </li>
@@ -80,9 +82,9 @@
         <div class="column is-10 is-paddingless">
             <div class="section pt-4">
                 <div class="container" id="fsdocs-content">
-                    <h1><a name="Cyjs-NET" class="anchor" href="#Cyjs-NET">Cyjs.NET</a></h1>
-<p><a href="https://mybinder.org/v2/gh/fslaborg/Cyjs.NET/gh-pages?filepath=index.ipynb"><img src="https://mybinder.org/badge_logo.svg" alt="Binder" /></a></p>
-<p>Cyjs.NET is an interface for Cytoscape.js written in F# to visualiz complex networks and integrate these with any type of attribute data.</p>
+                    <h1><a name="Cytoscape-NET" class="anchor" href="#Cytoscape-NET">Cytoscape.NET</a></h1>
+<p><a href="https://mybinder.org/v2/gh/fslaborg/Cytoscape.NET/gh-pages?filepath=index.ipynb"><img src="https://mybinder.org/badge_logo.svg" alt="Binder" /></a></p>
+<p>Cytoscape.NET is an interface for Cytoscape.js written in F# to visualiz complex networks and integrate these with any type of attribute data.</p>
 <h3><a name="Table-of-contents" class="anchor" href="#Table-of-contents">Table of contents</a></h3>
 <ul>
 <li>
@@ -110,24 +112,24 @@
 </ul>
 <h1><a name="Installation" class="anchor" href="#Installation">Installation</a></h1>
 <h2><a name="Installation-1" class="anchor" href="#Installation-1">Installation</a></h2>
-<p>The following examples show how easy it is to start working with Cyjs.NET.</p>
+<p>The following examples show how easy it is to start working with Cytoscape.NET.</p>
 <h3><a name="For-applications-and-libraries" class="anchor" href="#For-applications-and-libraries">For applications and libraries</a></h3>
-<p>You can get all Cyjs.NET packages from nuget at <a href="https://www.nuget.org/packages/Cyjs.NET/">nuget page</a>.</p>
+<p>You can get all Cytoscape.NET packages from nuget at <a href="https://www.nuget.org/packages/Cytoscape.NET/">nuget page</a>.</p>
 <ul>
 <li>dotnet CLI</li>
 </ul>
-<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="shell">dotnet add package Cyjs.NET --version &lt;desired-version-here&gt;
+<table class="pre"><tr><td class="snippet"><pre class="fssnip"><code lang="shell">dotnet add package Cytoscape.NET --version &lt;desired-version-here&gt;
 </code></pre></td></tr></table>
 <p>Or add the package reference directly to your <code>.*proj</code> file:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="pn">&lt;</span><span class="id">PackageReference</span> <span class="id">Include</span><span class="o">=</span><span class="s">&quot;Cyjs.NET&quot;</span> <span class="id">Version</span><span class="o">=</span><span class="s">&quot;&lt;desired-version-here&gt;&quot;</span> <span class="o">/&gt;</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="pn">&lt;</span><span class="id">PackageReference</span> <span class="id">Include</span><span class="o">=</span><span class="s">&quot;Cytoscape.NET&quot;</span> <span class="id">Version</span><span class="o">=</span><span class="s">&quot;&lt;desired-version-here&gt;&quot;</span> <span class="o">/&gt;</span>
 </code></pre>
 <h3><a name="For-scripting" class="anchor" href="#For-scripting">For scripting</a></h3>
 <p>You can include the package via an inline package reference:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#r</span> <span class="s">&quot;nuget: Cyjs.NET, &lt;desired-version-here&gt;&quot;</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#r</span> <span class="s">&quot;nuget: Cytoscape.NET, &lt;desired-version-here&gt;&quot;</span>
 </code></pre>
 <h1><a name="Overview" class="anchor" href="#Overview">Overview</a></h1>
 <h2><a name="Basics" class="anchor" href="#Basics">Basics</a></h2>
-<p>The general design philosophy of Cyjs.NET implements the following visualization flow:</p>
+<p>The general design philosophy of Cytoscape.NET implements the following visualization flow:</p>
 <ul>
 <li><strong>initialize</strong> a <code>Cytoscape</code> object by using the <code>CyGraph.initEmpty</code> function.</li>
 <li><strong>attach</strong> elements e.g. notes, edges and data to visulize and further</li>
@@ -137,23 +139,26 @@
 <h3><a name="Initializing-a-graph" class="anchor" href="#Initializing-a-graph">Initializing a graph</a></h3>
 <p>The <code>CyGraph</code> module contains the <code>CyGraph.initEmpty</code> function to create an empty graph.
 You can therefore initialize a cytoscape graph like this:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="id">Cyjs</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="id">NET</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="id">myFirstGraph</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 10)" onmouseover="showTip(event, 'fs1', 10)" class="id">Cytoscape</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs2', 11)" onmouseover="showTip(event, 'fs2', 11)" class="id">NET</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="id">myFirstGraph</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 14)" onmouseover="showTip(event, 'fs11', 14)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+</code></pre>
+<null>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs9', 15)" onmouseover="showTip(event, 'fs9', 15)" class="id">myFirstGraph</span>
 </code></pre>
 <h3><a name="Attach-nodes-and-edges" class="anchor" href="#Attach-nodes-and-edges">Attach nodes and edges</a></h3>
 <p>The <code>Elements</code> module contains the <code>node</code> and <code>edge</code> functions to create the respective element.
 Node and edges can be decorated with data as <code>CyStyleParam list</code>
 You can therefore create a cytoscape graph with two nodes and an edge like this:</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="m">Elements</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs12', 16)" onmouseover="showTip(event, 'fs12', 16)" class="m">Elements</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="id">myGraph</span> <span class="o">=</span> 
-    <span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 10)" onmouseover="showTip(event, 'fs4', 10)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 11)" onmouseover="showTip(event, 'fs8', 11)" class="id">withElements</span> <span class="pn">[</span>
-            <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="fn">node</span> <span class="s">&quot;n1&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 14)" onmouseover="showTip(event, 'fs11', 14)" class="id">label</span> <span class="s">&quot;FsLab&quot;</span>  <span class="pn">]</span>
-            <span onmouseout="hideTip(event, 'fs9', 15)" onmouseover="showTip(event, 'fs9', 15)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 16)" onmouseover="showTip(event, 'fs10', 16)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 17)" onmouseover="showTip(event, 'fs11', 17)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 17)" onmouseover="showTip(event, 'fs13', 17)" class="id">myGraph</span> <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 'fs10', 18)" onmouseover="showTip(event, 'fs10', 18)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 19)" onmouseover="showTip(event, 'fs11', 19)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs10', 20)" onmouseover="showTip(event, 'fs10', 20)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 21)" onmouseover="showTip(event, 'fs14', 21)" class="id">withElements</span> <span class="pn">[</span>
+            <span onmouseout="hideTip(event, 'fs15', 22)" onmouseover="showTip(event, 'fs15', 22)" class="fn">node</span> <span class="s">&quot;n1&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs16', 23)" onmouseover="showTip(event, 'fs16', 23)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 24)" onmouseover="showTip(event, 'fs17', 24)" class="id">label</span> <span class="s">&quot;FsLab&quot;</span>  <span class="pn">]</span>
+            <span onmouseout="hideTip(event, 'fs15', 25)" onmouseover="showTip(event, 'fs15', 25)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs16', 26)" onmouseover="showTip(event, 'fs16', 26)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 27)" onmouseover="showTip(event, 'fs17', 27)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
  
-            <span onmouseout="hideTip(event, 'fs12', 18)" onmouseover="showTip(event, 'fs12', 18)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
+            <span onmouseout="hideTip(event, 'fs18', 28)" onmouseover="showTip(event, 'fs18', 28)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
         <span class="pn">]</span>
 </code></pre>
 <h3><a name="Styling-a-graph" class="anchor" href="#Styling-a-graph">Styling a graph</a></h3>
@@ -164,164 +169,137 @@ You can therefore create a cytoscape graph with two nodes and an edge like this:
 <li>styles the nodes with color and content via <code>CyGraph.withStyle</code></li>
 <li>sets the graph size to 800 x 400 pixels via <code>CyGraph.withSize</code></li>
 </ul>
-<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="id">myFirstStyledGraph</span> <span class="o">=</span>     
-    <span onmouseout="hideTip(event, 'fs4', 20)" onmouseover="showTip(event, 'fs4', 20)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs5', 21)" onmouseover="showTip(event, 'fs5', 21)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
-    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 22)" onmouseover="showTip(event, 'fs4', 22)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs8', 23)" onmouseover="showTip(event, 'fs8', 23)" class="id">withElements</span> <span class="pn">[</span>
-            <span onmouseout="hideTip(event, 'fs9', 24)" onmouseover="showTip(event, 'fs9', 24)" class="fn">node</span> <span class="s">&quot;n1&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 25)" onmouseover="showTip(event, 'fs10', 25)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 26)" onmouseover="showTip(event, 'fs11', 26)" class="id">label</span> <span class="s">&quot;FsLab&quot;</span>  <span class="pn">]</span>
-            <span onmouseout="hideTip(event, 'fs9', 27)" onmouseover="showTip(event, 'fs9', 27)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs10', 28)" onmouseover="showTip(event, 'fs10', 28)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 29)" onmouseover="showTip(event, 'fs11', 29)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs19', 29)" onmouseover="showTip(event, 'fs19', 29)" class="id">myFirstStyledGraph</span> <span class="o">=</span>     
+    <span onmouseout="hideTip(event, 'fs10', 30)" onmouseover="showTip(event, 'fs10', 30)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 31)" onmouseover="showTip(event, 'fs11', 31)" class="id">initEmpty</span> <span class="pn">(</span><span class="pn">)</span>
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs10', 32)" onmouseover="showTip(event, 'fs10', 32)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 33)" onmouseover="showTip(event, 'fs14', 33)" class="id">withElements</span> <span class="pn">[</span>
+            <span onmouseout="hideTip(event, 'fs15', 34)" onmouseover="showTip(event, 'fs15', 34)" class="fn">node</span> <span class="s">&quot;n1&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs16', 35)" onmouseover="showTip(event, 'fs16', 35)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 36)" onmouseover="showTip(event, 'fs17', 36)" class="id">label</span> <span class="s">&quot;FsLab&quot;</span>  <span class="pn">]</span>
+            <span onmouseout="hideTip(event, 'fs15', 37)" onmouseover="showTip(event, 'fs15', 37)" class="fn">node</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span> <span onmouseout="hideTip(event, 'fs16', 38)" onmouseover="showTip(event, 'fs16', 38)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 39)" onmouseover="showTip(event, 'fs17', 39)" class="id">label</span> <span class="s">&quot;ML&quot;</span> <span class="pn">]</span>
  
-            <span onmouseout="hideTip(event, 'fs12', 30)" onmouseover="showTip(event, 'fs12', 30)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
+            <span onmouseout="hideTip(event, 'fs18', 40)" onmouseover="showTip(event, 'fs18', 40)" class="fn">edge</span>  <span class="s">&quot;e1&quot;</span> <span class="s">&quot;n1&quot;</span> <span class="s">&quot;n2&quot;</span> <span class="pn">[</span><span class="pn">]</span>
  
         <span class="pn">]</span>
-    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 31)" onmouseover="showTip(event, 'fs4', 31)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs14', 32)" onmouseover="showTip(event, 'fs14', 32)" class="id">withStyle</span> <span class="s">&quot;node&quot;</span>     
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs10', 41)" onmouseover="showTip(event, 'fs10', 41)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs20', 42)" onmouseover="showTip(event, 'fs20', 42)" class="id">withStyle</span> <span class="s">&quot;node&quot;</span>     
             <span class="pn">[</span>
-                <span onmouseout="hideTip(event, 'fs10', 33)" onmouseover="showTip(event, 'fs10', 33)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs15', 34)" onmouseover="showTip(event, 'fs15', 34)" class="id">content</span> <span class="o">=.</span> <span onmouseout="hideTip(event, 'fs10', 35)" onmouseover="showTip(event, 'fs10', 35)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs11', 36)" onmouseover="showTip(event, 'fs11', 36)" class="id">label</span>
-                <span onmouseout="hideTip(event, 'fs10', 37)" onmouseover="showTip(event, 'fs10', 37)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs16', 38)" onmouseover="showTip(event, 'fs16', 38)" class="id">color</span> <span class="s">&quot;#A00975&quot;</span>
+                <span onmouseout="hideTip(event, 'fs16', 43)" onmouseover="showTip(event, 'fs16', 43)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs21', 44)" onmouseover="showTip(event, 'fs21', 44)" class="id">content</span> <span class="o">=.</span> <span onmouseout="hideTip(event, 'fs16', 45)" onmouseover="showTip(event, 'fs16', 45)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 46)" onmouseover="showTip(event, 'fs17', 46)" class="id">label</span>
+                <span onmouseout="hideTip(event, 'fs16', 47)" onmouseover="showTip(event, 'fs16', 47)" class="m">CyParam</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs22', 48)" onmouseover="showTip(event, 'fs22', 48)" class="id">color</span> <span class="s">&quot;#A00975&quot;</span>
             <span class="pn">]</span>
-    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 39)" onmouseover="showTip(event, 'fs4', 39)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs17', 40)" onmouseover="showTip(event, 'fs17', 40)" class="id">withSize</span><span class="pn">(</span><span class="n">800</span><span class="pn">,</span> <span class="n">400</span><span class="pn">)</span>  
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs10', 49)" onmouseover="showTip(event, 'fs10', 49)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs23', 50)" onmouseover="showTip(event, 'fs23', 50)" class="id">withSize</span><span class="pn">(</span><span class="n">800</span><span class="pn">,</span> <span class="n">400</span><span class="pn">)</span>  
 </code></pre>
 <p><strong>Attention:</strong> <code>=.</code> is a styling mapper and allows to pass data from different sources into the layout.
 Here the label attached to each node is rendered as content.</p>
 <h3><a name="Displaying-a-graph-in-the-browser" class="anchor" href="#Displaying-a-graph-in-the-browser">Displaying a graph in the browser</a></h3>
-<p>The <code>CyGraph.show</code> function will open a browser window and render the input graph there. When working in a notebook context
-you want to use <code>HTML.toEmbeddedHTML</code> for the moment,</p>
-<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs7', 41)" onmouseover="showTip(event, 'fs7', 41)" class="id">myGraph</span>
-<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 42)" onmouseover="showTip(event, 'fs4', 42)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 43)" onmouseover="showTip(event, 'fs18', 43)" class="id">show</span>
+<p>The <code>CyGraph.show</code> function will open a browser window and render the input graph there.</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs13', 51)" onmouseover="showTip(event, 'fs13', 51)" class="id">myGraph</span>
+<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs10', 52)" onmouseover="showTip(event, 'fs10', 52)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs24', 53)" onmouseover="showTip(event, 'fs24', 53)" class="id">show</span>
 </code></pre>
 <p>Should render this chart in your brower:</p>
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
-</head>
-<body> <style>#e112fe8b9e7 { width: 800px; height: 400px; display: block } </style>
-<div id="e112fe8b9e7"></div>
-<script type="text/javascript">
-
-            var renderCyjs_74b310c317a647e48bcc01130095de04 = function() {
-            var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
-            fsharpCyjsRequire(['cyjs'], function(Cyjs) {
-
-            var graphdata = {"container":document.getElementById('e112fe8b9e7'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
-            var cy = cytoscape( graphdata );
-            cy.userZoomingEnabled( false );
-            
-});
-            };
-            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
-                var script = document.createElement("script");
-                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
-                script.onload = function(){
-                    renderCyjs_74b310c317a647e48bcc01130095de04();
-                };
-                document.getElementsByTagName("head")[0].appendChild(script);
-            }
-            else {
-                renderCyjs_74b310c317a647e48bcc01130095de04();
-            }
-</script>
- </body>
-</html>
-
-<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs13', 54)" onmouseover="showTip(event, 'fs13', 54)" class="id">myFirstStyledGraph</span>
-<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs4', 55)" onmouseover="showTip(event, 'fs4', 55)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs18', 56)" onmouseover="showTip(event, 'fs18', 56)" class="id">show</span>
+<div id="ef42808e364" style="width:600px; height:600px"><!-- Cytoscape graph will be drawn inside this DIV --></div><script type="text/javascript">
+    var graphdata = {"container":document.getElementById('ef42808e364'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
+    var cy = cytoscape( graphdata );
+    cy.userZoomingEnabled( false );
+    </script>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs19', 64)" onmouseover="showTip(event, 'fs19', 64)" class="id">myFirstStyledGraph</span>
+<span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs10', 65)" onmouseover="showTip(event, 'fs10', 65)" class="m">CyGraph</span><span class="pn">.</span><span onmouseout="hideTip(event, 'fs24', 66)" onmouseover="showTip(event, 'fs24', 66)" class="id">show</span>
 </code></pre>
 <p>And here is what happened after applying the styles from above:</p>
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min.js"></script>
-</head>
-<body> <style>#ecd113d96a7 { width: 800px; height: 400px; display: block } </style>
-<div id="ecd113d96a7"></div>
-<script type="text/javascript">
-
-            var renderCyjs_8f2c837e50944fccb8dbf70a85b75775 = function() {
-            var fsharpCyjsRequire = requirejs.config({context:'fsharp-cyjs',paths:{cyjs:'https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.0/cytoscape.min'}}) || require;
-            fsharpCyjsRequire(['cyjs'], function(Cyjs) {
-
-            var graphdata = {"container":document.getElementById('ecd113d96a7'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
-            var cy = cytoscape( graphdata );
-            cy.userZoomingEnabled( false );
-            
-});
-            };
-            if ((typeof(requirejs) !==  typeof(Function)) || (typeof(requirejs.config) !== typeof(Function))) {
-                var script = document.createElement("script");
-                script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
-                script.onload = function(){
-                    renderCyjs_8f2c837e50944fccb8dbf70a85b75775();
-                };
-                document.getElementsByTagName("head")[0].appendChild(script);
-            }
-            else {
-                renderCyjs_8f2c837e50944fccb8dbf70a85b75775();
-            }
-</script>
- </body>
-</html>
-
+<div id="e834d2aaa19" style="width:600px; height:600px"><!-- Cytoscape graph will be drawn inside this DIV --></div><script type="text/javascript">
+    var graphdata = {"container":document.getElementById('e834d2aaa19'),"elements":[{"data":{"id":"n1","label":"FsLab"}},{"data":{"id":"n2","label":"ML"}},{"data":{"id":"e1","source":"n1","target":"n2"}}],"style":[{"selector":"node","style":{"content":"data(label)","color":"#A00975"}}],"layout":{"name":"random"},"zoom":{"level":null,"zoomingEnabled":false}}
+    var cy = cytoscape( graphdata );
+    cy.userZoomingEnabled( false );
+    </script>
 <h1><a name="Contributing-and-copyright" class="anchor" href="#Contributing-and-copyright">Contributing and copyright</a></h1>
-<p>The project is hosted on <a href="https://github.com/fslaborg/Cyjs.NET">GitHub</a> where you can <a href="https://github.com/fslaborg/Cyjs.NET/issues">report issues</a>, fork
+<p>The project is hosted on <a href="https://github.com/fslaborg/Cytoscape.NET">GitHub</a> where you can <a href="https://github.com/fslaborg/Cytoscape.NET/issues">report issues</a>, fork
 the project and submit pull requests. If you're adding a new public API, please also
-consider adding <a href="https://github.com/fslaborg/Cyjs.NET/tree/master/docs/content">samples</a> that can be turned into a documentation. You might
-also want to read the <a href="https://github.com/fslaborg/Cyjs.NET/blob/master/README.md">library design notes</a> to understand how it works.</p>
+consider adding <a href="https://github.com/fslaborg/Cytoscape.NET/tree/master/docs/content">samples</a> that can be turned into a documentation. You might
+also want to read the <a href="https://github.com/fslaborg/Cytoscape.NET/blob/master/README.md">library design notes</a> to understand how it works.</p>
 <p>The library is available under Public Domain license, which allows modification and
 redistribution for both commercial and non-commercial purposes. For more information see the
-<a href="https://github.com/fslaborg/Cyjs.NET/blob/master/LICENSE.txt">License file</a> in the GitHub repository.</p>
+<a href="https://github.com/fslaborg/Cytoscape.NET/blob/master/LICENSE.txt">License file</a> in the GitHub repository.</p>
 
                 </div>
             </div>
         </div>
-        <div class="fsdocs-tip" id="fs1">namespace Cyjs</div>
-<div class="fsdocs-tip" id="fs2">namespace Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs3">val myFirstGraph: CytoscapeModel.Cytoscape</div>
-<div class="fsdocs-tip" id="fs4">module CyGraph
+        <div class="fsdocs-tip" id="fs1">namespace Cytoscape</div>
+<div class="fsdocs-tip" id="fs2">namespace Cytoscape.NET</div>
+<div class="fsdocs-tip" id="fs3">module Defaults
 
-from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs5">val initEmpty: unit -&gt; CytoscapeModel.Cytoscape</div>
-<div class="fsdocs-tip" id="fs6">module Elements
+from Cytoscape.NET<br /><em>&lt;summary&gt;
+ Contains mutable global default values.
 
-from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs7">val myGraph: CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs8">val withElements: elems: seq&lt;CytoscapeModel.Element&gt; -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs9">val node: id: string -&gt; dataAttributes: CyParam.CyStyleParam list -&gt; Node</div>
-<div class="fsdocs-tip" id="fs10">module CyParam
+ Changing these values will apply the default values to all consecutive Graph generations.
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs4">val mutable DefaultDisplayOptions: DisplayOptions</div>
+<div class="fsdocs-tip" id="fs5">Multiple items<br />type DisplayOptions =
+  inherit DynamicObj
+  new: unit -&gt; DisplayOptions
+  static member addAdditionalHeadTags: additionalHeadTags: XmlNode list -&gt; (DisplayOptions -&gt; DisplayOptions)
+  static member addDescription: description: XmlNode list -&gt; (DisplayOptions -&gt; DisplayOptions)
+  static member getAdditionalHeadTags: displayOpts: DisplayOptions -&gt; XmlNode list
+  static member getCytoscapeReference: displayOpts: DisplayOptions -&gt; CytoscapeJSReference
+  static member getDescription: displayOpts: DisplayOptions -&gt; XmlNode list
+  static member init: ?AdditionalHeadTags: XmlNode list * ?Description: XmlNode list * ?CytoscapeJSReference: CytoscapeJSReference -&gt; DisplayOptions
+  static member initCDNOnly: unit -&gt; DisplayOptions
+  static member initDefault: unit -&gt; DisplayOptions
+  ...<br /><br />--------------------<br />new: unit -&gt; DisplayOptions</div>
+<div class="fsdocs-tip" id="fs6">static member DisplayOptions.init: ?AdditionalHeadTags: Giraffe.ViewEngine.HtmlElements.XmlNode list * ?Description: Giraffe.ViewEngine.HtmlElements.XmlNode list * ?CytoscapeJSReference: CytoscapeJSReference -&gt; DisplayOptions</div>
+<div class="fsdocs-tip" id="fs7">type CytoscapeJSReference =
+  | CDN of string
+  | Full
+  | Require of string
+  | NoReference<br /><em>&lt;summary&gt;
+Sets how cytoscape is referenced in the head of html docs.
+&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs8">union case CytoscapeJSReference.NoReference: CytoscapeJSReference</div>
+<div class="fsdocs-tip" id="fs9">val myFirstGraph: CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs10">module CyGraph
 
-from Cyjs.NET</div>
-<div class="fsdocs-tip" id="fs11">val label: v: &#39;a -&gt; CyParam.CyStyleParam</div>
-<div class="fsdocs-tip" id="fs12">val edge: id: string -&gt; sourceId: string -&gt; targetId: string -&gt; dataAttributes: CyParam.CyStyleParam list -&gt; Edge</div>
-<div class="fsdocs-tip" id="fs13">val myFirstStyledGraph: CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs14">val withStyle: selector: string -&gt; cyStyles: seq&lt;CyParam.CyStyleParam&gt; -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs15">val content: v: &#39;a -&gt; CyParam.CyStyleParam</div>
-<div class="fsdocs-tip" id="fs16">val color: v: &#39;a -&gt; CyParam.CyStyleParam</div>
-<div class="fsdocs-tip" id="fs17">val withSize: width: int * height: int -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs18">val show: cy: CyGraph.CyGraph -&gt; unit</div>
-<div class="fsdocs-tip" id="fs19">val withZoom: zoom: CytoscapeModel.Zoom -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
-<div class="fsdocs-tip" id="fs20">namespace Cyjs.NET.CytoscapeModel</div>
-<div class="fsdocs-tip" id="fs21">Multiple items<br />type Zoom =
+from Cytoscape.NET</div>
+<div class="fsdocs-tip" id="fs11">val initEmpty: unit -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs12">module Elements
+
+from Cytoscape.NET</div>
+<div class="fsdocs-tip" id="fs13">val myGraph: CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs14">val withElements: elems: seq&lt;CytoscapeModel.Element&gt; -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs15">val node: id: string -&gt; dataAttributes: CyParam.CyStyleParam list -&gt; Node</div>
+<div class="fsdocs-tip" id="fs16">module CyParam
+
+from Cytoscape.NET</div>
+<div class="fsdocs-tip" id="fs17">val label: v: &#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs18">val edge: id: string -&gt; sourceId: string -&gt; targetId: string -&gt; dataAttributes: CyParam.CyStyleParam list -&gt; Edge</div>
+<div class="fsdocs-tip" id="fs19">val myFirstStyledGraph: CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs20">val withStyle: selector: string -&gt; cyStyles: seq&lt;CyParam.CyStyleParam&gt; -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs21">val content: v: &#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs22">val color: v: &#39;a -&gt; CyParam.CyStyleParam</div>
+<div class="fsdocs-tip" id="fs23">val withSize: width: int * height: int -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs24">val show: cy: CyGraph.CyGraph -&gt; unit</div>
+<div class="fsdocs-tip" id="fs25">val withZoom: zoom: CytoscapeModel.Zoom -&gt; cy: CyGraph.CyGraph -&gt; CyGraph.CyGraph</div>
+<div class="fsdocs-tip" id="fs26">namespace Cytoscape.NET.CytoscapeModel</div>
+<div class="fsdocs-tip" id="fs27">Multiple items<br />type Zoom =
   inherit DynamicObj
   new: unit -&gt; Zoom
   static member Init: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; Zoom
   static member Update: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; (Zoom -&gt; Zoom)<br /><br />--------------------<br />new: unit -&gt; CytoscapeModel.Zoom</div>
-<div class="fsdocs-tip" id="fs22">static member CytoscapeModel.Zoom.Init: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; CytoscapeModel.Zoom</div>
-<div class="fsdocs-tip" id="fs23">module HTML
-
-from Cyjs.NET<br /><em>&lt;summary&gt;
+<div class="fsdocs-tip" id="fs28">static member CytoscapeModel.Zoom.Init: ?Level: float * ?Position: (int * int) * ?RenderedPosition: (int * int) * ?ZoomingEnabled: bool -&gt; CytoscapeModel.Zoom</div>
+<div class="fsdocs-tip" id="fs29">type HTML =
+  static member CreateGraphHTML: graphData: string * zooming: string * divId: string * cytoscapeReference: CytoscapeJSReference * ?Width: int * ?Height: int -&gt; XmlNode list
+  static member CreateGraphScript: graphData: string * zooming: string * cytoscapeReference: CytoscapeJSReference -&gt; XmlNode
+  static member Doc: graphHTML: XmlNode list * cytoscapeReference: CytoscapeJSReference * ?AdditionalHeadTags: XmlNode list -&gt; XmlNode
+  static member show: cy: Cytoscape * ?DisplayOpts: DisplayOptions -&gt; unit
+  static member toEmbeddedHTML: ?DisplayOpts: DisplayOptions -&gt; (Cytoscape -&gt; string)
+  static member toGraphHTML: ?DisplayOpts: DisplayOptions -&gt; (Cytoscape -&gt; string)
+  static member toGraphHTMLNodes: ?DisplayOpts: DisplayOptions -&gt; (Cytoscape -&gt; XmlNode list)<br /><em>&lt;summary&gt;
  HTML template for Cytoscape
 &lt;/summary&gt;</em></div>
-<div class="fsdocs-tip" id="fs24">val toEmbeddedHTML: cy: CytoscapeModel.Cytoscape -&gt; string<br /><em>&lt;summary&gt;
- Converts a CyGraph to it HTML representation and embeds it into a html page.
-&lt;/summary&gt;</em></div>
+<div class="fsdocs-tip" id="fs30">static member HTML.toGraphHTML: ?DisplayOpts: DisplayOptions -&gt; (CytoscapeModel.Cytoscape -&gt; string)</div>
 
     </div>
 
     <!-- BEGIN SEARCH BOX: this adds support for the search box -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.css" />
-    <script type="text/javascript">var fsdocs_search_baseurl = 'https://fslab.org/Cyjs.NET/'</script>
+    <script type="text/javascript">var fsdocs_search_baseurl = 'https://fslab.org/Cytoscape.NET/'</script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.js"></script>
-    <script type="text/javascript" src="https://fslab.org/Cyjs.NET/content/fsdocs-search.js"></script>
+    <script type="text/javascript" src="https://fslab.org/Cytoscape.NET/content/fsdocs-search.js"></script>
     <!-- END SEARCH BOX: this adds support for the search box -->
 </body>
 
